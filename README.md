@@ -1,8 +1,19 @@
 playground-binding.scala
 ========================
-[![MIT](https://img.shields.io/badge/licence-MIT-lightgrey.svg?style=flat)](https://tldrlegal.com/license/mit-license)
+[![MIT](https://img.shields.io/badge/licence-MIT-lightgrey.svg?style=flat)](https://tldrlegal.com/license/mit-license) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala)
 
 > My playground I use for playing with fancy technologies. This one's for [scala], [scalajs] and [binding.scala].
+
+## Building and Running
+
+The build can be launched with:
+
+```bash
+sbt ~fastOptJS
+```
+
+Then, open `./index.html` file in your browser.
+
 
 ## Technologies
 
