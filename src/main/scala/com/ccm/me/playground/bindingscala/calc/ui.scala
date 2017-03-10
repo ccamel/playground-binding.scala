@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package com.ccm.me.playground.bindingscala.calc.calc
+package com.ccm.me.playground.bindingscala.calc
 
 import com.thoughtworks.binding.Binding.{Constants, Var}
 import com.thoughtworks.binding.{Binding, dom}
@@ -38,7 +38,7 @@ object ui {
       List(".", "0", "=", "/", "MC"))
 
     <section>
-      <h1>Binding.scala.calc</h1>
+      <h2>binding.scala/calc</h2>
       <div class="container" style="width: 400px;">
         <div class="row">
           <div class="col s10" style="font-family: 'VT323', monospace;">
@@ -47,9 +47,7 @@ object ui {
         </div>{Constants(btns: _*).map { l =>
         <div class="row">
           {Constants(l: _*).map { c =>
-          <div class="col s2">
-            {b(model, c).bind}
-          </div>
+          <div class="col s2">{b(model, c).bind}</div>
         }}
         </div>
       }}

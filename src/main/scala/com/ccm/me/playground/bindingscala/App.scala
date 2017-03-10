@@ -23,7 +23,7 @@ SOFTWARE.
  */
 package com.ccm.me.playground.bindingscala
 
-import com.ccm.me.playground.bindingscala.calc.calc.{CalcModel, ui}
+import com.ccm.me.playground.bindingscala.calc.{CalcModel, ui}
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.{Node, document}
 

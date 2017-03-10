@@ -1,4 +1,4 @@
-import com.ccm.me.playground.bindingscala.calc.calc._
+import com.ccm.me.playground.bindingscala.calc._
 import org.scalatest.{FlatSpec, _}
 import org.scalatest.prop._
 

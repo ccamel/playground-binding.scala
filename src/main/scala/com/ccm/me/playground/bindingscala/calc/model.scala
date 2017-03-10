@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package com.ccm.me.playground.bindingscala.calc.calc
+package com.ccm.me.playground.bindingscala.calc
 
 import scala.annotation.tailrec
 import scala.collection.+:
