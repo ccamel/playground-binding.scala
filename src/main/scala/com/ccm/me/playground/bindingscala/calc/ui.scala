@@ -23,45 +23,56 @@ SOFTWARE.
  */
 package com.ccm.me.playground.bindingscala.calc
 
-import com.thoughtworks.binding.Binding.{Constants, Var}
+import com.ccm.me.playground.bindingscala.ShowCase
+import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var}
 import com.thoughtworks.binding.{Binding, dom}
+import org.scalajs.dom.Node
 import org.scalajs.dom.html.Anchor
-import org.scalajs.dom.raw.{Event, HTMLElement}
+import org.scalajs.dom.raw.Event
 
-object ui {
-  @dom def render(calc: CalcModel): Binding[HTMLElement] = {
-    val model = Var(calc)
+class ui extends ShowCase {
+  val calc = Var(CalcModel())
 
+  def name: String = "playground-binding.scala/calc"
+
+  @dom def css: Binding[BindingSeq[Node]] =
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+
+  @dom def render: Binding[BindingSeq[Node]] = {
     val btns = List(List("7", "8", "9", "+", "C"),
       List("4", "5", "6", "-", "MS"),
       List("1", "2", "3", "x", "MR"),
       List(".", "0", "=", "/", "MC"))
+    <header>
+      <nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper"><a class="page-title">{name}</a></div>
+        </div>
+      </nav>
+    </header>
 
-    <section>
-      <h2>binding.scala/calc</h2>
       <div class="container" style="width: 400px;">
         <div class="row">
           <div class="col s10" style="font-family: 'VT323', monospace;">
-            <input style="text-align:right; font-size: 21px;" type="Text" readOnly={true} value={getDisplay(model).bind}></input>
-          </div>{renderMemoryTag(model).bind}{renderOperatorTag(model).bind}
+            <input style="text-align:right; font-size: 21px;" type="Text" readOnly={true} value={display.bind}></input>
+          </div>{renderMemoryTag.bind}{renderOperatorTag.bind}
         </div>{Constants(btns: _*).map { l =>
         <div class="row">
           {Constants(l: _*).map { c =>
-          <div class="col s2">{b(model, c).bind}</div>
+          <div class="col s2">{b(c).bind}</div>
         }}
         </div>
       }}
       </div>
-
-    </section>
   }
 
-  @dom def renderMemoryTag(model: Var[CalcModel]) = <div style="font-size: 10px;">
-    {model.bind.memory.map(it => "M").getOrElse(" ")}
+  @dom def renderMemoryTag = <div style="font-size: 10px;">
+    {calc.bind.memory.map(it => "M").getOrElse(" ")}
   </div>
 
-  @dom def renderOperatorTag(model: Var[CalcModel]) = <div style="font-size: 10px;">
-    {model.bind.operators.headOption.map {
+  @dom def renderOperatorTag = <div style="font-size: 10px;">
+    {calc.bind.operators.headOption.map {
       case Plus() => "+"
       case Minus() => "-"
       case Multiply() => "*"
@@ -70,9 +81,9 @@ object ui {
     }.getOrElse(" ")}
   </div>
 
-  @dom def getDisplay(model: Var[CalcModel]) = Option(model.bind.accumulator).filterNot(_.isEmpty).getOrElse("0")
+  @dom def display = Option(calc.bind.accumulator).filterNot(_.isEmpty).getOrElse("0")
 
-  @dom def b(model: Var[CalcModel], label: String): Binding[Anchor] = {
+  @dom def b(label: String): Binding[Anchor] = {
     val op: (String, Token) = label match {
       case "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "0" => ("grey darken-1", Digit(label.toInt))
       case "." => ("grey darken-1", Dot())
@@ -87,9 +98,9 @@ object ui {
       case "MS" => ("green lighten-5 green-text", MS())
       case _ => ("", NoOp())
     }
-    val calc = model.bind
-    val disabled = if (calc.isDefinedAt(op._2)) "" else "disabled"
-    <a class={s"btn ${op._1} ${disabled} waves-effect waves-light"} style="width: 60px; padding: 0px" onclick={_: Event => model := calc(op._2)}>
+    val c = calc.bind
+    val disabled = if (c.isDefinedAt(op._2)) "" else "disabled"
+    <a class={s"btn ${op._1} ${disabled} waves-effect waves-light"} style="width: 60px; padding: 0px" onclick={_: Event => calc := c(op._2)}>
       {label}
     </a>
   }

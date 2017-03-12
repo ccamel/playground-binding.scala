@@ -23,25 +23,68 @@ SOFTWARE.
  */
 package com.ccm.me.playground.bindingscala
 
-import com.ccm.me.playground.bindingscala.calc.{CalcModel, ui}
+//import com.ccm.me.playground.bindingscala.calc.{CalcModel, ui}
+import com.thoughtworks.binding.Binding.{BindingSeq, Var}
 import com.thoughtworks.binding.{Binding, dom}
-import org.scalajs.dom.{Node, document}
+import org.scalajs.dom.{Node, document, window}
 
+import scala.scalajs.js
 import scala.scalajs.js.JSApp
 
+trait Name {
+  def name: String
+}
+
+trait Render {
+  def css: Binding[BindingSeq[Node]]
+  def render: Binding[BindingSeq[Node]]
+}
+
+trait ShowCase extends Render with Name
+
 object App extends JSApp {
+  val $ = js.Dynamic.global.$
+  val hash: Var[String] = Var("")
+
+  val homeShowCase = new home.ui()
+  val showCases = Seq(new calc.ui(), new ledmatrix.ui())
+
   def main(): Unit = {
     println("Starting App")
 
+    dom.render(document.head, bootCss)
     dom.render(document.getElementById("application"), bootView)
+    dom.render(document.getElementById("hook"), installMaterialzeSelect)
+
+    document.onreadystatechange = e => {
+      $("select").material_select();
+
+      hash := document.location.hash.drop(1)
+    }
+
+    window.onhashchange = e => {
+      println("On change: "+document.location.hash.drop(1))
+      hash := document.location.hash.drop(1)
+    }
   }
 
-
-  @dom
-  def bootView: Binding[Node] = {
-    <div class="calc">
-      {val model = CalcModel()
-    ui.render(model).bind}
-    </div>
+  @dom def bootCss = {
+    val h = hash.bind
+    showCases.find(s => s.name.equals(h)).getOrElse(homeShowCase).css.bind
   }
+
+  @dom def bootView = {
+    val h = hash.bind
+    val x = showCases.find(s => s.name.equals(h)).getOrElse(homeShowCase).render.bind
+
+    x
+  }
+
+  @dom def installMaterialzeSelect = {
+    val h = hash.bind
+    $("select").material_select();
+
+    <div data:installed="true"/>
+  }
+
 }
