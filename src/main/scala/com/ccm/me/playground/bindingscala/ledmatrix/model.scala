@@ -43,6 +43,6 @@ case class Screen(w: Int, h: Int) {
 
 object Screen {
   def apply(): Screen = {
-    Screen(30, 30)
+    Screen(60, 34)
   }
 }
