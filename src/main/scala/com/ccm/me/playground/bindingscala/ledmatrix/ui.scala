@@ -95,18 +95,17 @@ class ui extends ShowCase {
         </div>
       </div>
       <div class="container">
-        {val cells = screen.cells
-
-      Constants(cells: _*).map {
-        row =>
-          <div class="row cell-row">
-            {Constants(row: _*).map {
-            item => {
-              renderCell(item).bind
-            }
-          }}
-          </div>
-      }}
+        {
+          for( j <- Constants(0 until screen.h: _*) ) yield {
+            <div class="row cell-row">
+              {
+                for( i <- Constants(0 until screen.w: _*) ) yield {
+                  renderCell(screen.cells(i)(j)).bind
+                }
+              }
+            </div>
+          }
+        }
       </div>
     </div>
   }
