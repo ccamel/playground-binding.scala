@@ -43,13 +43,14 @@ and every graphical element of the calculator (buttons, display) needing to be u
 
 The idea under this showcase is to build a virtual matrix of cells, each cell having a color and is independently addressable.
 
-The view consists in binding each cell to a dom element (actually a `span`) in order to render the color. As the matrix can have a significant number of cells (~1000),
+The view consists in binding each cell to a dom element (actually a `span`) in order to render the color. As the matrix can have a significant number of cells (~2000),
 it allows to appreciate the performance of the [binding.scala] library to handle the situation.  
 
 Beside this, some (simple) demos have been implemented that play with the virtual screen. Each demo displays a form which allows to set some parameters whose values are taken in real time.
 
 - _Constant color_ demo:  display a single background color. The components r, g, b of the color can be adjusted in real time.
 - _Random_ demo: turns on random pixels with random colors.
+- _Sine wave_ demo: display a sliding sine wave with customized color.
 - ...
 
 ### SVG

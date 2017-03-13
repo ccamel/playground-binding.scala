@@ -36,7 +36,7 @@ class ui extends ShowCase {
   val screen: Screen = Screen()
   val timerHandle: Var[Option[SetTimeoutHandle]] = Var(None)
   val timerInterval: Var[Int] = Var(200)
-  val demos = Seq(ConstantColorDemo(), RandomDemo())
+  val demos = Seq(ConstantColorDemo(), RandomDemo(), SineWaveDemo())
   val selectedDemo: Var[Option[Demo]] = Var(None)
   val dotSize: Var[Int] = Var(5)
   val dotSpace: Var[Int] = Var(1)

@@ -28,6 +28,7 @@ import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.html.Element
 import org.scalajs.dom.raw.{Event, HTMLInputElement}
 
+import scala.math.cos
 import scala.util.Random
 
 trait Name {
@@ -105,10 +106,57 @@ case class RandomDemo() extends Demo {
 
   override def apply(screen: Screen): Unit = {
     for (i <- 0 until screen.w; j <- 0 until screen.h) {
-      screen.cells(i)(j) := (if (monochrome.get) (if (r.nextBoolean()) 0xFFFFFF else 0x000000) else r.nextInt(16777215))
+      screen.cells(i)(j) := (if (monochrome.get) if (r.nextBoolean()) 0xFFFFFF else 0x000000 else r.nextInt(16777215))
     }
   }
 
   override def name: String = "Random"
 }
 
+case class SineWaveDemo() extends Demo {
+  var offset = 0d
+
+  val color = (Var(0xdb), Var(0xe8), Var(0xff))
+
+  def color(i: Int): Var[Int] = color.productElement(i).asInstanceOf[Var[Int]]
+
+  @dom override def renderForm(): Binding[Element] = {
+    <div>
+      {for (i <- Constants(0 until 3: _*)) yield {
+      <div>
+        <label for="interval">
+          {
+          val p = "%1.00f" format (color(i).bind * 100 / 256d)
+          val label = i match {
+            case 0 => "red"
+            case 1 => "green"
+            case 2 => "blue"
+          }
+          s"$label ($p %)"}
+        </label>
+        <p class="range-field">
+          <input type="range" id="interval" min="0" max="255" value={color(i).get.toString} oninput={e: Event => color(i) := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+        </p>
+      </div>
+    }}
+    </div>
+  }
+
+  override def apply(screen: Screen): Unit = {
+    val d = screen.h / 2
+    val step = 2*math.Pi / screen.w
+    screen.clear(0xFFFFFF)
+    for (i <- 0 until screen.w) {
+      val j = d + ( (d-1) * cos( offset + i * 2d * math.Pi / screen.w)).toInt
+      screen(i, j, color._1.get, color._2.get, color._3.get)
+    }
+
+    offset += step
+    if( offset > 2*math.Pi ) {
+      offset = 0
+    }
+
+  }
+
+  override def name: String = "Sine wave"
+}
