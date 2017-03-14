@@ -1,11 +1,15 @@
 language: scala
+
 scala:
    - 2.12.1
+
 sudo: false
+
 jdk:
-- oraclejdk8
+   - oraclejdk8
+
 scripts:
 # Tricks to avoid unnecessary cache updates, from
 # http://www.scala-sbt.org/0.13/docs/Travis-CI-with-sbt.html
-- find $HOME/.sbt -name "*.lock" | xargs rm
-- find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm

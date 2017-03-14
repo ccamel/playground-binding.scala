@@ -77,10 +77,10 @@ comming soon
 The build can be launched with:
 
 ```bash
-sbt ~fastOptJS
+sbt fastOptJS dist
 ```
 
-Then, open `./index.html` file in your browser.
+Then, open `./dist/index.html` file in your browser.
 
 
 ## License

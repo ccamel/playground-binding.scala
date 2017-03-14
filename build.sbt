@@ -1,3 +1,9 @@
+import java.nio.file.Files.newDirectoryStream
+import java.nio.file.StandardCopyOption.REPLACE_EXISTING
+import java.nio.file.{CopyOption, Files, Path, Paths, StandardCopyOption}
+import java.util.function.Consumer
+import java.util.stream.Stream
+
 enablePlugins(ScalaJSPlugin)
 
 organization := "com.me"
@@ -27,6 +33,26 @@ libraryDependencies ++= Seq(
 persistLauncher := true
 persistLauncher in test := false
 
+lazy val dist = taskKey[Unit]("Make distribution")
+
+dist := {
+  implicit def toPath (filename: String): Path = Paths.get(filename)
+
+  val srcDir: Path = "target/scala-2.12"
+  val destDir: Path = "dist"
+  val jsDir = destDir.resolve("js")
+
+  println(s"Making distribution to $destDir")
+
+  newDirectoryStream(srcDir,"playground*.js").forEach( new Consumer[Path]() {
+    override def accept(f: Path): Unit = {
+      val dst = jsDir.resolve(f.getFileName)
+      dst.toFile.mkdirs()
+      Files.copy(f, dst, REPLACE_EXISTING)
+    }
+  } )
+  Files.copy("index.html", destDir.resolve("index.html"), REPLACE_EXISTING)
+}
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 
