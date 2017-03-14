@@ -57,7 +57,7 @@ case class ConstantColorDemo() extends Demo {
   @dom override def renderForm(): Binding[Element] = {
     <div>
       {for (i <- Constants(0 until 3: _*)) yield {
-      <div>
+      <div class="col s4">
         <label for="interval">
         {
         val p = "%1.00f" format (color(i).bind * 100 / 256d)
@@ -91,7 +91,7 @@ case class RandomDemo() extends Demo {
   val monochrome = Var(false)
 
   @dom override def renderForm(): Binding[Element] = {
-    <div>
+    <div class="col s6">
       <label for="control">Black and White</label>
       <div class="switch">
         <label>
@@ -123,7 +123,7 @@ case class SineWaveDemo() extends Demo {
   @dom override def renderForm(): Binding[Element] = {
     <div>
       {for (i <- Constants(0 until 3: _*)) yield {
-      <div>
+      <div class="col s4">
         <label for="interval">
           {
           val p = "%1.00f" format (color(i).bind * 100 / 256d)

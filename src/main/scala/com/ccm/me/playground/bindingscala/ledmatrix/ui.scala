@@ -40,6 +40,7 @@ class ui extends ShowCase {
   val selectedDemo: Var[Option[Demo]] = Var(None)
   val dotSize: Var[Int] = Var(5)
   val dotSpace: Var[Int] = Var(1)
+  val dotRadius: Var[Int] = Var(0)
 
   screen.clear(0x777777)
 
@@ -52,6 +53,7 @@ class ui extends ShowCase {
         {
         val space = dotSpace.bind
         val size = dotSize.bind
+        val radius = dotRadius.bind
 
         s"""
         .cell-row {
@@ -64,6 +66,8 @@ class ui extends ShowCase {
         display: inline-block;
         width: ${size}px;
         height: ${size}px;
+        -moz-border-radius: ${radius}px;
+        border-radius: ${radius}px;
         margin-right: ${space}px;
         margin-bottom: ${space}px;
         padding: 0px;
@@ -89,7 +93,7 @@ class ui extends ShowCase {
     <div>
       <div class="container">
         <div class="row">
-          <form class="col s3">
+          <form class="col s6">
             {renderControl.bind}
           </form>
         </div>
@@ -112,57 +116,71 @@ class ui extends ShowCase {
 
   @dom def renderControl = {
     <div class="row">
-      <label>Selected demo</label>
-      <select onchange={e: Event => selectedDemo := Some(demos(e.target.asInstanceOf[HTMLSelectElement].value.toInt))}>
-        <option value="" disabled={true} selected={true}>Chose a demo</option>{for {
-        i <- Constants(0 until demos.size: _*)
-      } yield {
-        <option value={i.toString}>
-          {demos(i).name}
-        </option>
-      }}
-      </select>
+        <div class="col s12">
+        <label>Selected demo</label>
+        <select onchange={e: Event => selectedDemo := Some(demos(e.target.asInstanceOf[HTMLSelectElement].value.toInt))}>
+          <option value="" disabled={true} selected={true}>Chose a demo</option>{for {
+          i <- Constants(0 until demos.size: _*)
+        } yield {
+          <option value={i.toString}>
+            {demos(i).name}
+          </option>
+        }}
+        </select>
+      </div>
     </div>
       <div>
         {selectedDemo.bind match {
-        case Some(demo) => <div class="card grey lighten-5">
-          <div class="card-content">
-            <span class="card-title" style="font-size: 16px;">Demo options</span>{demo.renderForm.bind}
+        case Some(demo) => <div class="row teal lighten-5">
+          <div>
+            <span style="font-size: 12px; padding-left: 5px;">Demo options</span>
+            <div class="divider"/>
+            {demo.renderForm.bind}
           </div>
         </div>
         case _ => <div/>
       }}
       </div>
       <div class="row">
-        <label for="dot-size">Dot size ({dotSize.bind.toString} pixels)</label>
-        <p class="range-field">
-          <input type="range" id="dot-size" min="0" max="10" value={dotSize.bind.toString} oninput={e: Event => dotSize := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
-        </p>
-      </div>
-      <div class="row">
-        <label for="dot-space">Dot space  ({dotSpace.bind.toString} pixels)</label>
-        <p class="range-field">
-          <input type="range" id="dot-space" min="0" max="5" value={dotSpace.bind.toString} oninput={e: Event => dotSpace := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
-        </p>
-      </div>
-      <div class="row">
-        <label for="control">Play</label>
-        <div class="switch">
-          <label>
-            Off
-            <input type="checkbox" onclick={e: Event => if (e.target.asInstanceOf[HTMLInputElement].checked) play else pause}/>
-            <span class="lever"></span>
-            On
-          </label>
+        <div class="col s4">
+          <label for="dot-size">Dot size ({dotSize.bind.toString} pixels)</label>
+          <p class="range-field">
+            <input type="range" id="dot-size" min="0" max="10" value={dotSize.bind.toString} oninput={e: Event => dotSize := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+          </p>
+        </div>
+        <div class="col s4">
+          <label for="dot-space">Dot space ({dotSpace.bind.toString} pixels)</label>
+          <p class="range-field">
+            <input type="range" id="dot-space" min="0" max="5" value={dotSpace.bind.toString} oninput={e: Event => dotSpace := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+          </p>
+        </div>
+        <div class="col s4">
+          <label for="dot-radius">Dot radius ({dotRadius.bind.toString} pixels)</label>
+          <p class="range-field">
+            <input type="range" id="dot-radius" min="0" max="5" value={dotRadius.bind.toString} oninput={e: Event => dotRadius:= e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+          </p>
         </div>
       </div>
       <div class="row">
-        <label for="interval">Interval update (
-          {timerInterval.bind.toString}
-          ms)</label>
-        <p class="range-field">
-          <input type="range" id="interval" min="0" max="1000" value={timerInterval.bind.toString} oninput={e: Event => timerInterval := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
-        </p>
+          <div class="col s4">
+            <label for="control">Play</label>
+            <div class="switch">
+              <label>
+                Off
+                <input type="checkbox" disabled={selectedDemo.bind.isEmpty} onclick={e: Event => if (e.target.asInstanceOf[HTMLInputElement].checked) play else pause}/>
+                <span class="lever"></span>
+                On
+              </label>
+            </div>
+          </div>
+          <div class="col s8">
+            <label for="interval">Interval update (
+              {timerInterval.bind.toString}
+              ms)</label>
+            <p class="range-field">
+              <input type="range" id="interval" min="0" max="1000" value={timerInterval.bind.toString} oninput={e: Event => timerInterval := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            </p>
+          </div>
       </div>
   }
 
