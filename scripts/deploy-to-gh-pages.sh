@@ -22,7 +22,7 @@ cp -R ../../dist/* playgrounds/playground-binding.scala/
 
 # deploy
 if ! git diff-index --quiet HEAD --; then
-  git add .
+  git add --all .
   git commit -m "update playground-binding.scala showcases"
 
   # git push --quiet
