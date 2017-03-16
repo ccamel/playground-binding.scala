@@ -9,7 +9,7 @@ jdk:
    - oraclejdk8
 
 script:
-   - sbt ++$TRAVIS_SCALA_VERSION test dist
+   - sbt ++$TRAVIS_SCALA_VERSION fastOptJS test dist
 
 scripts:
 # Tricks to avoid unnecessary cache updates, from

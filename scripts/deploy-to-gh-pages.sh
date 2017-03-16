@@ -14,6 +14,7 @@ cd site
 
 git config user.email "$USER_EMAIL"
 git config user.name "$USER_NAME"
+git config push.default simple
 
 # add changes
 mkdir -p playgrounds/playground-binding.scala
