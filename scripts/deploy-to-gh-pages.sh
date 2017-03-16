@@ -25,7 +25,7 @@ if ! git diff-index --quiet HEAD --; then
   git add --all .
   git commit -m "update playground-binding.scala showcases"
 
-  # git push --quiet
+  git push --quiet
 else
   echo "no changes"
 fi
