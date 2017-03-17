@@ -28,7 +28,6 @@ import com.thoughtworks.binding.Binding.BindingSeq
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.Node
 
-
 class ui extends ShowCase {
   val sourceURL = "https://github.com/ccamel/playground-binding.scala"
 
@@ -58,6 +57,7 @@ class ui extends ShowCase {
              <div class="card-action">
                <a href="#playground-binding.scala/calc">&gt; Play</a>
                <a href={sourceURL}> &gt; Source</a>
+               <a href="https://scalafiddle.io/sf/hbwbCOe/0">&gt; scalafiddle</a>
              </div>
           </div>
 
@@ -69,6 +69,7 @@ class ui extends ShowCase {
               <div class="card-action">
                 <a href="#playground-binding.scala/led-matrix"> &gt; Play</a>
                 <a href={sourceURL}> &gt; Source</a>
+                <a href="https://scalafiddle.io/sf/nXYqFFS/3">&gt; scalafiddle</a>
               </div>
             </div>
         </div>

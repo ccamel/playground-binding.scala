@@ -43,6 +43,10 @@ and every graphical element of the calculator (buttons, display) needing to be u
 
 The idea under this showcase is to build a virtual matrix of cells, each cell having a color and is independently addressable.
 
+You can play with it here: [scalafiddle-led-matrix].
+
+#### Details
+
 The view consists in binding each cell to a dom element (actually a `span` or an `SVG rect`) in order to render the surface. As the matrix can have a significant number of cells (~2000),
 it allows to appreciate the performance of the [binding.scala] library to handle the situation.  
 
@@ -99,6 +103,7 @@ Then, open `./dist/index.html` file in your browser.
 
 [scalafiddle]: https://scalafiddle.io
 [scalafiddle-calc]: https://scalafiddle.io/sf/hbwbCOe/0
+[scalafiddle-led-matrix]: https://scalafiddle.io/sf/nXYqFFS/3
 
 [SPA]: https://en.wikipedia.org/wiki/Single-page_application
 
