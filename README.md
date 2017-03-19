@@ -54,7 +54,7 @@ Beside this, some (simple) demos have been implemented that play with the virtua
 
 - _Constant color_ demo:  display a single background color. The components r, g, b of the color can be adjusted in real time.
 - _Random_ demo: turns on random pixels with random colors.
-- _Sine wave_ demo: display a sliding sine wave with customized color.
+- _Plasma_ demo: display some (minimal) [plasma effects](https://en.wikipedia.org/wiki/Plasma_effect).
 - ...
 
 ### SVG

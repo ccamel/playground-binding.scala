@@ -62,12 +62,12 @@ class ui extends ShowCase {
   val screen: Screen = Screen()
   val surface: Var[String] = Var("Normal")
   val timerHandle: Var[Option[SetTimeoutHandle]] = Var(None)
-  val timerInterval: Var[Int] = Var(200)
-  val demos = Seq(ConstantColorDemo(), RandomDemo(), SineWaveDemo())
+  val timerInterval: Var[Int] = Var(50)
+  val demos = Seq(ConstantColorDemo(), RandomDemo(), PlasmaDemo())
   val selectedDemo: Var[Option[Demo]] = Var(None)
-  val dotSize: Var[Int] = Var(5)
-  val dotSpace: Var[Int] = Var(1)
-  val dotRadius: Var[Int] = Var(0)
+  val dotSize: Var[Int] = Var(6)
+  val dotSpace: Var[Int] = Var(0)
+  val dotRadius: Var[Int] = Var(1)
 
   screen.clear(0x777777)
 
