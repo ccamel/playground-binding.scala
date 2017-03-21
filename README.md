@@ -19,7 +19,7 @@ The showcases are intented to:
 You can view and play the showcases here:
 
 <p align="center">
-<b><a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html">View !</a></b>
+<a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html">View !</a>
 </p>
 
 ## Showcases
@@ -28,9 +28,15 @@ You can view and play the showcases here:
 
 #### Purpose
 
-Calc is a very simple and basic calculator. You can play with it here: [scalafiddle-calc].
+Calc is a very simple and basic calculator.
 
-[![calc-overview](doc/assets/showcase-calc.png)](https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/calc)
+<p align="center">
+  <b>Links:</b><br>
+  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/calc">Play</a>  |
+  <a href="https://scalafiddle.io/sf/hbwbCOe/0">View Scalafiddle</a>
+  <br><br>
+  <kbd><img src="doc/assets/showcase-calc.png"></kbd>
+</p>
 
 #### Implementation details
 
@@ -46,7 +52,13 @@ and every graphical element of the calculator (buttons, display) needing to be u
 
 The idea under this showcase is to build a virtual matrix of cells, each cell having a color and is independently addressable.
 
-You can play with it here: [scalafiddle-led-matrix].
+<p align="center">
+  <b>Links:</b><br>
+  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/led-matrix">Play</a>  |
+  <a href="https://scalafiddle.io/sf/nXYqFFS/6">View Scalafiddle</a>
+  <br><br>
+  <kbd><img src="doc/assets/showcase-led-matrix.png"></kbd>
+</p>
 
 #### Details
 
@@ -104,8 +116,6 @@ Then, open `./dist/index.html` file in your browser.
 [materializecss-logo]: doc/assets/logo-materializecss.png
 
 [scalafiddle]: https://scalafiddle.io
-[scalafiddle-calc]: https://scalafiddle.io/sf/hbwbCOe/0
-[scalafiddle-led-matrix]: https://scalafiddle.io/sf/nXYqFFS/3
 
 [SPA]: https://en.wikipedia.org/wiki/Single-page_application
 
