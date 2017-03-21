@@ -22,7 +22,7 @@ rm -rf playgrounds/playground-binding.scala/*
 cp -R ../../dist/* playgrounds/playground-binding.scala/
 
 # deploy
-if ! git diff-index --quiet HEAD --; then
+if [[ `git status --porcelain` ]]; then
   git add --all .
   git commit -m "update playground-binding.scala showcases"
 
