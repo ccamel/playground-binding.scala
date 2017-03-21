@@ -10,13 +10,17 @@ The purpose of this playground is to explore, study and assess in the first plac
 
 The showcases are intented to:
 
-- be fairly simple and understandable (static [SPA]); 
+- be fairly simple and understandable (static/serverless [SPA]); 
 - highlight some aspects of the [binding.scala] library, like binding forms, fine-grained bindings, performance, interoperability with other JS libraries... 
+- explore some architectural/design patterns around reactive GUIs
 - provide some functional content;
-- be deployable into [scalafiddle].
+- be deployable/playable into [scalafiddle].
 
+You can view and play the showcases here:
 
-You can view and play the showcases [here](https://ccamel.github.io/playgrounds/playground-binding.scala/index.html). 
+<p align="center">
+<b><a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html">View !</a></b>
+</p>
 
 ## Showcases
 
@@ -35,7 +39,6 @@ as a [partial function](https://www.scala-lang.org/api/current/scala/PartialFunc
 
 The gui maintains the whole model in a single [bindable variable](https://static.javadoc.io/com.thoughtworks.binding/unidoc_2.11/11.0.0-M1/index.html#com.thoughtworks.binding.Binding$$Var),
 and every graphical element of the calculator (buttons, display) needing to be updated upon model change (reactive dom) is bound to that variable.  
-
 
 ### Led Matrix
 
@@ -66,16 +69,6 @@ comming soon
 comming soon
 
 
-## Technologies
-
-[![scala-logo][scala-logo]][scala]
-
-[![scalajs-logo][scalajs-logo]][scalajs]
-
-[![binding.scala-logo][binding.scala-logo]][binding.scala]
-
-[![materializecss-logo][materializecss-logo]][materializecss]
-
 ## Building and Running
 
 The build can be launched with:
@@ -86,6 +79,15 @@ sbt fastOptJS dist
 
 Then, open `./dist/index.html` file in your browser.
 
+## Technologies
+
+[![scala-logo][scala-logo]][scala]
+
+[![scalajs-logo][scalajs-logo]][scalajs]
+
+[![binding.scala-logo][binding.scala-logo]][binding.scala]
+
+[![materializecss-logo][materializecss-logo]][materializecss]
 
 ## License
 
