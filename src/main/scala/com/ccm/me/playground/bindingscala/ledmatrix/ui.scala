@@ -270,10 +270,7 @@ class ui extends ShowCase {
   @dom def renderCellSvg(i: Int, j: Int) = {
     implicit def toSvgTags(a: dom.Runtime.TagsAndTags2.type) = scalatags.JsDom.svgTags
 
-    val rect = <rect x={i * (dotSize.bind + dotSpace.bind)} y={j * (dotSize.bind + dotSpace.bind)} width={dotSize.bind} height={dotSize.bind}/>
-
-    // TODO: declare attribute for that
-    rect.style.fill = color(i, j).bind
+    val rect = <rect x={i * (dotSize.bind + dotSpace.bind)} y={j * (dotSize.bind + dotSpace.bind)} width={dotSize.bind} height={dotSize.bind} data:style={"fill: #" + color(i, j).bind}/>
 
     rect
   }
