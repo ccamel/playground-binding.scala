@@ -117,26 +117,25 @@ case class PlasmaDemo() extends Demo {
 
   var offset = 0d
 
-  val functions = Seq(
-    ("vertical sinusoid", (x: Int, y: Int) => round(128d + 127d * sin(offset + x / 4d)).toInt),
-    ("diagonal sinusoid", (x: Int, y: Int) => round(128d + 127d * sin(offset + (x + y) / 4d)).toInt),
-    ("double sinusoid", (x: Int, y: Int) => round((128d + 127d * sin(offset + x / 4d) + 128d + 127d * sin(offset + y / 4d)) / 2).toInt),
-    ("concentric sinusoid", (x: Int, y: Int) => {
-      round((128d + (127d * sin(offset + x / 8.0)) + 128d + (127d * sin(offset + y / 4.0)) + 128d + (127d * sin((offset + x + y) / 8.0)) + 128d + (127d * sin(offset + sqrt(x * x + y * y) / 4d))) / 4d).toInt
-    })
+  type EffectFn = (Int, Int, Double) ⇒ Int  // x,y,t => color
+  type Demo = (String, EffectFn)
+
+  val demos = Seq[Demo](
+    ("vertical sinusoid", (x, y, t) => round(128d + 127d * sin(t + x / 4d)).toInt),
+    ("diagonal sinusoid", (x, y, t) => round(128d + 127d * sin(t + (x + y) / 4d)).toInt),
+    ("double sinusoid", (x, y, t) => round((128d + 127d * sin(t + x / 4d) + 128d + 127d * sin(t + y / 4d)) / 2).toInt),
+    ("concentric sinusoid", (x, y, t) => round((128d + (127d * sin(t + x / 8.0)) + 128d + (127d * sin(t + y / 4.0)) + 128d + (127d * sin((t + x + y) / 8.0)) + 128d + (127d * sin(t + sqrt(x * x + y * y) / 4d))) / 4d).toInt)
   )
-  val selectedPlasma = Var(functions.head._1)
+  val selectedPlasma = Var(demos.head._1)
 
   @dom override def renderForm(): Binding[Element] = {
     <div>
       <div class="col s12">
-        <label>Choose plasma style</label>
+        <label>Choose plasma effect</label>
         <select onchange={e: Event => selectedPlasma := e.target.asInstanceOf[HTMLSelectElement].value}>
-          {for {
-          f <- Constants(functions: _*)
-        } yield {
-          <option value={f._1}>
-            {f._1}
+        { for ((name, _) <- Constants(demos: _*)) yield {
+          <option value={name}>
+            {name}
           </option>
         }}
         </select>
@@ -150,12 +149,12 @@ case class PlasmaDemo() extends Demo {
   override def apply(screen: Screen): Unit = {
     val d = screen.h / 2
     val step = 2 * math.Pi / screen.w
-    val f = functions.find(_._1 == selectedPlasma.get).map(_._2).getOrElse((x: Int, y: Int) => 0)
+    val f: EffectFn = demos.find(_._1 == selectedPlasma.get).map(_._2).getOrElse((x, y, t) => 0)
 
     for (y <- 0 until screen.h;
          x <- 0 until screen.w
     ) {
-      val c = f(x, y)
+      val c = f(x, y, offset)
       screen(x, y, c)
     }
 
