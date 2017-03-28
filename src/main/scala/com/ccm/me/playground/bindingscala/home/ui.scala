@@ -34,48 +34,60 @@ class ui extends ShowCase {
   @dom override def css: Binding[BindingSeq[Node]] = <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
 
-  @dom override def render: Binding[BindingSeq[Node]] = {
-    <header>
-      <nav class="top-nav">
-        <div class="container">
-          <div class="nav-wrapper"><a class="page-title">{name}</a></div>
-          <div class="divider"></div>
-        </div>
-      </nav>
-    </header>
-
+  @dom override def render: Binding[BindingSeq[Node]] =
+  <header>
+    <nav class="top-nav">
       <div class="container">
-        <div class="row">
-          <div class="section">
-            <h5>Available showcases</h5>
-            <div class="divider"/>
-           <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
-             <div class="card-content">
-              <span class="card-title">calc</span>
-              <p>A very simple and basic calculator</p>
-            </div>
-             <div class="card-action">
-               <a href="#playground-binding.scala/calc">&gt; Play</a>
-               <a href={sourceURL}> &gt; Source</a>
-               <a href="https://scalafiddle.io/sf/hbwbCOe/0">&gt; scalafiddle</a>
-             </div>
-          </div>
+        <div class="nav-wrapper"><a class="page-title">{name}</a></div>
+        <div class="divider"></div>
+      </div>
+    </nav>
+  </header>
 
-            <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
-              <div class="card-content">
-                <span class="card-title">led-matrix</span>
-                <p>A led-matrix with some nice demo effects.</p>
-              </div>
-              <div class="card-action">
-                <a href="#playground-binding.scala/led-matrix"> &gt; Play</a>
-                <a href={sourceURL}> &gt; Source</a>
-                <a href="https://scalafiddle.io/sf/nXYqFFS/3">&gt; scalafiddle</a>
-              </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="section">
+        <h5>Available showcases</h5>
+        <div class="divider"/>
+        <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
+          <div class="card-content">
+            <span class="card-title">calc</span>
+            <p>A very simple and basic calculator</p>
+          </div>
+          <div class="card-action">
+            <a href="#playground-binding.scala/calc">&gt; Play</a>
+            <a href={sourceURL}> &gt; Source</a>
+            <a href="https://scalafiddle.io/sf/hbwbCOe/0">&gt; scalafiddle</a>
+          </div>
         </div>
+
+        <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
+          <div class="card-content">
+            <span class="card-title">led-matrix</span>
+            <p>A led-matrix with some nice demo effects.</p>
+          </div>
+          <div class="card-action">
+            <a href="#playground-binding.scala/led-matrix"> &gt; Play</a>
+            <a href={sourceURL}> &gt; Source</a>
+            <a href="https://scalafiddle.io/sf/nXYqFFS/3">&gt; scalafiddle</a>
+          </div>
+        </div>
+
+        <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
+          <div class="card-content">
+            <span class="card-title">loan-calculator</span>
+            <p>A Simple Loan Calculator with amortization table.</p>
+          </div>
+          <div class="card-action">
+            <a href="#playground-binding.scala/loan-calculator"> &gt; Play</a>
+            <a href={sourceURL}> &gt; Source</a>
+            <a href="https://scalafiddle.io/sf/1RxSQj6/1">&gt; scalafiddle</a>
+          </div>
+        </div>
+
       </div>
-      </div>
-  }
+    </div>
+  </div>
 
   override def name: String = "playground-binding.scala/home"
 }

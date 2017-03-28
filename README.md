@@ -72,6 +72,18 @@ Beside this, some (simple) demos have been implemented that play with the virtua
 - _Plasma_ demo: display some (minimal) [plasma effects](https://en.wikipedia.org/wiki/Plasma_effect).
 - ...
 
+### Loan Calculator
+
+Simple loan calculator which determines the monthly payments on a loan.
+
+<p align="center">
+  <b>Links:</b><br>
+  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/loan-calculator">Play</a>  |
+  <a href="https://scalafiddle.io/sf/1RxSQj6/1">View Scalafiddle</a>
+  <br><br>
+  <kbd><img src="doc/assets/showcase-loan-calculator.png"></kbd>
+</p>
+
 ### SVG
 
 comming soon
