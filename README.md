@@ -8,7 +8,7 @@ playground-binding.scala
 
 The purpose of this playground is to explore, study and assess in the first place the [binding.scala] library, and secondly [scalajs].
 
-The showcases are intented to:
+The showcases are intended to:
 
 - be fairly simple and understandable (static/serverless [SPA]); 
 - highlight some aspects of the [binding.scala] library, like binding forms, fine-grained bindings, performance, interoperability with other JS libraries... 

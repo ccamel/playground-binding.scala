@@ -110,7 +110,7 @@ class ui extends ShowCase {
         <h5>Loan Summary</h5>
         <hr/>
         <p>For a <span class="underlined">${loan.loan.bind.toString}</span> loan at <span class="underlined">{loan.interrestRate.bind.toString}%</span>
-          with a <span class="underlined">{loan.amortization.bind.toString}</span> year(s) amortization ({loan.amortizationInMonth.bind.toString} paiements), your monthly payment will
+          with a <span class="underlined">{loan.amortization.bind.toString}</span> year(s) amortization ({loan.amortizationInMonth.bind.toString} payments), your monthly payment will
           be <span class="underlined">${f"${loan.monthlyPayment.bind}%.2f"}</span>.</p>
       </div>
       <br/>
@@ -123,7 +123,7 @@ class ui extends ShowCase {
               <th>Month</th>
               <th>Payment</th>
               <th>Principal</th>
-              <th>Interrest Paiement</th>
+              <th>Interrest Payment</th>
               <th>Balance</th>
             </tr>
           </thead>
@@ -135,7 +135,7 @@ class ui extends ShowCase {
                   <td>{line.monthNb.toString}</td>
                   <td>${f"${line.payment}%.2f"}</td>
                   <td>${f"${line.principal}%.2f"}</td>
-                  <td>${f"${line.interrestPaiement}%.2f"}</td>
+                  <td>${f"${line.interrestPayment}%.2f"}</td>
                   <td>${f"${line.loan}%.2f"}</td>
                 </tr>
               }
@@ -148,4 +148,3 @@ class ui extends ShowCase {
 
   override def name: String = "playground-binding.scala/loan-calculator"
 }
-
