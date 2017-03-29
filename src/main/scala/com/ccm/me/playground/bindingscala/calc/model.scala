@@ -37,41 +37,41 @@ final case class NoOp() extends Token
 
 final case class Clear() extends Token
 
-trait Decimal extends Token
+trait Decimal
 
-final case class Digit(v: Int) extends Decimal
+final case class Digit(v: Int) extends Token with Decimal
 
-final case class Dot() extends Decimal
+final case class Dot() extends Token with Decimal
 
-trait Op extends Token with Priority
+trait Op extends Priority
 
-final case class Plus() extends Op {
+final case class Plus() extends Token with Op {
   val priority = 1
 }
 
-final case class Minus() extends Op {
+final case class Minus() extends Token with Op {
   val priority = 1
 }
 
-final case class Multiply() extends Op {
+final case class Multiply() extends Token with Op {
   val priority = 2
 }
 
-final case class Divide() extends Op {
+final case class Divide() extends Token with Op {
   val priority = 2
 }
 
-final case class Result() extends Op {
+final case class Result() extends Token with Op {
   val priority = 0
 }
 
-trait Memory extends Token
+trait Memory
 
-final case class MR() extends Memory
+final case class MR() extends Token with Memory
 
-final case class MC() extends Memory
+final case class MC() extends Token with Memory
 
-final case class MS() extends Memory
+final case class MS() extends Token with Memory
 
 case class CalcModel(outputs: Seq[Double],
                      operators: Seq[Op],
