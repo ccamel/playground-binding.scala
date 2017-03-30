@@ -47,7 +47,7 @@ object App extends JSApp {
   val hash: Var[String] = Var("")
 
   val homeShowCase = new home.ui()
-  val showCases = Seq(new calc.ui(), new ledmatrix.ui(), new loancalculator.ui())
+  val showCases = Seq(new calc.ui(), new ledmatrix.ui(), new loancalculator.ui(), new treeview.ui())
 
   def main(): Unit = {
     println("Starting App")
