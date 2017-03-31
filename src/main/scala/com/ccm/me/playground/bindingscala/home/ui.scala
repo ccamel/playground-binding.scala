@@ -85,6 +85,18 @@ class ui extends ShowCase {
           </div>
         </div>
 
+        <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
+          <div class="card-content">
+            <span class="card-title">tree-view</span>
+            <p>A tree view with dynamic loading of items.</p>
+          </div>
+          <div class="card-action">
+            <a href="#playground-binding.scala/tree-view"> &gt; Play</a>
+            <a href={sourceURL}> &gt; Source</a>
+            <a href="https://scalafiddle.io/sf/KEznYyM/2">&gt; scalafiddle</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

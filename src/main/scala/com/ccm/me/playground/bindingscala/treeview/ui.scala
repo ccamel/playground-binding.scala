@@ -90,6 +90,7 @@ class ui extends ShowCase {
     </header>
 
       <div class="container tree">
+        <p>Content for the <a href="https://github.com/ukparliament/ontologies">ukparliament/ontologies</a> project:</p>
         <ul>
         {displayTree(tree).bind}
         </ul>

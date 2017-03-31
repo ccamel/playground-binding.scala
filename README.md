@@ -84,14 +84,23 @@ Simple loan calculator which determines the monthly payments on a loan.
   <kbd><img src="doc/assets/showcase-loan-calculator.png"></kbd>
 </p>
 
-### SVG
+### Tree View
 
-comming soon
+Example of a simple tree view implementation with dynamic loading of elements.  
 
-### d3.js
+<p align="center">
+  <b>Links:</b><br>
+  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/loan-calculator">Play</a>  |
+  <a href="https://scalafiddle.io/sf/KEznYyM/2">View Scalafiddle</a>
+  <br><br>
+  <kbd><img src="doc/assets/showcase-tree-view.png"></kbd>
+</p>
 
-comming soon
+#### Details
 
+The model is a simple recursive structure built with [Vars](https://static.javadoc.io/com.thoughtworks.binding/unidoc_2.11/11.0.0-M2/index.html#com.thoughtworks.binding.Binding$$Vars) (mutable and observable sequence of elements).
+
+The view is bound to the model and react by displaying parts of the tree that have changed.
 
 ## Building and Running
 

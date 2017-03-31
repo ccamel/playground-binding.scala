@@ -25,11 +25,6 @@ package com.ccm.me.playground.bindingscala.treeview
 
 import com.thoughtworks.binding.Binding.{Var, Vars}
 
-import scala.collection.Seq
-import scala.concurrent.{Future, Promise}
-import scala.scalajs.js.timers
-import scala.util.Random
-
 // simple implementation of tree structure (data model for tree-view)
 sealed trait Tree {
   def id: String
@@ -53,25 +48,4 @@ case class TreeLeaf(id: String, label: Var[String]) extends Tree
 
 object Tree {
   def root = TreeNode("0", Vars.empty, Var("/"))
-}
-
-// minimal business model
-object FileStore {
-
-  abstract class FSElement(id: String, label: String)
-
-  final case class FSFile(id: String, label: String) extends FSElement(id, label)
-
-  final case class FSFolder(id: String, label: String) extends FSElement(id, label)
-
-  def childrenOf(id: String): Future[Seq[FSElement]] = {
-    val children = Seq(FSFolder("0", "test"), FSFile("0", "test"))
-
-    // simulate asynchronous load...
-    val p = Promise[Seq[FSElement]]()
-    timers.setTimeout(new Random().nextInt(2000) + 500) {
-      p.success(children)
-    }
-    p.future
-  }
 }
