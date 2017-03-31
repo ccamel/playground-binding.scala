@@ -90,7 +90,7 @@ Example of a simple tree view implementation with dynamic loading of elements.
 
 <p align="center">
   <b>Links:</b><br>
-  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/loan-calculator">Play</a>  |
+  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/tree-view">Play</a>  |
   <a href="https://scalafiddle.io/sf/KEznYyM/2">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-tree-view.png"></kbd>
@@ -101,7 +101,7 @@ Example of a simple tree view implementation with dynamic loading of elements.
 The model is a simple recursive structure built with [Vars](https://static.javadoc.io/com.thoughtworks.binding/unidoc_2.11/11.0.0-M2/index.html#com.thoughtworks.binding.Binding$$Vars) (mutable and observable sequence of elements).
 
 The view is bound to the model and react by displaying parts of the tree that have changed.
-
+ 
 ## Building and Running
 
 The build can be launched with:
