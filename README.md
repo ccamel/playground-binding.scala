@@ -122,6 +122,8 @@ Then, open `./dist/index.html` file in your browser.
 
 [![materializecss-logo][materializecss-logo]][materializecss]
 
+[![fontawesome-logo][fontawesome-logo]][fontawesome]
+
 ## License
 
 [MIT] © [Chris Camel]
@@ -135,6 +137,8 @@ Then, open `./dist/index.html` file in your browser.
 [binding.scala-logo]: doc/assets/logo-binding.scala.png
 [materializecss]: http://materializecss.com/
 [materializecss-logo]: doc/assets/logo-materializecss.png
+[fontawesome]: http://fontawesome.io/
+[fontawesome-logo]: doc/assets/logo-fontawesome.png
 
 [scalafiddle]: https://scalafiddle.io
 
