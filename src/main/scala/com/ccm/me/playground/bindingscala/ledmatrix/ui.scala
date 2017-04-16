@@ -68,6 +68,8 @@ class ui extends ShowCase {
   val dotSize: Var[Int] = Var(6)
   val dotSpace: Var[Int] = Var(0)
   val dotRadius: Var[Int] = Var(1)
+  // metrics
+  val renderTime = Var(0d)
 
   screen.clear(0x777777)
 
@@ -130,6 +132,14 @@ class ui extends ShowCase {
       </div>
       <div class="container">
         {renderScreen.bind}
+      </div>
+      <div class="container">
+        <p class="caption">Metrics:</p>
+        <div class="row">
+          <div class="col s4">
+            <a><span class="badge">{f"${renderTime.bind}%.2f"} ms</span>Rendering time</a>
+          </div>
+        </div>
       </div>
     </div>
   }
@@ -220,7 +230,13 @@ class ui extends ShowCase {
 
   def play: Unit = {
     timerHandle := Some(timers.setTimeout(timerInterval.get) {
-      selectedDemo.get.foreach(_ (screen))
+      selectedDemo.get
+        .map( d => (s: Screen) => {
+          val t0 = System.nanoTime()
+          d(s)
+          renderTime := (System.nanoTime() - t0) / (1000*1000d)
+        })
+        .foreach(_ (screen))
       // trigger for next run
       play
     })
