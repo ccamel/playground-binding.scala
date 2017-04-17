@@ -30,8 +30,7 @@ libraryDependencies ++= Seq(
 )
 
 
-persistLauncher := true
-persistLauncher in test := false
+scalaJSUseMainModuleInitializer := true
 
 lazy val dist = taskKey[Unit]("Make distribution")
 
