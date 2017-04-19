@@ -19,7 +19,7 @@ The showcases are intended to:
 You can view and play the showcases here:
 
 <p align="center">
-<a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html">View !</a>
+<a href="https://ccamel.github.io/playground-binding.scala/index.html">View !</a>
 </p>
 
 ## Showcases
@@ -32,7 +32,7 @@ Calc is a very simple and basic calculator.
 
 <p align="center">
   <b>Links:</b><br>
-  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/calc">Play</a>  |
+  <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/calc">Play</a>  |
   <a href="https://scalafiddle.io/sf/hbwbCOe/0">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-calc.png"></kbd>
@@ -54,7 +54,7 @@ The idea under this showcase is to build a virtual matrix of cells, each cell ha
 
 <p align="center">
   <b>Links:</b><br>
-  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/led-matrix">Play</a>  |
+  <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/led-matrix">Play</a>  |
   <a href="https://scalafiddle.io/sf/nXYqFFS/6">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-led-matrix.png"></kbd>
@@ -78,7 +78,7 @@ Simple loan calculator which determines the monthly payments on a loan.
 
 <p align="center">
   <b>Links:</b><br>
-  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/loan-calculator">Play</a>  |
+  <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/loan-calculator">Play</a>  |
   <a href="https://scalafiddle.io/sf/1RxSQj6/1">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-loan-calculator.png"></kbd>
@@ -90,7 +90,7 @@ Example of a simple tree view implementation with dynamic loading of elements.
 
 <p align="center">
   <b>Links:</b><br>
-  <a href="https://ccamel.github.io/playgrounds/playground-binding.scala/index.html#playground-binding.scala/tree-view">Play</a>  |
+  <a href="https://ccamel.github.io/playground-binding.scala/playground-binding.scala/index.html#playground-binding.scala/tree-view">Play</a>  |
   <a href="https://scalafiddle.io/sf/KEznYyM/2">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-tree-view.png"></kbd>

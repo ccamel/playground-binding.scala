@@ -8,8 +8,12 @@ sudo: false
 jdk:
    - oraclejdk8
 
+branches:
+  except:
+    - gh-pages
+
 script:
-   - sbt ++$TRAVIS_SCALA_VERSION fastOptJS test dist
+  - sbt ++$TRAVIS_SCALA_VERSION fastOptJS test dist
 
 scripts:
 # Tricks to avoid unnecessary cache updates, from
