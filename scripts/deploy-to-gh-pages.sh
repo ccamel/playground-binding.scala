@@ -2,7 +2,10 @@
 
 set -o errexit
 
-git worktree add site gh-pages
+rm -rf site
+mkdir site
+
+git clone https://ccamel:$GH_TOKEN@github.com/ccamel/playground-binding.scala.git -b gh-pages --depth 1 site
 
 cd site
 
