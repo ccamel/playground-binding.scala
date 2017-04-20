@@ -90,7 +90,7 @@ Example of a simple tree view implementation with dynamic loading of elements.
 
 <p align="center">
   <b>Links:</b><br>
-  <a href="https://ccamel.github.io/playground-binding.scala/playground-binding.scala/index.html#playground-binding.scala/tree-view">Play</a>  |
+  <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/tree-view">Play</a>  |
   <a href="https://scalafiddle.io/sf/KEznYyM/2">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-tree-view.png"></kbd>
@@ -108,7 +108,7 @@ Drag example similar to [elm drag](http://elm-lang.org/examples/drag) using a mu
  
 <p align="center">
   <b>Links:</b><br>
-  <a href="https://ccamel.github.io/playground-binding.scala/playground-binding.scala/index.html#playground-binding.scala/drag-me">Play</a>  |
+  <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/drag-me">Play</a>  |
   <a href="https://scalafiddle.io/sf/obKiF28/6">View Scalafiddle</a>
 </p>
  
