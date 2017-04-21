@@ -1,8 +1,7 @@
 import java.nio.file.Files.newDirectoryStream
 import java.nio.file.StandardCopyOption.REPLACE_EXISTING
-import java.nio.file.{CopyOption, Files, Path, Paths, StandardCopyOption}
+import java.nio.file.{Files, Path, Paths}
 import java.util.function.Consumer
-import java.util.stream.Stream
 
 enablePlugins(ScalaJSPlugin)
 
@@ -24,7 +23,7 @@ scalaVersion := "2.12.1"
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.1",
-  "com.thoughtworks.binding" %%% "dom" % "latest.release",
+  "com.thoughtworks.binding" %%% "dom" % "11.0.0-M2",
   "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test" // FIXME: https://github.com/scalatest/scalatest/issues/911
 )
