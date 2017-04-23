@@ -25,20 +25,48 @@ package com.ccm.me.playground.bindingscala.dragme
 
 import com.thoughtworks.binding.Binding.Var
 
-case class Position(x:Int, y:Int)
+case class Position(x: Int, y: Int)
 
-trait Draggable {
-  // last drag position of the cursor
-  val drag: Var[Option[Position]]
+sealed trait Direction
+
+case object N extends Direction
+
+case object S extends Direction
+
+case object E extends Direction
+
+case object W extends Direction
+
+case object NW extends Direction
+
+case object NE extends Direction
+
+case object SW extends Direction
+
+case object SE extends Direction
+
+sealed trait EditMode
+
+case object Move extends EditMode
+
+case class Resize(direction: Direction) extends EditMode
+
+case class Edition( // last cursor position (during edition)
+                    p: Position,
+                    action: EditMode)
+
+trait Editable {
+  val drag: Var[Option[Edition]]
 }
 
 case class DraggableRect(
-                         x: Var[Int],
-                         y: Var[Int],
-                         w: Var[Int],
-                         h: Var[Int],
-                         override val drag: Var[Option[Position]] ) extends Draggable
+                          x: Var[Int],
+                          y: Var[Int],
+                          w: Var[Int],
+                          h: Var[Int],
+                          selected: Var[Boolean],
+                          override val drag: Var[Option[Edition]]) extends Editable
 
 object DraggableRect {
-  def apply(): DraggableRect = DraggableRect(Var(0), Var(0), Var(10), Var(10),Var(None))
+  def apply(): DraggableRect = DraggableRect(Var(0), Var(0), Var(10), Var(10), Var(false), Var(None))
 }

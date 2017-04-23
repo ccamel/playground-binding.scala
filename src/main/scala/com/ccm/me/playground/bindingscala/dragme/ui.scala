@@ -24,21 +24,24 @@ SOFTWARE.
 package com.ccm.me.playground.bindingscala.dragme
 
 import com.ccm.me.playground.bindingscala.ShowCase
-import com.thoughtworks.binding.Binding.{BindingSeq, Var}
+import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var}
 import com.thoughtworks.binding.{Binding, dom}
-import org.scalajs.dom.Node
-import org.scalajs.dom.raw.MouseEvent
+import org.scalajs.dom.raw.{Event, MouseEvent}
+import org.scalajs.dom.{Node, document}
 
 class ui extends ShowCase {
-  val model: DraggableRect = DraggableRect(Var(250), Var(170), Var(100), Var(100), Var(None) )
+  val model: DraggableRect = DraggableRect(Var(250), Var(170), Var(300), Var(150), Var(false), Var(None))
+
+  document.onmousedown = onMouseDown(false, None) _
+  document.onmousemove = onMouseMove _
 
   @dom override def css: Binding[BindingSeq[Node]] =
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
-    <style>
-      {s"""
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+      <style>
+        {s"""
         .dragable {
-          background-color: rgb(60, 141, 47);
+          background-color: #81C6DE;
           cursor: move;
           width: ${model.w.bind}px;
           height: ${model.h.bind}px;
@@ -51,10 +54,66 @@ class ui extends ShowCase {
           align-items: center;
           justify-content: center;
         }
-      """}
-    </style>
 
-  @dom override def render: Binding[BindingSeq[Node]] =
+        .dragable .handle {
+          width: 10px;
+          height: 10px;
+          background: #945540;
+          position: absolute;
+        }
+
+        .dragable .n {
+           top: 0px;
+           left: ${model.w.bind / 2}px;
+           cursor: n-resize;
+        }
+
+        .dragable .s {
+           bottom: 0px;
+           left: ${model.w.bind / 2}px;
+           cursor: s-resize;
+        }
+
+        .dragable .e {
+           top: ${model.h.bind / 2}px;
+           right: 0px;
+           cursor: e-resize;
+        }
+
+        .dragable .w {
+           top: ${model.h.bind / 2}px;
+           left: 0px;
+           cursor: w-resize;
+        }
+
+        .dragable .se {
+          right: 0px;
+          bottom: 0px;
+          cursor: se-resize;
+        }
+
+        .dragable .sw {
+          left: 0px;
+          bottom: 0px;
+          cursor: sw-resize;
+        }
+
+        .dragable .ne {
+          top: 0px;
+          right: 0px;
+          cursor: ne-resize;
+        }
+
+        .dragable .nw {
+          top: 0px;
+          left: 0px;
+          cursor: nw-resize;
+        }
+
+      """}
+      </style>
+
+  @dom override def render: Binding[BindingSeq[Node]] = {
     <header>
       <nav class="top-nav">
         <div class="container">
@@ -67,29 +126,85 @@ class ui extends ShowCase {
       </nav>
     </header>
     <div class="container tree">
-      <p>Moveable div:</p>
+      <p>Select, move or resize the following rectangle:</p>
       <div class="dragable"
-           onmousedown={onMouseDown _}
-           onmousemove={onMouseMove _}
-           onmouseup={onMouseUp _}
-      >Drag Me!</div>
+           onmousedown={onMouseDown(true, Some(Move)) _}
+           onmouseup={onMouseUp _}>
+        {renderLabel.bind}{renderHandles.bind}
+      </div>
     </div>
+  }
 
-  private def onMouseDown(e: MouseEvent) = {
-    val p = Position(e.clientX.toInt, e.clientY.toInt)
-    model.drag.value = Some(p)
+  @dom def renderLabel =
+    <p onmousedown={_: Event => false}>
+      {if (!model.selected.bind) "Select me!" else "Move/resize me!"}
+    </p>
+
+  @dom def renderHandles = {
+    if (model.selected.bind) {
+      Constants(Seq((N, "n"), (S, "s"), (E, "e"), (W, "w"), (NE, "ne"), (NW, "nw"), (SE, "se"), (SW, "sw")): _*).map { d =>
+          <div class={s"handle ${d._2}"}
+               onmousedown={onMouseDown(true, Some(Resize(d._1))) _}
+               onmouseup={onMouseUp _}/>
+      }
+    } else {
+      <!-- empty -->
+      <!-- empty -->
+    }
+  }
+
+  private def onMouseDown(selected: Boolean, action: Option[EditMode])(e: MouseEvent) = {
+    println("Selected: " + selected)
+    model.selected.value = selected
+
+    if (model.selected.value) {
+      val p = Position(e.clientX.toInt, e.clientY.toInt)
+
+      model.drag.value = action.flatMap(a ⇒ Some(Edition(p, a)))
+    }
+    e.stopPropagation()
   }
 
   private def onMouseMove(e: MouseEvent) = {
     model.drag.value match {
-      case Some(Position(lastx,lasty)) ⇒
-        val (x,y) = (e.clientX.toInt, e.clientY.toInt)
-
-        model.x.value = model.x.value + x - lastx
-        model.y.value = model.y.value + y - lasty
-        model.drag.value = Some(Position(x,y))
+      case Some(drag@Edition(Position(lastx, lasty), action)) ⇒
+        val (x, y) = (e.clientX.toInt, e.clientY.toInt)
+        val (dx, dy) = (x - lastx, y - lasty)
+        action match {
+          case Move =>
+            model.x.value += dx
+            model.y.value += dy
+          case Resize(N) =>
+            model.y.value += dy
+            model.h.value -= dy
+          case Resize(S) =>
+            model.h.value += dy
+          case Resize(E) =>
+            model.w.value += dx
+          case Resize(W) =>
+            model.x.value += dx
+            model.w.value -= dx
+          case Resize(NW) =>
+            model.x.value += dx
+            model.y.value += dy
+            model.w.value += -dx
+            model.h.value += -dy
+          case Resize(NE) =>
+            model.y.value += dy
+            model.w.value += +dx
+            model.h.value += -dy
+          case Resize(SW) =>
+            model.x.value += dx
+            model.w.value += -dx
+            model.h.value += dy
+          case Resize(SE) =>
+            model.w.value += dx
+            model.h.value += dy
+        }
+        model.drag.value = Some(drag.copy(p = Position(x, y)))
       case None ⇒
     }
+    e.stopPropagation()
   }
 
   private def onMouseUp(e: MouseEvent) = {

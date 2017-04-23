@@ -104,13 +104,22 @@ The view is bound to the model and react by displaying parts of the tree that ha
 
 ### Drag-me
  
-Drag example similar to [elm drag](http://elm-lang.org/examples/drag) using a mutable model and reactive data-binding. 
- 
+The Drag-me showcase is quite similar to [elm drag](http://elm-lang.org/examples/drag) but with more features.
+
+It allows the user to select, move and resize a simple rectangle form.
+
 <p align="center">
   <b>Links:</b><br>
   <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/drag-me">Play</a>  |
   <a href="https://scalafiddle.io/sf/obKiF28/6">View Scalafiddle</a>
 </p>
+
+### Details
+
+The model is a simple structure holding both the basic geometric properties of the form (position and size) and the current edition mode
+(none, moving, resizing).
+
+The view is bound to that model and react to reflect the change (selection, coordinates change, width/height change, etc.).
  
 ## Building and Running
 
