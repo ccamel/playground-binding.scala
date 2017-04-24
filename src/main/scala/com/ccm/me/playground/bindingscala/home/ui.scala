@@ -105,7 +105,7 @@ class ui extends ShowCase {
           <div class="card-action">
             <a href="#playground-binding.scala/drag-me"> &gt; Play</a>
             <a href={sourceURL}> &gt; Source</a>
-            <a href="https://scalafiddle.io/sf/obKiF28/6">&gt; scalafiddle</a>
+            <a href="https://scalafiddle.io/sf/obKiF28/8">&gt; scalafiddle</a>
           </div>
         </div>
 

@@ -111,7 +111,7 @@ It allows the user to select, move and resize a simple rectangle form.
 <p align="center">
   <b>Links:</b><br>
   <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/drag-me">Play</a>  |
-  <a href="https://scalafiddle.io/sf/obKiF28/6">View Scalafiddle</a>
+  <a href="https://scalafiddle.io/sf/obKiF28/8">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-drag-me.png"></kbd>
 </p>
