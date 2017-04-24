@@ -100,7 +100,7 @@ class ui extends ShowCase {
         <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
           <div class="card-content">
             <span class="card-title">drag-me</span>
-            <p>A mouse drag example.</p>
+            <p>HTML Div element resizable using mouse</p>
           </div>
           <div class="card-action">
             <a href="#playground-binding.scala/drag-me"> &gt; Play</a>

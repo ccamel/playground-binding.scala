@@ -40,7 +40,7 @@ class ui extends ShowCase {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
       <style>
         {s"""
-        .dragable {
+        .draggable {
           background-color: #81C6DE;
           cursor: move;
           width: ${model.w.bind}px;
@@ -55,56 +55,56 @@ class ui extends ShowCase {
           justify-content: center;
         }
 
-        .dragable .handle {
+        .draggable .handle {
           width: 10px;
           height: 10px;
           background: #945540;
           position: absolute;
         }
 
-        .dragable .n {
+        .draggable .n {
            top: 0px;
            left: ${model.w.bind / 2}px;
            cursor: n-resize;
         }
 
-        .dragable .s {
+        .draggable .s {
            bottom: 0px;
            left: ${model.w.bind / 2}px;
            cursor: s-resize;
         }
 
-        .dragable .e {
+        .draggable .e {
            top: ${model.h.bind / 2}px;
            right: 0px;
            cursor: e-resize;
         }
 
-        .dragable .w {
+        .draggable .w {
            top: ${model.h.bind / 2}px;
            left: 0px;
            cursor: w-resize;
         }
 
-        .dragable .se {
+        .draggable .se {
           right: 0px;
           bottom: 0px;
           cursor: se-resize;
         }
 
-        .dragable .sw {
+        .draggable .sw {
           left: 0px;
           bottom: 0px;
           cursor: sw-resize;
         }
 
-        .dragable .ne {
+        .draggable .ne {
           top: 0px;
           right: 0px;
           cursor: ne-resize;
         }
 
-        .dragable .nw {
+        .draggable .nw {
           top: 0px;
           left: 0px;
           cursor: nw-resize;
@@ -125,9 +125,9 @@ class ui extends ShowCase {
         </div>
       </nav>
     </header>
-    <div class="container tree">
+    <div class="container">
       <p>Select, move or resize the following rectangle:</p>
-      <div class="dragable"
+      <div class="draggable"
            onmousedown={onMouseDown(true, Some(Move)) _}
            onmouseup={onMouseUp _}>
         {renderLabel.bind}{renderHandles.bind}
@@ -154,7 +154,6 @@ class ui extends ShowCase {
   }
 
   private def onMouseDown(selected: Boolean, action: Option[EditMode])(e: MouseEvent) = {
-    println("Selected: " + selected)
     model.selected.value = selected
 
     if (model.selected.value) {
