@@ -67,7 +67,7 @@ case class ConstantColorDemo() extends Demo {
         s"$label ($p %)"}
         </label>
         <p class="range-field">
-          <input type="range" id="interval" min="0" max="255" value={color(i).get.toString} oninput={e: Event => color(i) := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+          <input type="range" id="interval" min="0" max="255" value={color(i).value.toString} oninput={e: Event => color(i).value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
         </p>
       </div>
     }}
@@ -76,7 +76,7 @@ case class ConstantColorDemo() extends Demo {
 
   override def apply(screen: Screen): Unit = {
     for (i <- 0 until screen.w; j <- 0 until screen.h) {
-      screen(i, j, color._1.get, color._2.get, color._3.get)
+      screen(i, j, color._1.value, color._2.value, color._3.value)
     }
   }
 
@@ -94,7 +94,7 @@ case class RandomDemo() extends Demo {
       <div class="switch">
         <label>
           No
-          <input type="checkbox" onclick={e: Event => monochrome := e.target.asInstanceOf[HTMLInputElement].checked}/>
+          <input type="checkbox" onclick={e: Event => monochrome.value = e.target.asInstanceOf[HTMLInputElement].checked}/>
           <span class="lever"></span>
           Yes
         </label>
@@ -104,7 +104,7 @@ case class RandomDemo() extends Demo {
 
   override def apply(screen: Screen): Unit = {
     for (i <- 0 until screen.w; j <- 0 until screen.h) {
-      screen.cells(i)(j) := (if (monochrome.get) if (r.nextBoolean()) 0xFFFFFF else 0x000000 else r.nextInt(16777215))
+      screen.cells(i)(j).value = (if (monochrome.value) if (r.nextBoolean()) 0xFFFFFF else 0x000000 else r.nextInt(16777215))
     }
   }
 
@@ -132,7 +132,7 @@ case class PlasmaDemo() extends Demo {
     <div>
       <div class="col s12">
         <label>Choose plasma effect</label>
-        <select onchange={e: Event => selectedPlasma := e.target.asInstanceOf[HTMLSelectElement].value}>
+        <select onchange={e: Event => selectedPlasma.value = e.target.asInstanceOf[HTMLSelectElement].value}>
         { for ((name, _) <- Constants(demos: _*)) yield {
           <option value={name}>
             {name}
@@ -149,7 +149,7 @@ case class PlasmaDemo() extends Demo {
   override def apply(screen: Screen): Unit = {
     val d = screen.h / 2
     val step = 2 * math.Pi / screen.w
-    val f: EffectFn = demos.find(_._1 == selectedPlasma.get).map(_._2).getOrElse((x, y, t) => 0)
+    val f: EffectFn = demos.find(_._1 == selectedPlasma.value).map(_._2).getOrElse((x, y, t) => 0)
 
     for (y <- 0 until screen.h;
          x <- 0 until screen.w

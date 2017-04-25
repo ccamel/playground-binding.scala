@@ -32,6 +32,8 @@ import org.scalajs.dom.raw._
 import scala.scalajs.js.timers
 import scala.scalajs.js.timers.SetTimeoutHandle
 
+import scala.language.implicitConversions
+
 class ui extends ShowCase {
 
   // TODO: needed declarations for SVG - see if it can be improved
@@ -148,7 +150,7 @@ class ui extends ShowCase {
     <div class="row">
       <div class="col s12">
         <label>Selected demo</label>
-        <select onchange={e: Event => selectedDemo := Some(demos(e.target.asInstanceOf[HTMLSelectElement].value.toInt))}>
+        <select onchange={e: Event => selectedDemo.value = Some(demos(e.target.asInstanceOf[HTMLSelectElement].value.toInt))}>
           <option value="" disabled={true} selected={true}>Chose a demo</option>{for {
           i <- Constants(0 until demos.size: _*)
         } yield {
@@ -162,7 +164,7 @@ class ui extends ShowCase {
       <div class="row">
         <div class="col s12">
           <label>Rendering surface</label>
-          <select onchange={e: Event => surface := e.target.asInstanceOf[HTMLSelectElement].value}>
+          <select onchange={e: Event => surface.value = e.target.asInstanceOf[HTMLSelectElement].value}>
             <option value="Span" selected={true}>Grid of div/span elements</option>
             <option value="Svg">SVG elements</option>
           </select>
@@ -185,7 +187,7 @@ class ui extends ShowCase {
             {dotSize.bind.toString}
             pixels)</label>
           <p class="range-field">
-            <input type="range" id="dot-size" min="0" max="10" value={dotSize.bind.toString} oninput={e: Event => dotSize := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            <input type="range" id="dot-size" min="0" max="10" value={dotSize.bind.toString} oninput={e: Event => dotSize.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
           </p>
         </div>
         <div class="col s4">
@@ -193,7 +195,7 @@ class ui extends ShowCase {
             {dotSpace.bind.toString}
             pixels)</label>
           <p class="range-field">
-            <input type="range" id="dot-space" min="0" max="5" value={dotSpace.bind.toString} oninput={e: Event => dotSpace := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            <input type="range" id="dot-space" min="0" max="5" value={dotSpace.bind.toString} oninput={e: Event => dotSpace.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
           </p>
         </div>
         <div class="col s4">
@@ -201,7 +203,7 @@ class ui extends ShowCase {
             {dotRadius.bind.toString}
             pixels)</label>
           <p class="range-field">
-            <input type="range" id="dot-radius" min="0" max="5" value={dotRadius.bind.toString} oninput={e: Event => dotRadius := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            <input type="range" id="dot-radius" min="0" max="5" value={dotRadius.bind.toString} oninput={e: Event => dotRadius.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
           </p>
         </div>
       </div>
@@ -222,19 +224,19 @@ class ui extends ShowCase {
             {timerInterval.bind.toString}
             ms)</label>
           <p class="range-field">
-            <input type="range" id="interval" min="0" max="1000" value={timerInterval.bind.toString} oninput={e: Event => timerInterval := e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            <input type="range" id="interval" min="0" max="1000" value={timerInterval.bind.toString} oninput={e: Event => timerInterval.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
           </p>
         </div>
       </div>
   }
 
   def play: Unit = {
-    timerHandle := Some(timers.setTimeout(timerInterval.get) {
-      selectedDemo.get
+    timerHandle.value = Some(timers.setTimeout(timerInterval.value) {
+      selectedDemo.value
         .map( d => (s: Screen) => {
           val t0 = System.nanoTime()
           d(s)
-          renderTime := (System.nanoTime() - t0) / (1000*1000d)
+          renderTime.value = (System.nanoTime() - t0) / (1000*1000d)
         })
         .foreach(_ (screen))
       // trigger for next run
@@ -243,8 +245,8 @@ class ui extends ShowCase {
   }
 
   def pause: Unit = {
-    timerHandle.get.foreach(timers.clearTimeout(_))
-    timerHandle := None
+    timerHandle.value.foreach(timers.clearTimeout(_))
+    timerHandle.value = None
   }
 
   @dom def renderScreen = {

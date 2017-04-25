@@ -65,12 +65,12 @@ object App extends JSApp {
     document.onreadystatechange = e => {
       $("select").material_select();
 
-      hash := document.location.hash.drop(1)
+      hash.value = document.location.hash.drop(1)
     }
 
     window.onhashchange = e => {
       println("On change: "+document.location.hash.drop(1))
-      hash := document.location.hash.drop(1)
+      hash.value = document.location.hash.drop(1)
     }
   }
 

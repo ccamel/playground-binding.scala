@@ -99,7 +99,7 @@ class ui extends ShowCase {
 
   @dom def onTreeNodeClick(tree: TreeNode): Unit = tree.state.bind match {
     case UnloadedState =>
-      tree.state := LoadingState
+      tree.state.value = LoadingState
 
       FileStore.childrenOf(tree.id).foreach(result => {
         val children = result.map {
@@ -107,16 +107,16 @@ class ui extends ShowCase {
           case FSFile(id, label) => TreeLeaf(id, Var(label))
         }
 
-        tree.nodes.get.clear()
-        children.foreach( i => tree.nodes.get += i )
+        tree.nodes.value.clear()
+        children.foreach( i => tree.nodes.value += i )
 
-        tree.state := LoadedAndExpandedState
+        tree.state.value = LoadedAndExpandedState
       })
     case LoadingState =>
     case LoadedAndExpandedState =>
-      tree.state := LoadedAndCollapsedState
+      tree.state.value = LoadedAndCollapsedState
     case LoadedAndCollapsedState =>
-      tree.state := LoadedAndExpandedState
+      tree.state.value = LoadedAndExpandedState
   }
 
   @dom def displayTree(tree: Tree): Binding[Node] = tree match {

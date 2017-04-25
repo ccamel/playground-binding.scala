@@ -28,16 +28,16 @@ import com.thoughtworks.binding.Binding.Var
 case class Screen(w: Int, h: Int) {
   val cells: Array[Array[Var[Int]]] = Array.tabulate(w, h) { (i, j) => Var(0xFFFFFF) }
 
-  def apply(x: Int, y: Int, c: Int): Unit = cells(x)(y) := c
-  def apply(x: Int, y: Int, r: Int, g: Int, b: Int): Unit = cells(x)(y) := ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff)
+  def apply(x: Int, y: Int, c: Int): Unit = cells(x)(y).value = c
+  def apply(x: Int, y: Int, r: Int, g: Int, b: Int): Unit = cells(x)(y).value = ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff)
   def apply(from: Screen): Unit = {
     for( x <- 0 until w;
          y <- 0 until h) {
-      this(x,y, from.cells(x)(y).get)
+      this(x,y, from.cells(x)(y).value)
     }
   }
 
-  def clear(c: Int):Unit = cells.flatten.foreach( _ := c )
+  def clear(c: Int):Unit = cells.flatten.foreach( _.value = c )
 }
 
 

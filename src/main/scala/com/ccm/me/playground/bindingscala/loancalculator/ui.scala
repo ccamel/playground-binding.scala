@@ -74,8 +74,8 @@ class ui extends ShowCase {
 
       try{
         to match {
-          case aDouble: Var[Double @unchecked] if classTag[T] == classTag[Double] ⇒ aDouble := i.value.toDouble
-          case aInt: Var[Int @unchecked] if classTag[T] == classTag[Int] ⇒ aInt := i.value.toInt
+          case aDouble: Var[Double @unchecked] if classTag[T] == classTag[Double] ⇒ aDouble.value = i.value.toDouble
+          case aInt: Var[Int @unchecked] if classTag[T] == classTag[Int] ⇒ aInt.value = i.value.toInt
         }
         i.setAttribute("class", i.getAttribute("class").replace(" invalid","") )
       } catch {
