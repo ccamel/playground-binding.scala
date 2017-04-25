@@ -28,7 +28,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.1" % "test" // FIXME: https://github.com/scalatest/scalatest/issues/911
 )
 
-
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 scalaJSUseMainModuleInitializer := true
 
 lazy val dist = taskKey[Unit]("Make distribution")
