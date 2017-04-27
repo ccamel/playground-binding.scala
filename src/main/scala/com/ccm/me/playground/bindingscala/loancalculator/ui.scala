@@ -52,18 +52,7 @@ class ui extends ShowCase {
         """}
       </style>
 
-  @dom def render: Binding[BindingSeq[Node]] = <header>
-    <nav class="top-nav">
-      <div class="container">
-        <div class="nav-wrapper">
-          <a class="page-title">
-            {name}
-          </a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
+  @dom def render: Binding[Node] =
     <div class="container">
       {renderContent.bind}
     </div>

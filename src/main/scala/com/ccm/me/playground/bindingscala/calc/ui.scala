@@ -39,19 +39,11 @@ class ui extends ShowCase {
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
 
-  @dom def render: Binding[BindingSeq[Node]] = {
+  @dom def render: Binding[Node] = {
     val btns = List(List("7", "8", "9", "+", "C"),
       List("4", "5", "6", "-", "MS"),
       List("1", "2", "3", "x", "MR"),
       List(".", "0", "=", "/", "MC"))
-    <header>
-      <nav class="top-nav">
-        <div class="container">
-          <div class="nav-wrapper"><a class="page-title">{name}</a></div>
-        </div>
-      </nav>
-    </header>
-
       <div class="container" style="width: 400px;">
         <div class="row">
           <div class="col s10" style="font-family: 'VT323', monospace;">

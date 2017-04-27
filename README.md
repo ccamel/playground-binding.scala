@@ -24,6 +24,10 @@ You can view and play the showcases here:
 
 ## Showcases
 
+All the showcases come in a single SPA page.
+
+The `binding.scala route library` is used to enable the navigation and maintain the link between URLs and pages to display.
+
 ### Calc
 
 #### Purpose

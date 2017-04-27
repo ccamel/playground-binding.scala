@@ -76,19 +76,7 @@ class ui extends ShowCase {
     </style>
     <script src="https://use.fontawesome.com/e20ea8441d.js"></script>
 
-  @dom override def render: Binding[BindingSeq[Node]] = {
-    <header>
-      <nav class="top-nav">
-        <div class="container">
-          <div class="nav-wrapper">
-            <a class="page-title">
-              {name}
-            </a>
-          </div>
-        </div>
-      </nav>
-    </header>
-
+  @dom override def render: Binding[Node] = {
       <div class="container tree">
         <p>Content for the <a href="https://github.com/ukparliament/ontologies">ukparliament/ontologies</a> project:</p>
         <ul>

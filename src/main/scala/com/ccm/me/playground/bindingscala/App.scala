@@ -23,10 +23,9 @@ SOFTWARE.
  */
 package com.ccm.me.playground.bindingscala
 
-//import com.ccm.me.playground.bindingscala.calc.{CalcModel, ui}
 import com.thoughtworks.binding.Binding.{BindingSeq, Var}
-import com.thoughtworks.binding.{Binding, dom}
-import org.scalajs.dom.{Node, document, window}
+import com.thoughtworks.binding.{Binding, Route, dom}
+import org.scalajs.dom.{Node, document}
 
 import scala.scalajs.js
 import scala.scalajs.js.JSApp
@@ -37,16 +36,16 @@ trait Name {
 
 trait Render {
   def css: Binding[BindingSeq[Node]]
-  def render: Binding[BindingSeq[Node]]
+
+  def render: Binding[Node]
 }
 
 trait ShowCase extends Render with Name
 
 object App extends JSApp {
   val $ = js.Dynamic.global.$
-  val hash: Var[String] = Var("")
-
   val homeShowCase = new home.ui()
+  val showCase: Var[ShowCase] = Var(homeShowCase)
   val showCases = Seq(
     new calc.ui(),
     new ledmatrix.ui(),
@@ -55,42 +54,85 @@ object App extends JSApp {
     new dragme.ui()
   )
 
-  def main(): Unit = {
-    println("Starting App")
+  Route.watchHash(showCase)(new Route.Format[ShowCase] {
+    override def unapply(hashText: String) = Some(showCases.find(_.name == hashText.drop(1)).getOrElse(homeShowCase))
+    override def apply(showCase: ShowCase): String = showCase.name
+  })
 
+  def main(): Unit = {
     dom.render(document.head, bootCss)
     dom.render(document.getElementById("application"), bootView)
-    dom.render(document.getElementById("hook"), installMaterialzeSelect)
 
-    document.onreadystatechange = e => {
-      $("select").material_select();
-
-      hash.value = document.location.hash.drop(1)
-    }
-
-    window.onhashchange = e => {
-      println("On change: "+document.location.hash.drop(1))
-      hash.value = document.location.hash.drop(1)
-    }
+    installMaterialize.watch()
   }
 
   @dom def bootCss = {
-    val h = hash.bind
-    showCases.find(s => s.name.equals(h)).getOrElse(homeShowCase).css.bind
+    // FIXME: I don't want to return an enclosing div but the concatenated sequence
+    // See: https://stackoverflow.com/questions/43675301/how-to-combine-binding-fragments-without-wrapping-them-in-an-xml-literal
+    <div>
+      {header.bind}
+      {showCase.bind.css.bind}
+    </div>
   }
 
   @dom def bootView = {
-    val h = hash.bind
-    val x = showCases.find(s => s.name.equals(h)).getOrElse(homeShowCase).render.bind
-
-    x
+    <div>
+      { bodyHeader.bind }
+      { showCase.bind.render.bind }
+      { bodyFooter.bind }
+    </div>
   }
 
-  @dom def installMaterialzeSelect = {
-    val h = hash.bind
+  @dom def header = {
+    <meta charset="UTF-8"/>
+    <title>{showCase.bind.name}</title>
+
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons|VT323" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+    <style>
+      {"""
+      html,body {
+        height: 100%
+      }
+      #application {
+        min-height: 100%;
+        position:relative;
+      }
+      .container {
+        padding-bottom: 80px;
+      }
+      footer{
+        height: 80px;
+        width:100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+      """}
+    </style>
+  }
+
+  @dom def bodyHeader: Binding[BindingSeq[Node]] = {
+    <header>
+      <nav class="top-nav light-blue lighten-1">
+        <div class="container">
+          <div class="nav-wrapper"><a class="page-title">{showCase.bind.name}</a></div>
+        </div>
+      </nav>
+    </header>
+    <div/>
+  }
+
+  @dom def bodyFooter = {
+    <footer class="page-footer light-blue lighten-1">
+      <div class="container">©  <a class="grey-text text-lighten-4" href="https://github.com/ccamel">Chris Camel</a>
+        <a class="grey-text text-lighten-4 right" href="https://tldrlegal.com/license/mit-license">MIT License</a>
+      </div>
+    </footer>
+  }
+
+  @dom def installMaterialize = {
+    val h = showCase.bind
     $("select").material_select();
-
-    <div data:installed="true"/>
   }
-
 }

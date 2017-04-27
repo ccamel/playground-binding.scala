@@ -32,8 +32,8 @@ import org.scalajs.dom.{Node, document}
 class ui extends ShowCase {
   val model: DraggableRect = DraggableRect(Var(250), Var(170), Var(300), Var(150), Var(false), Var(None))
 
-  document.onmousedown = onMouseDown(false, None) _
   document.onmousemove = onMouseMove _
+  document.onmousedown = onMouseDown(false, None) _
 
   @dom override def css: Binding[BindingSeq[Node]] =
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -113,18 +113,7 @@ class ui extends ShowCase {
       """}
       </style>
 
-  @dom override def render: Binding[BindingSeq[Node]] = {
-    <header>
-      <nav class="top-nav">
-        <div class="container">
-          <div class="nav-wrapper">
-            <a class="page-title">
-              {name}
-            </a>
-          </div>
-        </div>
-      </nav>
-    </header>
+  @dom override def render: Binding[Node] = {
     <div class="container">
       <p>Select, move or resize the following rectangle:</p>
       <div class="draggable"
