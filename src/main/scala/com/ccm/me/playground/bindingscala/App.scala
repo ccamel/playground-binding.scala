@@ -122,7 +122,17 @@ object App extends JSApp {
       </a>
       <nav class="top-nav light-blue lighten-1">
         <div class="container">
-          <div class="nav-wrapper"><a class="page-title">{showCase.bind.name}</a></div>
+          <div class="nav-wrapper">
+            <a class="page-title">{showCase.bind.name}</a>
+            {if (showCase.bind != homeShowCase)
+            <ul class="right hide-on-med-and-down">
+              <li>
+                <a href={s"#${homeShowCase.name}"}>Home</a>
+              </li>
+            </ul> else {
+            <!-- empty content -->
+          }}
+          </div>
         </div>
       </nav>
     </header>
