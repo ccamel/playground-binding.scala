@@ -136,4 +136,11 @@ class ui extends ShowCase {
   }
 
   override def name: String = "playground-binding.scala/loan-calculator"
+  override def description: String =
+    """
+      |A Simple Loan Calculator with amortization table
+    """.stripMargin
+  override def link: String = s"#playground-binding.scala/loan-calculator"
+  override def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/1RxSQj6/1")
+
 }

@@ -34,6 +34,12 @@ class ui extends ShowCase {
   val calc = Var(CalcModel())
 
   def name: String = "playground-binding.scala/calc"
+  def description: String =
+    """
+      |A very simple and basic calculator
+    """.stripMargin
+  def link: String = s"#playground-binding.scala/calc"
+  def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/hbwbCOe/0")
 
   @dom def css: Binding[BindingSeq[Node]] =
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>

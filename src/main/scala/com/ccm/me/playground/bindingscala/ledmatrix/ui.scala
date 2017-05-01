@@ -29,10 +29,9 @@ import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.Node
 import org.scalajs.dom.raw._
 
+import scala.language.implicitConversions
 import scala.scalajs.js.timers
 import scala.scalajs.js.timers.SetTimeoutHandle
-
-import scala.language.implicitConversions
 
 class ui extends ShowCase {
 
@@ -74,8 +73,6 @@ class ui extends ShowCase {
   val renderTime = Var(0d)
 
   screen.clear(0x777777)
-
-  def name: String = "playground-binding.scala/led-matrix"
 
   @dom def css: Binding[BindingSeq[Node]] =
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -285,4 +282,14 @@ class ui extends ShowCase {
     val cell = screen.cells(i)(j)
     "000000" + cell.bind.toHexString takeRight 6
   }
+
+
+  override def name: String = "playground-binding.scala/led-matrix"
+  override def description: String =
+    """
+      |A led-matrix with some nice demo effects
+    """.stripMargin
+  override def link: String = s"#playground-binding.scala/led-matrix"
+  override def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/nXYqFFS/3")
+
 }

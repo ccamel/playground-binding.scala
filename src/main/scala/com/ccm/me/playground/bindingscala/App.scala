@@ -40,19 +40,25 @@ trait Render {
   def render: Binding[Node]
 }
 
-trait ShowCase extends Render with Name
+trait ShowCase extends Render with Name {
+  def description: String
+  def link: String
+  def scalaFiddle: Option[String]
+}
 
 object App extends JSApp {
   val $ = js.Dynamic.global.$
   val homeShowCase = new home.ui()
   val showCase: Var[ShowCase] = Var(homeShowCase)
   val showCases = Seq(
+    homeShowCase,
     new calc.ui(),
     new ledmatrix.ui(),
     new loancalculator.ui(),
     new treeview.ui(),
     new dragme.ui()
   )
+  val sourceURL = "https://github.com/ccamel/playground-binding.scala"
 
   Route.watchHash(showCase)(new Route.Format[ShowCase] {
     override def unapply(hashText: String) = Some(showCases.find(_.name == hashText.drop(1)).getOrElse(homeShowCase))
@@ -151,4 +157,7 @@ object App extends JSApp {
     val h = showCase.bind
     $("select").material_select();
   }
+
+
+
 }

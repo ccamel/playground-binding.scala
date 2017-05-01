@@ -23,14 +23,12 @@ SOFTWARE.
  */
 package com.ccm.me.playground.bindingscala.home
 
-import com.ccm.me.playground.bindingscala.ShowCase
-import com.thoughtworks.binding.Binding.BindingSeq
+import com.ccm.me.playground.bindingscala.{App, ShowCase}
+import com.thoughtworks.binding.Binding.{BindingSeq, Constants}
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.Node
 
 class ui extends ShowCase {
-  val sourceURL = "https://github.com/ccamel/playground-binding.scala"
-
   @dom override def css: Binding[BindingSeq[Node]] = <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
 
@@ -40,70 +38,39 @@ class ui extends ShowCase {
       <div class="section">
         <h5>Available showcases</h5>
         <div class="divider"/>
+        {Constants(App.showCases.filterNot(_ == App.homeShowCase): _*).map { s =>
         <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
           <div class="card-content">
-            <span class="card-title">calc</span>
-            <p>A very simple and basic calculator</p>
+            <span class="card-title">{s.name.split("/").last}</span>
+            <p>{s.description}</p>
           </div>
           <div class="card-action">
-            <a href="#playground-binding.scala/calc">&gt; Play</a>
-            <a href={sourceURL}> &gt; Source</a>
-            <a href="https://scalafiddle.io/sf/hbwbCOe/0">&gt; scalafiddle</a>
+            <a href={s.link.toString}>
+              &gt;
+              Play</a>
+            <a href={App.sourceURL}>
+              &gt;
+              Source</a>{s.scalaFiddle match {
+            case Some(l) =>
+              <a href={l.toString}>
+                &gt;
+                scalafiddle</a>
+            case None => <!-- -->
+            }}
           </div>
         </div>
-
-        <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
-          <div class="card-content">
-            <span class="card-title">led-matrix</span>
-            <p>A led-matrix with some nice demo effects.</p>
-          </div>
-          <div class="card-action">
-            <a href="#playground-binding.scala/led-matrix"> &gt; Play</a>
-            <a href={sourceURL}> &gt; Source</a>
-            <a href="https://scalafiddle.io/sf/nXYqFFS/3">&gt; scalafiddle</a>
-          </div>
-        </div>
-
-        <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
-          <div class="card-content">
-            <span class="card-title">loan-calculator</span>
-            <p>A Simple Loan Calculator with amortization table.</p>
-          </div>
-          <div class="card-action">
-            <a href="#playground-binding.scala/loan-calculator"> &gt; Play</a>
-            <a href={sourceURL}> &gt; Source</a>
-            <a href="https://scalafiddle.io/sf/1RxSQj6/1">&gt; scalafiddle</a>
-          </div>
-        </div>
-
-        <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
-          <div class="card-content">
-            <span class="card-title">tree-view</span>
-            <p>A tree view with dynamic loading of items.</p>
-          </div>
-          <div class="card-action">
-            <a href="#playground-binding.scala/tree-view"> &gt; Play</a>
-            <a href={sourceURL}> &gt; Source</a>
-            <a href="https://scalafiddle.io/sf/KEznYyM/2">&gt; scalafiddle</a>
-          </div>
-        </div>
-
-        <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
-          <div class="card-content">
-            <span class="card-title">drag-me</span>
-            <p>HTML Div element resizable using mouse</p>
-          </div>
-          <div class="card-action">
-            <a href="#playground-binding.scala/drag-me"> &gt; Play</a>
-            <a href={sourceURL}> &gt; Source</a>
-            <a href="https://scalafiddle.io/sf/obKiF28/8">&gt; scalafiddle</a>
-          </div>
-        </div>
-
+      }}
       </div>
     </div>
   </div>
 
   override def name: String = "playground-binding.scala/home"
+  override def description: String =
+    """
+      |Home
+    """.stripMargin
+  override def link: String = s"#playground-binding.scala/home"
+  override def scalaFiddle: Option[String] = None
+
 }
 
