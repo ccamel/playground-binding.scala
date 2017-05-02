@@ -130,14 +130,24 @@ object App extends JSApp {
         <div class="container">
           <div class="nav-wrapper">
             <a class="page-title">{showCase.bind.name}</a>
-            {if (showCase.bind != homeShowCase)
+            { val sc = showCase.bind
+            if (sc != homeShowCase)
             <ul class="right hide-on-med-and-down">
               <li>
                 <a href={s"#${homeShowCase.name}"}>Home</a>
               </li>
-            </ul> else {
-            <!-- empty content -->
-          }}
+              {sc.scalaFiddle match {
+                 case Some(l) =>
+                   <li>
+                     <a href={l}>ScalaFiddle</a>
+                   </li>
+                 case None =>
+                   <!-- -->
+               }
+              }
+             </ul>
+             else <!-- -->
+            }
           </div>
         </div>
       </nav>
