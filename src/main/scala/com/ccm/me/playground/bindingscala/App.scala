@@ -23,7 +23,7 @@ SOFTWARE.
  */
 package com.ccm.me.playground.bindingscala
 
-import com.thoughtworks.binding.Binding.{BindingSeq, Var}
+import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var}
 import com.thoughtworks.binding.{Binding, Route, dom}
 import org.scalajs.dom.{Node, document}
 
@@ -72,13 +72,12 @@ object App extends JSApp {
     installMaterialize.watch()
   }
 
-  @dom def bootCss = {
-    // FIXME: I don't want to return an enclosing div but the concatenated sequence
+  def bootCss = {
     // See: https://stackoverflow.com/questions/43675301/how-to-combine-binding-fragments-without-wrapping-them-in-an-xml-literal
-    <div>
-      {header.bind}
-      {showCase.bind.css.bind}
-    </div>
+    Binding(Constants(
+      header,
+      showCase.bind.css
+    ).flatMap(_.bind))
   }
 
   @dom def bootView = {
