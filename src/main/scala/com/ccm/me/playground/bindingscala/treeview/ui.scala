@@ -45,7 +45,7 @@ class ui extends ShowCase {
        div.tree label::before {
          padding-right: 5px;
        }
-       div.tree label {
+       div.tree label.fa-folder {
          cursor:pointer;
        }
        div.tree ul {
