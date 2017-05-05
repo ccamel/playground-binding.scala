@@ -285,10 +285,7 @@ class ui extends ShowCase {
 
 
   override def name: String = "playground-binding.scala/led-matrix"
-  override def description: String =
-    """
-      |A led-matrix with some nice demo effects
-    """.stripMargin
+  @dom override def description: Binding[Node] = <div>A led-matrix with some nice demo effects</div>
   override def link: String = s"#playground-binding.scala/led-matrix"
   override def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/nXYqFFS/3")
 

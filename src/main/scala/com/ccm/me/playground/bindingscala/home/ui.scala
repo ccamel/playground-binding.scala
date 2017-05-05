@@ -42,7 +42,7 @@ class ui extends ShowCase {
         <div class="card col s4 blue-grey lighten-5" style="margin: 10px">
           <div class="card-content">
             <span class="card-title">{s.name.split("/").last}</span>
-            <p>{s.description}</p>
+            <p>{s.description.bind}</p>
           </div>
           <div class="card-action">
             <a href={s.link.toString}>
@@ -65,10 +65,7 @@ class ui extends ShowCase {
   </div>
 
   override def name: String = "playground-binding.scala/home"
-  override def description: String =
-    """
-      |Home
-    """.stripMargin
+  @dom override def description: Binding[Node] = <div>Home</div>
   override def link: String = s"#playground-binding.scala/home"
   override def scalaFiddle: Option[String] = None
 

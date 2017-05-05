@@ -200,10 +200,7 @@ class ui extends ShowCase {
   }
 
   override def name: String = "playground-binding.scala/drag-me"
-  override def description: String =
-    """
-      |HTML Div element resizable using mouse
-    """.stripMargin
+  @dom override def description: Binding[Node] = <div>HTML Div element resizable using mouse</div>
   override def link: String = s"#playground-binding.scala/drag-me"
   override def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/obKiF28/8")
 

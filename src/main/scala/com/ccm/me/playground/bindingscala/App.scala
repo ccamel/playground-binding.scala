@@ -41,7 +41,7 @@ trait Render {
 }
 
 trait ShowCase extends Render with Name {
-  def description: String
+  def description: Binding[Node]
   def link: String
   def scalaFiddle: Option[String]
 }

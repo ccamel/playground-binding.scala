@@ -24,7 +24,7 @@ SOFTWARE.
 package com.ccm.me.playground.bindingscala.calc
 
 import com.ccm.me.playground.bindingscala.ShowCase
-import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var}
+import com.thoughtworks.binding.Binding.{BindingSeq, Constant, Constants, Var}
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.Node
 import org.scalajs.dom.html.Anchor
@@ -34,10 +34,7 @@ class ui extends ShowCase {
   val calc = Var(CalcModel())
 
   def name: String = "playground-binding.scala/calc"
-  def description: String =
-    """
-      |A very simple and basic calculator
-    """.stripMargin
+  @dom def description: Binding[Node] = <div>A very simple and basic calculator</div>
   def link: String = s"#playground-binding.scala/calc"
   def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/hbwbCOe/0")
 

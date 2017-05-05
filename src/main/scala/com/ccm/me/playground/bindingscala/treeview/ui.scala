@@ -131,10 +131,7 @@ class ui extends ShowCase {
   }
 
   override def name: String = "playground-binding.scala/tree-view"
-  override def description: String =
-    """
-      |A tree view with dynamic loading of items
-    """.stripMargin
+  @dom override def description: Binding[Node] = <div>tree view with dynamic loading of items</div>
   override def link: String = s"#playground-binding.scala/tree-view"
   override def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/KEznYyM/2")
 
