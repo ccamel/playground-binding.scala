@@ -56,7 +56,8 @@ object App extends JSApp {
     new ledmatrix.ui(),
     new loancalculator.ui(),
     new treeview.ui(),
-    new dragme.ui()
+    new dragme.ui(),
+    new virtuallist.ui()
   )
   val sourceURL = "https://github.com/ccamel/playground-binding.scala"
 
