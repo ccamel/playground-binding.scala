@@ -104,9 +104,6 @@ object App extends JSApp {
         min-height: 100%;
         position:relative;
       }
-      .container {
-        padding-bottom: 80px;
-      }
       footer{
         height: 80px;
         width:100%;
