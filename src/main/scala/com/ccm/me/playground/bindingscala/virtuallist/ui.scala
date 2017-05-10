@@ -27,8 +27,7 @@ import com.ccm.me.playground.bindingscala.ShowCase
 import com.thoughtworks.binding.Binding.BindingSeq
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.{Node, document}
-import org.scalajs.dom.raw.{HTMLDivElement, MouseEvent}
-import math.{min, max}
+import org.scalajs.dom.raw.{MouseEvent, WheelEvent}
 
 class ui extends ShowCase {
   val paneHeight = 255
@@ -81,7 +80,7 @@ class ui extends ShowCase {
   @dom override def render: Binding[Node] = {
       <div class="container list">
         <p>Virtual list displaying <em>1000000</em> elements</p>
-        <div class="pane" style="width: 320px;">
+        <div class="pane" style="width: 320px;"  onmousewheel={onMouseWheel _}>
           <div class="mainpane" style="width: 304px;">
             {for (item <- list.data) yield {
             <div class="rowitem">{item.label}</div>
@@ -121,6 +120,14 @@ class ui extends ShowCase {
 
   def onMouseUp(e: MouseEvent) = {
     list.lastDragPosition.value = None
+  }
+
+  def onMouseWheel(e: WheelEvent) = {
+    val offset = list.offset.value + e.deltaY.toInt
+
+    list.offset.value = (0l max offset) min list.total.value
+
+    e.stopImmediatePropagation()
   }
 
   private def scrollbarHeight: Binding[Int] = Binding {
