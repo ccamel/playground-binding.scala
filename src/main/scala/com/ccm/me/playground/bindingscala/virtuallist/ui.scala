@@ -140,6 +140,8 @@ class ui extends ShowCase {
   def onKeyDown(e: KeyboardEvent) = {
     // TODO: is there any symbolic constants around ?
     e.keyCode match {
+      case 33 ⇒ updateOffset(list.offset.value - 5)
+      case 34 ⇒ updateOffset(list.offset.value + 5)
       case 38 ⇒ updateOffset(list.offset.value - 1)
       case 40 ⇒ updateOffset(list.offset.value + 1)
       case _ ⇒
