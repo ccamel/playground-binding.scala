@@ -110,7 +110,7 @@ class ui extends ShowCase {
         val offset = list.offset.value + (dy * list.total.value / paneHeight)
 
         if( offset != list.offset.value ) {
-          list.offset.value = (0l max offset) min list.total.value
+          updateOffset(offset)
           list.lastDragPosition.value = Some(Position(x, y))
         }
       case None ⇒
@@ -143,7 +143,7 @@ class ui extends ShowCase {
   private def scrollbarHeight: Binding[Int] = Binding {
     if(list.total.bind == 0)
       0
-    else Math.max( 12 /* minimal pixel size*/, (paneHeight * list.size.bind / list.total.bind).toInt)
+    else 12 /* minimal pixel size*/ max (paneHeight * list.size.bind / list.total.bind).toInt
   }
 
   private def scrollbarTop: Binding[Int] = Binding {
