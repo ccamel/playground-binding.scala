@@ -27,7 +27,7 @@ import com.ccm.me.playground.bindingscala.ShowCase
 import com.thoughtworks.binding.Binding.BindingSeq
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.{Node, document}
-import org.scalajs.dom.raw.{MouseEvent, WheelEvent}
+import org.scalajs.dom.raw.{KeyboardEvent, MouseEvent, WheelEvent}
 
 class ui extends ShowCase {
   val paneHeight = 255
@@ -77,7 +77,9 @@ class ui extends ShowCase {
   @dom override def render: Binding[Node] = {
       <div class="container list">
         <p>Virtual list displaying <em>1000000</em> elements</p>
-        <div class="pane" style="width: 320px;"  onmousewheel={onMouseWheel _}>
+        <div class="pane" style="width: 320px;"
+             data:autofocus=""
+             onmousewheel={onMouseWheel _}>
           <div class="mainpane" style="width: 304px;">
             {for (item <- list.data) yield {
             <div class="rowitem">{item.label}</div>
@@ -105,7 +107,7 @@ class ui extends ShowCase {
       case Some(Position(_,lasty)) ⇒
         val (x, y) = (e.clientX.toInt, e.clientY.toInt)
         val dy = y - lasty
-        val offset = 0l max (list.offset.value + (dy * list.total.value / paneHeight)) min list.total.value
+        val offset = list.offset.value + (dy * list.total.value / paneHeight)
 
         if( offset != list.offset.value ) {
           list.offset.value = (0l max offset) min list.total.value
@@ -120,11 +122,22 @@ class ui extends ShowCase {
   }
 
   def onMouseWheel(e: WheelEvent) = {
-    val offset = list.offset.value + e.deltaY.toInt
-
-    list.offset.value = (0l max offset) min list.total.value
+    updateOffset(list.offset.value + e.deltaY.toInt)
 
     e.stopImmediatePropagation()
+  }
+
+  def onKeyDown(e: KeyboardEvent) = {
+    // TODO: is there any symbolic constants around ?
+    e.keyCode match {
+      case 38 ⇒ updateOffset(list.offset.value - 1)
+      case 40 ⇒ updateOffset(list.offset.value + 1)
+      case _ ⇒
+    }
+  }
+
+  private def updateOffset( offset: Long) = {
+    list.offset.value = (0l max offset) min list.total.value
   }
 
   private def scrollbarHeight: Binding[Int] = Binding {
@@ -153,6 +166,7 @@ class ui extends ShowCase {
   override def install(): Unit = {
     document.onmouseup = onMouseUp _
     document.onmousemove = onMouseMove _
+    document.onkeydown = onKeyDown _
   }
 
   override def name: String = "playground-binding.scala/virtual-list"
