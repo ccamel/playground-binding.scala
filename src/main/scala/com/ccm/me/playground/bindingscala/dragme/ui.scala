@@ -32,9 +32,6 @@ import org.scalajs.dom.{Node, document}
 class ui extends ShowCase {
   val model: DraggableRect = DraggableRect(Var(250), Var(170), Var(300), Var(150), Var(false), Var(None))
 
-  document.onmousemove = onMouseMove _
-  document.onmousedown = onMouseDown(false, None) _
-
   @dom override def css: Binding[BindingSeq[Node]] =
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
@@ -197,6 +194,11 @@ class ui extends ShowCase {
 
   private def onMouseUp(e: MouseEvent) = {
     model.drag.value = None
+  }
+
+  override def install() {
+    document.onmousemove = onMouseMove _
+    document.onmousedown = onMouseDown(false, None) _
   }
 
   override def name: String = "playground-binding.scala/drag-me"

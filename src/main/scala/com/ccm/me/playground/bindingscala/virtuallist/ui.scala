@@ -36,9 +36,6 @@ class ui extends ShowCase {
 
   loadData.watch()
 
-  document.onmouseup = onMouseUp _
-  document.onmousemove = onMouseMove _
-
   @dom override def css: Binding[BindingSeq[Node]] = <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
     <style>
@@ -151,6 +148,11 @@ class ui extends ShowCase {
     list.data.value.clear()
     list.data.value ++= page.content
     list.total.value = page.totalElements
+  }
+
+  override def install(): Unit = {
+    document.onmouseup = onMouseUp _
+    document.onmousemove = onMouseMove _
   }
 
   override def name: String = "playground-binding.scala/virtual-list"

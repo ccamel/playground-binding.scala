@@ -36,7 +36,6 @@ trait Name {
 
 trait Render {
   def css: Binding[BindingSeq[Node]]
-
   def render: Binding[Node]
 }
 
@@ -44,6 +43,8 @@ trait ShowCase extends Render with Name {
   def description: Binding[Node]
   def link: String
   def scalaFiddle: Option[String]
+
+  def install(): Unit = {}
 }
 
 object App extends JSApp {
@@ -71,6 +72,7 @@ object App extends JSApp {
     dom.render(document.getElementById("application"), bootView)
 
     installMaterialize.watch()
+    onShowcaseChange.watch()
   }
 
   def bootCss = {
@@ -165,6 +167,10 @@ object App extends JSApp {
     $("select").material_select();
   }
 
+  def onShowcaseChange = Binding {
+    // call the install method on change
+    showCase.bind.install()
+  }
 
 
 }
