@@ -76,7 +76,12 @@ class ui extends ShowCase {
 
   @dom override def render: Binding[Node] = {
       <div class="container list">
-        <p>Virtual list displaying <em>1000000</em> elements</p>
+        <p>Virtual list displaying <em>1,000,000</em> elements. You can explore the data with the following means:</p>
+        <ul class="browser-default">
+          <li>Move the scrollbar by dragging the mouse</li>
+          <li>Use the mouse wheel (over the listbox)</li>
+          <li>Use the keyboard keys, up to go up, down to go down</li>
+        </ul>
         <div class="pane" style="width: 320px;"
              data:autofocus=""
              onmousewheel={onMouseWheel _}>
