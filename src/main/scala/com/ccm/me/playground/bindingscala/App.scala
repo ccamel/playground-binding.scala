@@ -84,9 +84,11 @@ object App extends JSApp {
   }
 
   @dom def bootView = {
-    <div>
+    <div id="showcase" data:name={showCase.bind.name}>
       { bodyHeader.bind }
+      <main>
       { showCase.bind.render.bind }
+      </main>
       { bodyFooter.bind }
     </div>
   }
@@ -99,20 +101,24 @@ object App extends JSApp {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
     <style>
       {"""
-      html,body {
-        height: 100%
+       body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
       }
-      #application {
-        min-height: 100%;
-        position:relative;
+      #showcase {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+      main {
+        flex: 1 0 auto;
       }
       footer{
         height: 80px;
         width:100%;
-        position: absolute;
-        left: 0;
-        bottom: 0;
       }
+
       """}
     </style>
   }
@@ -151,7 +157,7 @@ object App extends JSApp {
         </div>
       </nav>
     </header>
-    <div/>
+    <!-- -->
   }
 
   @dom def bodyFooter = {
