@@ -41,5 +41,5 @@ case class ListModel[A](
 }
 
 object ListModel {
-  def apply[A](): ListModel[A] = ListModel(Var(10), Vars.empty[A], Var(0), Var(0), Var(None))
+  def apply[A](): ListModel[A] = ListModel(Var(5), Vars.empty[A], Var(0), Var(0), Var(None))
 }

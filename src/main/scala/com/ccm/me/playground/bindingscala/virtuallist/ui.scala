@@ -30,7 +30,7 @@ import org.scalajs.dom.{Node, document}
 import org.scalajs.dom.raw.{KeyboardEvent, MouseEvent, WheelEvent}
 
 class ui extends ShowCase {
-  val paneHeight = 255
+  val paneHeight = 259 // height of the scroll bar in px - TODO: can the value be automagically computed ?
 
   val list: ListModel[Item] = ListModel[Item]()
 
@@ -46,15 +46,14 @@ class ui extends ShowCase {
          }
          div.mainpane {
              float: left;
-             border-style: solid;
-             border-width: thin;
-             border-color: gray;
+             border-color: 1px solid #e0e0e0;
          }
          div.scrolltrack {
              float: right;
              background: #e8e8e8;
              border: 1px solid rgb(163, 163, 163);
              z-index: 10;
+             margin-top: .5rem;
              text-align: center;
              height: 100%;
              cursor: pointer;
@@ -86,9 +85,15 @@ class ui extends ShowCase {
              data:autofocus=""
              onmousewheel={onMouseWheel _}>
           <div class="mainpane" style="width: 304px;">
+            <ul class="collection">
             {for (item <- list.data) yield {
-            <div class="rowitem">{item.label}</div>
-          }}
+            <li class="collection-item">
+              <div>{item.label}
+                <span class="secondary-content">#{item.id.toString}</span>
+              </div>
+            </li>
+            }}
+            </ul>
           </div>
           <div class="scrolltrack" style="width: 16px;"
                onmousemove={e: MouseEvent => onMouseMove(e)}>
