@@ -131,7 +131,7 @@ object App extends JSApp {
              alt="Fork me on GitHub"
              data:data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"/>
       </a>
-      <nav class="top-nav light-blue lighten-1">
+      <nav class="top-nav light-blue darken-2">
         <div class="container">
           <div class="nav-wrapper">
             <a class="page-title">{showCase.bind.name}</a>
@@ -161,7 +161,7 @@ object App extends JSApp {
   }
 
   @dom def bodyFooter = {
-    <footer class="page-footer light-blue lighten-1">
+    <footer class="page-footer light-blue darken-2">
       <div class="container">©  <a class="grey-text text-lighten-4" href="https://github.com/ccamel">Chris Camel</a>
         <a class="grey-text text-lighten-4 right" href="https://tldrlegal.com/license/mit-license">MIT License</a>
       </div>
