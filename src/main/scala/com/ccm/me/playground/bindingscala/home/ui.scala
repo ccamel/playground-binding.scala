@@ -30,14 +30,35 @@ import org.scalajs.dom.Node
 
 class ui extends ShowCase {
   @dom override def css: Binding[BindingSeq[Node]] =
-      <!-- -->
-      <!-- -->
+    <style>
+      {"""
+        .card {
+          box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+
+        .card:hover {
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+
+        .message h1 {
+          font-size: 2.8em;
+        }
+        """}
+    </style>
+    <!-- -->
 
   @dom override def render: Binding[Node] =
   <div class="container">
       <div class="section">
         <div class="row">
-          <h5>Available showcases</h5>
+          <div class="message">
+            <h1>playground/Binding.scala</h1>
+            <p>My playground I use for playing with fancy and exciting technologies. This one's for <a href="https://www.scala-lang.org/">scala</a>,
+              <a href="https://www.scala-js.org/">scalajs</a> and <a href=" https://github.com/ThoughtWorksInc/Binding.scala">binding.scala</a>.</p>
+          </div>
+        </div>
+        <div class="row">
+          <h5>Showcases</h5>
           <div class="divider"/>
         </div>
         <div class="row">

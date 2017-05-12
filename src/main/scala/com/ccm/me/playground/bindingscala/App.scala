@@ -99,6 +99,7 @@ object App extends JSApp {
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons|VT323" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+    <script src="https://use.fontawesome.com/e20ea8441d.js"></script>
     <style>
       {"""
        body {
@@ -114,11 +115,14 @@ object App extends JSApp {
       main {
         flex: 1 0 auto;
       }
-      footer{
+      footer {
         height: 80px;
         width:100%;
       }
-
+      .footer-icons a {
+        color: white;
+        margin-right: 10px;
+      }
       """}
     </style>
   }
@@ -162,8 +166,14 @@ object App extends JSApp {
 
   @dom def bodyFooter = {
     <footer class="page-footer light-blue darken-2">
-      <div class="container">©  <a class="grey-text text-lighten-4" href="https://github.com/ccamel">Chris Camel</a>
-        <a class="grey-text text-lighten-4 right" href="https://tldrlegal.com/license/mit-license">MIT License</a>
+
+      <div class="container">
+        <div class="row">
+          © 2017 Chris Camel - MIT License
+          <div class="right footer-icons">
+            <a href="https://github.com/ccamel"><i class="fa fa-github fa-2x"></i></a>
+          </div>
+        </div>
       </div>
     </footer>
   }

@@ -73,7 +73,7 @@ class ui extends ShowCase {
        }
       """}
     </style>
-    <script src="https://use.fontawesome.com/e20ea8441d.js"></script>
+    <!-- -->
 
   @dom override def render: Binding[Node] = {
       <div class="container tree">
