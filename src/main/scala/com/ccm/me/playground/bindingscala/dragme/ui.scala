@@ -33,8 +33,6 @@ class ui extends ShowCase {
   val model: DraggableRect = DraggableRect(Var(250), Var(170), Var(300), Var(150), Var(false), Var(None))
 
   @dom override def css: Binding[BindingSeq[Node]] =
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
       <style>
         {s"""
         .draggable {
@@ -109,6 +107,7 @@ class ui extends ShowCase {
 
       """}
       </style>
+      <!-- -->
 
   @dom override def render: Binding[Node] = {
     <div class="container">

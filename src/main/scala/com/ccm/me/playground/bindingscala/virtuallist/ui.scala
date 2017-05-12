@@ -36,8 +36,7 @@ class ui extends ShowCase {
 
   loadData.watch()
 
-  @dom override def css: Binding[BindingSeq[Node]] = <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+  @dom override def css: Binding[BindingSeq[Node]] =
     <style>
       {
         s"""
@@ -72,6 +71,7 @@ class ui extends ShowCase {
          }
        """}
     </style>
+    <!-- -->
 
   @dom override def render: Binding[Node] = {
       <div class="container list">

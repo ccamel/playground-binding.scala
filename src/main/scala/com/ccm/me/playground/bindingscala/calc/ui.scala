@@ -38,9 +38,9 @@ class ui extends ShowCase {
   def link: String = s"#playground-binding.scala/calc"
   def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/hbwbCOe/0")
 
-  @dom def css: Binding[BindingSeq[Node]] =
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+  @dom def css: Binding[BindingSeq[Node]] = <!-- -->
+    <!-- -->
+
 
   @dom def render: Binding[Node] = {
     val btns = List(List("7", "8", "9", "+", "C"),

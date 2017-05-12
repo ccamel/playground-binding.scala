@@ -35,8 +35,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class ui extends ShowCase {
   val tree: Tree = Tree.root
 
-  @dom override def css: Binding[BindingSeq[Node]] = <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+  @dom override def css: Binding[BindingSeq[Node]] =
     <style>
       {"""
        div.tree, div.tree ul, div.tree li {

@@ -29,8 +29,9 @@ import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.Node
 
 class ui extends ShowCase {
-  @dom override def css: Binding[BindingSeq[Node]] = <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+  @dom override def css: Binding[BindingSeq[Node]] =
+      <!-- -->
+      <!-- -->
 
   @dom override def render: Binding[Node] =
   <div class="container">

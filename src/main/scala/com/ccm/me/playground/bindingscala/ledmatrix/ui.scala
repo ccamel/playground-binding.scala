@@ -75,8 +75,6 @@ class ui extends ShowCase {
   screen.clear(0x777777)
 
   @dom def css: Binding[BindingSeq[Node]] =
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
       <style>
         {val space = dotSpace.bind
       val size = dotSize.bind
@@ -101,6 +99,7 @@ class ui extends ShowCase {
         }
         """}
       </style>
+      <!-- -->
 
   @dom def render: Binding[Node] = {
       <div class="container">

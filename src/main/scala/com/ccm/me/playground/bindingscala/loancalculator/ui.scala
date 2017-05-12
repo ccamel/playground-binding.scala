@@ -34,8 +34,7 @@ import scala.reflect.{ClassTag, classTag}
 class ui extends ShowCase {
   val loan = Loan( Var(10000d), Var(0.5), Var(1) )
 
-  @dom override def css: Binding[BindingSeq[Node]] = <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+  @dom override def css: Binding[BindingSeq[Node]] =
       <style>
         {"""
         h5 {
@@ -51,6 +50,7 @@ class ui extends ShowCase {
         }
         """}
       </style>
+      <!-- -->
 
   @dom def render: Binding[Node] =
     <div class="container">
