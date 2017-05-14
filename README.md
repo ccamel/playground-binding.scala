@@ -126,6 +126,20 @@ The model is a simple structure holding both the basic geometric properties of t
 (none, moving, resizing).
 
 The view is bound to that model and react to reflect the change (selection, coordinates change, width/height change, etc.).
+
+### virtual-list
+ 
+The virtual-list showcase is quite similar to [virtual rendering 1000000 items](http://www.lab4games.net/zz85/blog/2012/06/23/virtual-rendering-1000000-items-efficiently/).
+
+The idea is to use a list that represents a subset of a larger set of data. That list is automatically updated on events (mouse move, drag, key up/down...), and the dom 
+elements bound to the list items are refreshed accordingly.
+
+<p align="center">
+  <b>Links:</b><br>
+  <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/virtual-list">Play</a>  |
+  <br><br>
+  <kbd><img src="doc/assets/showcase-virtual-list.png"></kbd>
+</p> 
  
 ## Building and Running
 
