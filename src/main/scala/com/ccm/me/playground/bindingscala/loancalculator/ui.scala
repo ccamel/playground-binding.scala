@@ -32,7 +32,7 @@ import org.scalajs.dom.raw.{Event, HTMLInputElement}
 import scala.reflect.{ClassTag, classTag}
 
 class ui extends ShowCase {
-  val loan = Loan( Var(10000d), Var(0.5), Var(1) )
+  val loan = Loan(Var(10000d), Var(0.5), Var(1))
 
   @dom override def css: Binding[BindingSeq[Node]] =
       <style>
@@ -128,7 +128,7 @@ class ui extends ShowCase {
                   <td>${f"${line.loan}%.2f"}</td>
                 </tr>
               }
-          }
+            }
           </tbody>
         </table>
       </div>

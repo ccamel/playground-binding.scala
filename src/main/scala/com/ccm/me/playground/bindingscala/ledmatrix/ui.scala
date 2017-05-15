@@ -75,30 +75,29 @@ class ui extends ShowCase {
   screen.clear(0x777777)
 
   @dom def css: Binding[BindingSeq[Node]] =
-      <style>
-        {val space = dotSpace.bind
-      val size = dotSize.bind
-      val radius = dotRadius.bind
+      <style>{
+        val space = dotSpace.bind
+        val size = dotSize.bind
+        val radius = dotRadius.bind
 
-      s"""
-        .cell-row {
-        margin-bottom: ${space}px;
-        padding: 0px;
-        height: ${size}px;
-        }
+        s"""
+          .cell-row {
+          margin-bottom: ${space}px;
+          padding: 0px;
+          height: ${size}px;
+          }
 
-        .cell {
-        display: inline-block;
-        width: ${size}px;
-        height: ${size}px;
-        -moz-border-radius: ${radius}px;
-        border-radius: ${radius}px;
-        margin-right: ${space}px;
-        margin-bottom: ${space}px;
-        padding: 0px;
-        }
-        """}
-      </style>
+          .cell {
+          display: inline-block;
+          width: ${size}px;
+          height: ${size}px;
+          -moz-border-radius: ${radius}px;
+          border-radius: ${radius}px;
+          margin-right: ${space}px;
+          margin-bottom: ${space}px;
+          padding: 0px;
+          }
+        """}</style>
       <!-- -->
 
   @dom def render: Binding[Node] = {
@@ -135,13 +134,14 @@ class ui extends ShowCase {
       <div class="col s12">
         <label>Selected demo</label>
         <select onchange={e: Event => selectedDemo.value = Some(demos(e.target.asInstanceOf[HTMLSelectElement].value.toInt))}>
-          <option value="" disabled={true} selected={true}>Chose a demo</option>{for {
-          i <- Constants(0 until demos.size: _*)
-        } yield {
-          <option value={i.toString}>
-            {demos(i).name}
-          </option>
-        }}
+          <option value="" disabled={true} selected={true}>Chose a demo</option>{
+            for {
+              i <- Constants(0 until demos.size: _*)
+            } yield {
+              <option value={i.toString}>
+                {demos(i).name}
+              </option>
+            }}
         </select>
       </div>
     </div>
@@ -171,15 +171,23 @@ class ui extends ShowCase {
             {dotSize.bind.toString}
             pixels)</label>
           <p class="range-field">
-            <input type="range" id="dot-size" min="0" max="10" value={dotSize.bind.toString} oninput={e: Event => dotSize.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            <input type="range"
+                   id="dot-size"
+                   min="0"
+                   max="10"
+                   value={dotSize.bind.toString}
+                   oninput={e: Event => dotSize.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
           </p>
         </div>
         <div class="col s4">
-          <label for="dot-space">Dot space (
-            {dotSpace.bind.toString}
-            pixels)</label>
+          <label for="dot-space">Dot space ({dotSpace.bind.toString} pixels)</label>
           <p class="range-field">
-            <input type="range" id="dot-space" min="0" max="5" value={dotSpace.bind.toString} oninput={e: Event => dotSpace.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            <input type="range"
+                   id="dot-space"
+                   min="0"
+                   max="5"
+                   value={dotSpace.bind.toString}
+                   oninput={e: Event => dotSpace.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
           </p>
         </div>
         <div class="col s4">
@@ -187,7 +195,12 @@ class ui extends ShowCase {
             {dotRadius.bind.toString}
             pixels)</label>
           <p class="range-field">
-            <input type="range" id="dot-radius" min="0" max="5" value={dotRadius.bind.toString} oninput={e: Event => dotRadius.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            <input type="range"
+                   id="dot-radius"
+                   min="0"
+                   max="5"
+                   value={dotRadius.bind.toString}
+                   oninput={e: Event => dotRadius.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
           </p>
         </div>
       </div>
@@ -197,7 +210,9 @@ class ui extends ShowCase {
           <div class="switch">
             <label>
               Off
-              <input type="checkbox" disabled={selectedDemo.bind.isEmpty} onclick={e: Event => if (e.target.asInstanceOf[HTMLInputElement].checked) play else pause}/>
+              <input type="checkbox"
+                     disabled={selectedDemo.bind.isEmpty}
+                     onclick={e: Event => if (e.target.asInstanceOf[HTMLInputElement].checked) play else pause}/>
               <span class="lever"></span>
               On
             </label>
@@ -208,7 +223,12 @@ class ui extends ShowCase {
             {timerInterval.bind.toString}
             ms)</label>
           <p class="range-field">
-            <input type="range" id="interval" min="0" max="1000" value={timerInterval.bind.toString} oninput={e: Event => timerInterval.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+            <input type="range"
+                   id="interval"
+                   min="0"
+                   max="1000"
+                   value={timerInterval.bind.toString}
+                   oninput={e: Event => timerInterval.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
           </p>
         </div>
       </div>
@@ -243,13 +263,13 @@ class ui extends ShowCase {
 
   @dom def renderScreenSpan = {
     <div data:type={surface.bind}>
-      {for (j <- Constants(0 until screen.h: _*)) yield {
-      <div class="row cell-row">
-        {for (i <- Constants(0 until screen.w: _*)) yield {
-        renderCellSpan(i, j).bind
+      {for(j <- Constants(0 until screen.h: _*)) yield {
+        <div class="row cell-row">
+        {for(i <- Constants(0 until screen.w: _*)) yield {
+          renderCellSpan(i, j).bind
+        }}
+        </div>
       }}
-      </div>
-    }}
     </div>
   }
 
@@ -257,11 +277,10 @@ class ui extends ShowCase {
     implicit def toSvgTags(a: dom.Runtime.TagsAndTags2.type) = scalatags.JsDom.svgTags
 
     <svg width="800" height="800">
-      {for (
-      i <- Constants(0 until screen.w: _*);
-      j <- Constants(0 until screen.h: _*)) yield {
-      renderCellSvg(i, j).bind
-    }}
+      {for( i <- Constants(0 until screen.w: _*);
+            j <- Constants(0 until screen.h: _*)) yield {
+        renderCellSvg(i, j).bind
+      }}
     </svg>
   }
 
@@ -272,16 +291,17 @@ class ui extends ShowCase {
   @dom def renderCellSvg(i: Int, j: Int) = {
     implicit def toSvgTags(a: dom.Runtime.TagsAndTags2.type) = scalatags.JsDom.svgTags
 
-    val rect = <rect x={i * (dotSize.bind + dotSpace.bind)} y={j * (dotSize.bind + dotSpace.bind)} width={dotSize.bind} height={dotSize.bind} data:style={"fill: #" + color(i, j).bind}/>
-
-    rect
+    <rect x={i * (dotSize.bind + dotSpace.bind)}
+          y={j * (dotSize.bind + dotSpace.bind)}
+          width={dotSize.bind}
+          height={dotSize.bind}
+          data:style={"fill: #" + color(i, j).bind}/>
   }
 
   @dom def color(i: Int, j: Int) = {
     val cell = screen.cells(i)(j)
     "000000" + cell.bind.toHexString takeRight 6
   }
-
 
   override def name: String = "playground-binding.scala/led-matrix"
   @dom override def description: Binding[Node] = <div>A led-matrix with some nice demo effects</div>

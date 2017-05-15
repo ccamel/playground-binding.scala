@@ -140,22 +140,23 @@ object App extends JSApp {
           <div class="nav-wrapper">
             <a class="page-title">{showCase.bind.name}</a>
             { val sc = showCase.bind
-            if (sc != homeShowCase)
-            <ul class="right hide-on-med-and-down">
-              <li>
-                <a href={s"#${homeShowCase.name}"}>Home</a>
-              </li>
-              {sc.scalaFiddle match {
-                 case Some(l) =>
-                   <li>
-                     <a href={l}>ScalaFiddle</a>
-                   </li>
-                 case None =>
-                   <!-- -->
-               }
-              }
-             </ul>
-             else <!-- -->
+              if (sc != homeShowCase)
+              <ul class="right hide-on-med-and-down">
+                <li>
+                  <a href={s"#${homeShowCase.name}"}>Home</a>
+                </li>
+                {sc.scalaFiddle match {
+                   case Some(l) =>
+                     <li>
+                       <a href={l}>ScalaFiddle</a>
+                     </li>
+                   case None =>
+                     <!-- -->
+                 }
+                }
+               </ul>
+               else
+                <!-- -->
             }
           </div>
         </div>
@@ -166,7 +167,6 @@ object App extends JSApp {
 
   @dom def bodyFooter = {
     <footer class="page-footer light-blue darken-2">
-
       <div class="container">
         <div class="row">
           © 2017 Chris Camel - MIT License
@@ -187,6 +187,4 @@ object App extends JSApp {
     // call the install method on change
     showCase.bind.install()
   }
-
-
 }

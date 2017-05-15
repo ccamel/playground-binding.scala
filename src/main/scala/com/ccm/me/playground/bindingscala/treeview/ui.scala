@@ -79,7 +79,7 @@ class ui extends ShowCase {
       <div class="container tree">
         <p>Content for the <a href="https://github.com/ukparliament/ontologies">ukparliament/ontologies</a> project:</p>
         <ul>
-        {displayTree(tree).bind}
+          {displayTree(tree).bind}
         </ul>
       </div>
   }
@@ -113,11 +113,10 @@ class ui extends ShowCase {
       </li>
     case node@TreeNode(id, elements, label, state) =>
       <li>
-        <i class={s"fa ${treeNodeClass(node).bind}"}/><label for={tree.id} class="fa fa-folder" onclick={_: Event => onTreeNodeClick(node)}>{tree.label.bind}</label>
+        <i class={s"fa ${treeNodeClass(node).bind}"}/>
+        <label for={tree.id} class="fa fa-folder" onclick={_: Event => onTreeNodeClick(node)}>{tree.label.bind}</label>
         <ul class={if(state.bind == LoadedAndCollapsedState) "hide" else ""}>
-          {
-            for (e <- elements) yield { displayTree(e).bind}
-          }
+          {for (e <- elements) yield { displayTree(e).bind}}
         </ul>
       </li>
   }

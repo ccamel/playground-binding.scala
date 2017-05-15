@@ -50,15 +50,21 @@ class ui extends ShowCase {
       <div class="container" style="width: 400px;">
         <div class="row">
           <div class="col s10" style="font-family: 'VT323', monospace;">
-            <input style="text-align:right; font-size: 21px;" type="Text" readOnly={true} value={display.bind}></input>
-          </div>{renderMemoryTag.bind}{renderOperatorTag.bind}
-        </div>{Constants(btns: _*).map { l =>
-        <div class="row">
-          {Constants(l: _*).map { c =>
-          <div class="col s2">{b(c).bind}</div>
-        }}
+            <input style="text-align:right; font-size: 21px;"
+                   type="Text"
+                   readOnly={true}
+                   value={display.bind}></input>
+          </div>
+          {renderMemoryTag.bind}
+          {renderOperatorTag.bind}
         </div>
-      }}
+        {Constants(btns: _*).map { l =>
+          <div class="row">
+            {Constants(l: _*).map { c =>
+              <div class="col s2">{b(c).bind}</div>
+            }}
+          </div>
+        }}
       </div>
   }
 
@@ -95,7 +101,9 @@ class ui extends ShowCase {
     }
     val c = calc.bind
     val disabled = if (c.isDefinedAt(op._2)) "" else "disabled"
-    <a class={s"btn ${op._1} ${disabled} waves-effect waves-light"} style="width: 60px; padding: 0px" onclick={_: Event => calc.value = c(op._2)}>
+    <a class={s"btn ${op._1} ${disabled} waves-effect waves-light"}
+       style="width: 60px; padding: 0px"
+       onclick={_: Event => calc.value = c(op._2)}>
       {label}
     </a>
   }
