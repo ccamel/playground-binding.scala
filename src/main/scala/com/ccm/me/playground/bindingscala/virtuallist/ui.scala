@@ -184,6 +184,6 @@ class ui extends ShowCase {
   override def name: String = "playground-binding.scala/virtual-list"
   @dom override def description: Binding[Node] = <div>A virtual list rendering <em>1,000,000</em> items</div>
   override def link: String = s"#playground-binding.scala/virtual-list"
-  override def scalaFiddle: Option[String] = None
+  override def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/JuZsaoP/0")
 }
 
