@@ -58,7 +58,8 @@ object App extends JSApp {
     new loancalculator.ui(),
     new treeview.ui(),
     new dragme.ui(),
-    new virtuallist.ui()
+    new virtuallist.ui(),
+    new svgeditor.ui()
   )
   val sourceURL = "https://github.com/ccamel/playground-binding.scala"
 
