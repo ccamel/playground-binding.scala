@@ -59,9 +59,37 @@ class ui extends ShowCase {
             model.draw().bind
             }
           </g>
+          <g data:id="layer-graphics">
+            {coords.bind}
+          </g>
         </g>
       </svg>
     </div>
+  }
+
+  @dom def coords(): Binding[SVGElement] = {
+    implicit def toSvgTags(a: dom.Runtime.TagsAndTags2.type) = scalatags.JsDom.svgTags
+
+    val (x, y) = (Var(0), Var(0))
+
+    @dom def render(): Binding[SVGTextElement] = {
+      <text data:x="10"
+            data:y="20">
+        ({x.bind.toString}, {y.bind.toString})
+      </text>
+    }
+
+    events.bind match {
+      case Some(e:MouseEvent) ⇒
+        x.value = e.pageX.toInt
+        y.value = e.pageY.toInt
+
+      case _ ⇒
+    }
+
+    <g data:id="coords">
+      {render.bind}
+    </g>
   }
 
   override def install() {
