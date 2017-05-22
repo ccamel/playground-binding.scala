@@ -53,6 +53,18 @@ class ui extends ShowCase {
 
       <svg data:width="100%"
            data:height="600">
+
+        <defs>
+          <pattern data:id="smallGrid" data:width="10" data:height="10" data:patternUnits="userSpaceOnUse">
+            <path data:d="M 10 0 L 0 0 0 10" data:fill="none" data:stroke="gray" data:stroke-width="0.5"/>
+          </pattern>
+          <pattern data:id="grid" data:width="100" data:height="100" data:patternUnits="userSpaceOnUse">
+            <rect data:width="100" data:height="100" data:fill="url(#smallGrid)"/>
+            <path data:d="M 100 0 L 0 0 0 100" data:fill="none" data:stroke="gray" data:stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect data:width="100%" data:height="100%" data:fill="url(#grid)" />
+
         <g data:id="layers">
           <g data:id="layer-canvas">
             {
