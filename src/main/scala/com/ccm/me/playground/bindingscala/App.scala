@@ -173,6 +173,7 @@ object App extends JSApp {
           © 2017 Chris Camel - MIT License
           <div class="right footer-icons">
             <a href="https://github.com/ccamel"><i class="fa fa-github fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/christophe-camel-3b796113b"><i class="fa fa-linkedin-square fa-2x"></i></a>
           </div>
         </div>
       </div>
