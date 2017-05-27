@@ -76,7 +76,7 @@ class ui extends ShowCase {
     {calc.bind.operators.headOption.map {
       case Plus() => "+"
       case Minus() => "-"
-      case Multiply() => "*"
+      case Multiply() => "x"
       case Divide() => "/"
       case _ => " "
     }.getOrElse(" ")}
