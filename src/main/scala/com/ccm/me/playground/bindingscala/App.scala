@@ -98,7 +98,7 @@ object App extends JSApp {
     <meta charset="UTF-8"/>
     <title>{showCase.bind.name}</title>
 
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons|VT323" rel="stylesheet"/>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons|VT323|Cutive+Mono" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
     <script src="https://use.fontawesome.com/e20ea8441d.js"></script>
     <style>
