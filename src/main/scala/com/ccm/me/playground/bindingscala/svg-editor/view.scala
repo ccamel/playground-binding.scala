@@ -34,6 +34,16 @@ trait View {
   def draw(): Binding[SVGElement]
 }
 
+trait Dragger extends Function1[MouseEvent, Unit] {
+
+}
+
+object Dragger {
+  def noOp = new Dragger {
+    override def apply(v1: MouseEvent): Unit = ???
+  }
+}
+
 object View {
   implicit def makeIntellijHappy[T <: org.scalajs.dom.raw.Node](x: scala.xml.Node): Binding[T] = throw new AssertionError("This should never execute.")
 
@@ -43,15 +53,21 @@ object View {
 
   implicit def rectShapeToDrawable(s: RectShape)(implicit events: Var[Option[Event]]) = new View {
     val selected = Var(false)
+    val dragger : Var[Option[Dragger]] = Var(None)
 
     onEvents.watch()
 
-
     @dom def onEvents() = {
       events.bind match {
-        case Some(e:MouseEvent) if (e.buttons & 0x01) == 1 ⇒
-          selected.value = false
-
+        case Some(e:MouseEvent)  ⇒
+          // rehydrate dragger if installed
+          dragger.value match {
+            case Some(v) ⇒ v.apply(e)
+            case None ⇒
+              if((e.buttons & 0x01) == 1) {
+                selected.value = false
+              }
+          }
         case _ ⇒
       }
     }
@@ -69,7 +85,8 @@ object View {
     @dom def drawShape =
       <svg data:width={s.w.bind}
            data:height={s.h.bind}
-           onclick={_: Event ⇒ selected.value = true}>
+           onclick={_: Event ⇒ selected.value = true}
+           onmousedown={installDragger("MOVE") _}>
         <rect data:width={s.w.bind}
               data:height={s.h.bind}
               data:style="fill:lightblue;stroke:blue;stroke-width:2;fill-opacity:1;stroke-opacity:1"/>
@@ -98,7 +115,8 @@ object View {
             <circle data:cx={(s.w.bind * dx).toInt}
                     data:cy={(s.h.bind * dy).toInt}
                     data:r="5"
-                    data:style={s"cursor: ${cursor}-resize;fill-opacity:0.5;"}/>
+                    data:style={s"cursor: ${cursor}-resize;fill-opacity:0.5;"}
+                    onmousedown={installDragger(d) _}/>
         }
       } else {
         <!-- empty -->
@@ -110,6 +128,62 @@ object View {
          data:fill="lightblue">
         {handles.bind}
       </g>
+    }
+
+    private def installDragger(action: String)(initial: MouseEvent) = {
+      println("Installing...")
+      dragger.value = Some(
+        new Dragger {
+          var x = initial.clientX.toInt
+          var y = initial.clientY.toInt
+
+          override def apply(e: MouseEvent): Unit = {
+            if((e.buttons & 0x01) == 1) {
+              val (nx, ny) = (e.clientX.toInt, e.clientY.toInt)
+              val (dx, dy) = (nx - x, ny - y)
+
+              action match {
+                case "N" ⇒
+                  s.y.value += dy
+                  s.h.value -= dy
+                case "S" ⇒
+                  s.h.value += dy
+                case "E" ⇒
+                  s.w.value += dx
+                case "W" ⇒
+                  s.x.value += dx
+                  s.w.value -= dx
+                case "NE" ⇒
+                  s.y.value += dy
+                  s.w.value += +dx
+                  s.h.value += -dy
+                case "NW" ⇒
+                  s.x.value += dx
+                  s.y.value += dy
+                  s.w.value += -dx
+                  s.h.value += -dy
+                case "SE" ⇒
+                  s.w.value += dx
+                  s.h.value += dy
+                case "SW" ⇒
+                  s.x.value += dx
+                  s.w.value += -dx
+                  s.h.value += dy
+                case "MOVE" ⇒
+                  s.x.value += dx
+                  s.y.value += dy
+                case _ ⇒
+              }
+              x = nx
+              y = ny
+            } else {
+              // auto desinstall
+              dragger.value = None
+            }
+
+            e.stopPropagation()
+          }
+        })
     }
   }
 
