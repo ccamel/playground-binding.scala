@@ -141,6 +141,20 @@ elements bound to the list items are refreshed accordingly.
   <kbd><img src="doc/assets/showcase-virtual-list.png"></kbd>
 </p> 
  
+### SVG-editor
+ 
+The SVG-editor showcase is an improvement of the *Drag-me* showcase using full SVG shapes for drawing.  
+
+It allows the user to select, move and resize a simple rectangle form (more to come).
+
+<p align="center">
+  <b>Links:</b><br>
+  <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/svg-editor">Play</a>  |
+  <br><br>
+  <kbd><img src="doc/assets/showcase-svg-editor.png"></kbd>
+</p>
+ 
+ 
 ## Building and Running
 
 The build can be launched with:
