@@ -137,6 +137,7 @@ elements bound to the list items are refreshed accordingly.
 <p align="center">
   <b>Links:</b><br>
   <a href="https://ccamel.github.io/playground-binding.scala/index.html#playground-binding.scala/virtual-list">Play</a>  |
+  <a href="https://scalafiddle.io/sf/JuZsaoP/0">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-virtual-list.png"></kbd>
 </p> 
