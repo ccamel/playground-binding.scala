@@ -86,7 +86,8 @@ object View {
       <svg data:width={s.w.bind}
            data:height={s.h.bind}
            onclick={_: Event ⇒ selected.value = true}
-           onmousedown={installDragger("MOVE") _}>
+           onmousedown={installDragger("MOVE") _}
+           data:style={if(selected.bind) "cursor: move" else "cursor: auto"}>
         <rect data:width={s.w.bind}
               data:height={s.h.bind}
               data:style="fill:lightblue;stroke:blue;stroke-width:2;fill-opacity:1;stroke-opacity:1"/>
