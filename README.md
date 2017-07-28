@@ -1,6 +1,6 @@
 playground-binding.scala
 ========================
-[![MIT](https://img.shields.io/badge/licence-MIT-lightgrey.svg?style=flat)](https://tldrlegal.com/license/mit-license) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala) [![Scala.js](https://www.scala-js.org/assets/badges/scalajs-0.6.15.svg)](https://www.scala-js.org)
+[![MIT](https://img.shields.io/badge/licence-MIT-lightgrey.svg?style=flat)](https://tldrlegal.com/license/mit-license) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala) [![Scala.js](https://www.scala-js.org/assets/badges/scalajs-0.6.17.svg)](https://www.scala-js.org)
 
 > My playground I use for playing with fancy and exciting technologies. This one's for [scala], [scalajs] and [binding.scala].
 
