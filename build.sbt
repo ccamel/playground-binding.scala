@@ -12,7 +12,7 @@ version := "0.1.0"
 developers := List(
   Developer(
     "ccamel",
-    "杨Chris Camel",
+    "Chris Camel",
     "camel.christophe@gmail.com",
     url("https://github.com/ccamel")
   )
