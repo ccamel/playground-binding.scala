@@ -50,7 +50,6 @@ trait ShowCase extends Render with Name {
 object App extends JSApp {
   val $ = js.Dynamic.global.$
   val homeShowCase = new home.ui()
-  val showCase: Var[ShowCase] = Var(homeShowCase)
   val showCases = Seq(
     homeShowCase,
     new calc.ui(),
@@ -63,10 +62,15 @@ object App extends JSApp {
   )
   val sourceURL = "https://github.com/ccamel/playground-binding.scala"
 
-  Route.watchHash(showCase)(new Route.Format[ShowCase] {
-    override def unapply(hashText: String) = Some(showCases.find(_.name == hashText.drop(1)).getOrElse(homeShowCase))
-    override def apply(showCase: ShowCase): String = showCase.name
-  })
+  val route: Route.Hash[ShowCase] = Route.Hash[ShowCase](homeShowCase)(
+    new Route.Format[ShowCase] {
+      override def unapply(hashText: String): Option[ShowCase] = Some(showCases.find(_.name == hashText.drop(1)).getOrElse(homeShowCase))
+      override def apply(state: ShowCase): String = state.name
+    }
+  )
+  val showCase: Var[ShowCase] = route.state
+
+  route.watch()
 
   def main(): Unit = {
     dom.render(document.head, bootCss)
