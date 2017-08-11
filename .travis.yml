@@ -13,7 +13,7 @@ branches:
     - gh-pages
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION fastOptJS test dist
+  - sbt ++$TRAVIS_SCALA_VERSION -J-Xms1024M fastOptJS test dist
 
 scripts:
 # Tricks to avoid unnecessary cache updates, from
