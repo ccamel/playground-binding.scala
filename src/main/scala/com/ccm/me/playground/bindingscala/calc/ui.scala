@@ -139,10 +139,9 @@ class ui extends ShowCase {
       case "MS" => ("green lighten-5 green-text", MS())
       case _ => ("", NoOp())
     }
-    val c = calc.bind
-    val disabled = if (c.isDefinedAt(op._2)) "" else "disabled"
-    <a class={s"btn ${op._1} ${disabled} waves-effect waves-light"}
-       onclick={_: Event => calc.value = c(op._2)}>
+    def disabled = Binding { if (calc.bind.isDefinedAt(op._2)) "" else "disabled" }
+    <a class={s"btn ${op._1} ${disabled.bind} waves-effect waves-light"}
+       onclick={_: Event => calc.value = calc.value(op._2)}>
       {label}
     </a>
   }
