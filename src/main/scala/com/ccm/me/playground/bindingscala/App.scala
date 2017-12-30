@@ -47,7 +47,9 @@ trait ShowCase extends Render with Name {
   def install(): Unit = {}
 }
 
-object App extends JSApp {
+object App {
+  protected def getInstance(): this.type = this
+
   val $ = js.Dynamic.global.$
   val homeShowCase = new home.ui()
   val showCases = Seq(
@@ -72,7 +74,7 @@ object App extends JSApp {
 
   route.watch()
 
-  def main(): Unit = {
+  def main(args: Array[String]): Unit = {
     dom.render(document.head, bootCss)
     dom.render(document.getElementById("application"), bootView)
 
