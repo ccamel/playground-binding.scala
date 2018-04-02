@@ -7,7 +7,6 @@ enablePlugins(ScalaJSPlugin)
 
 organization := "com.me"
 name := "playground-binding.scala"
-version := "0.1.0"
 
 developers := List(
   Developer(
@@ -54,4 +53,3 @@ dist := {
 }
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
-
