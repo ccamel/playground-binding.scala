@@ -176,7 +176,7 @@ object App {
     <footer class="page-footer light-blue darken-2">
       <div class="container">
         <div class="row">
-          © 2017 Chris Camel - MIT License
+          © 2017 Chris Camel - MIT License (v. {AppInfo.version})
           <div class="right footer-icons">
             <a href="https://github.com/ccamel"><i class="fa fa-github fa-2x"></i></a>
             <a href="https://www.linkedin.com/in/christophe-camel"><i class="fa fa-linkedin-square fa-2x"></i></a>
