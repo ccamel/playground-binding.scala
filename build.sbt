@@ -1,7 +1,9 @@
-import java.nio.file.Files.newDirectoryStream
+import java.nio.file.Files.{copy, deleteIfExists, newDirectoryStream, walk}
 import java.nio.file.StandardCopyOption.REPLACE_EXISTING
-import java.nio.file.{Files, Path, Paths}
+import java.nio.file.{Path, Paths}
 import java.util.function.Consumer
+
+import scala.collection.JavaConversions.asScalaIterator
 
 enablePlugins(ScalaJSPlugin)
 
@@ -34,22 +36,35 @@ scalaJSUseMainModuleInitializer := true
 lazy val dist = taskKey[Unit]("Make distribution")
 
 dist := {
-  implicit def toPath (filename: String): Path = Paths.get(filename)
+  implicit def toPath(filename: String): Path = Paths.get(filename)
 
-  val srcDir: Path = "target/scala-2.12"
-  val destDir: Path = "dist"
-  val jsDir = destDir.resolve("js")
+  val targetDir: Path = "target"
+  val srcDir: Path = targetDir.resolve("scala-2.12")
+  val distDir: Path = "dist"
+  val jsDir = distDir.resolve("js")
+  val archive = targetDir.resolve("playground-binding.scala.zip")
 
-  println(s"Making distribution to $destDir")
+  streams.value.log.info(s"Make distribution to $distDir")
 
-  newDirectoryStream(srcDir,"playground*.js").forEach( new Consumer[Path]() {
+  newDirectoryStream(srcDir, "playground*.js").forEach(new Consumer[Path]() {
     override def accept(f: Path): Unit = {
       val dst = jsDir.resolve(f.getFileName)
       dst.toFile.mkdirs()
-      Files.copy(f, dst, REPLACE_EXISTING)
+      copy(f, dst, REPLACE_EXISTING)
     }
-  } )
-  Files.copy("index.html", destDir.resolve("index.html"), REPLACE_EXISTING)
+  })
+  copy("index.html", distDir.resolve("index.html"), REPLACE_EXISTING)
+
+  streams.value.log.info(s"Create archive")
+
+  deleteIfExists(archive)
+
+  val files = walk(distDir)
+    .iterator()
+    .toTraversable
+    .map { it => (it.toFile, distDir.relativize(it).toString) }
+
+  sbt.IO.zip(files, archive.toFile)
 }
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
