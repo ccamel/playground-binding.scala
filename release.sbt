@@ -1,5 +1,5 @@
-import sbtrelease.ReleaseStateTransformations._
 import sbtrelease.ReleasePlugin.runtimeVersion
+import sbtrelease.ReleaseStateTransformations._
 
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
@@ -9,6 +9,7 @@ releaseProcess := Seq[ReleaseStep](
   setReleaseVersion,
   commitReleaseVersion,
   tagRelease,
+  pushChanges,
   // publishArtifacts,
   setNextVersion,
   commitNextVersion
