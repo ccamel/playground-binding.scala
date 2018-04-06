@@ -1,6 +1,10 @@
 playground-binding.scala
 ========================
-[![MIT](https://img.shields.io/badge/licence-MIT-lightgrey.svg?style=flat)](https://tldrlegal.com/license/mit-license) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala) [![Scala.js](https://www.scala-js.org/assets/badges/scalajs-0.6.22.svg)](https://www.scala-js.org)
+[![release](https://img.shields.io/github/release/ccamel/playground-binding.scala.svg?style=flat)](https://github.com/ccamel/playground-binding.scala/releases/tag/v0.1) [![licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg?style=flat)](https://tldrlegal.com/license/mit-license) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala)
+
+[![Scala](https://img.shields.io/badge/scala-2.12.4-blue.svg?style=flat)](https://www.scala-lang.org/) [![Scala.js](https://img.shields.io/badge/scala.js-0.6.22-blue.svg?style=flat)](https://www.scala-js.org) [![Binding.scala](https://img.shields.io/badge/binding.scala-11.0.1-blue.svg?style=flat)](https://github.com/ThoughtWorksInc/Binding.scala)
+
+[![play](https://img.shields.io/badge/%F0%9F%8E%BE-Play%20with%20demo-7799cc.svg?style=flat)](https://ccamel.github.io/playground-binding.scala/index.html)
 
 > My playground I use for playing with fancy and exciting technologies. This one's for [scala], [scalajs] and [binding.scala].
 
