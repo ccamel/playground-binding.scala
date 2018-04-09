@@ -83,7 +83,7 @@ var $linkingInfo = {
 
   "assumingES6": false,
 
-  "linkerVersion": "0.6.21",
+  "linkerVersion": "0.6.22",
   "globalThis": this
 };
 $g["Object"]["freeze"]($linkingInfo);
@@ -3414,7 +3414,8 @@ $c_Lorg_scalajs_testcommon_ExecuteRequest.prototype.$classData = $d_Lorg_scalajs
 /** @constructor */
 function $c_Lorg_scalajs_testcommon_FrameworkInfo() {
   $c_O.call(this);
-  this.name$1 = null;
+  this.implName$1 = null;
+  this.displayName$1 = null;
   this.fingerprints$1 = null
 }
 $c_Lorg_scalajs_testcommon_FrameworkInfo.prototype = new $h_O();
@@ -3424,8 +3425,9 @@ function $h_Lorg_scalajs_testcommon_FrameworkInfo() {
   /*<skip>*/
 }
 $h_Lorg_scalajs_testcommon_FrameworkInfo.prototype = $c_Lorg_scalajs_testcommon_FrameworkInfo.prototype;
-$c_Lorg_scalajs_testcommon_FrameworkInfo.prototype.init___T__sci_List = (function(name, fingerprints) {
-  this.name$1 = name;
+$c_Lorg_scalajs_testcommon_FrameworkInfo.prototype.init___T__T__sci_List = (function(implName, displayName, fingerprints) {
+  this.implName$1 = implName;
+  this.displayName$1 = displayName;
   this.fingerprints$1 = fingerprints;
   return this
 });
@@ -3486,121 +3488,109 @@ var $d_Lorg_scalajs_testcommon_FrameworkMessage = new $TypeData().initClass({
 });
 $c_Lorg_scalajs_testcommon_FrameworkMessage.prototype.$classData = $d_Lorg_scalajs_testcommon_FrameworkMessage;
 /** @constructor */
-function $c_Lorg_scalajs_testcommon_JSMasterEndpoints$() {
+function $c_Lorg_scalajs_testcommon_FutureUtil$() {
+  $c_O.call(this)
+}
+$c_Lorg_scalajs_testcommon_FutureUtil$.prototype = new $h_O();
+$c_Lorg_scalajs_testcommon_FutureUtil$.prototype.constructor = $c_Lorg_scalajs_testcommon_FutureUtil$;
+/** @constructor */
+function $h_Lorg_scalajs_testcommon_FutureUtil$() {
+  /*<skip>*/
+}
+$h_Lorg_scalajs_testcommon_FutureUtil$.prototype = $c_Lorg_scalajs_testcommon_FutureUtil$.prototype;
+$c_Lorg_scalajs_testcommon_FutureUtil$.prototype.init___ = (function() {
+  return this
+});
+$c_Lorg_scalajs_testcommon_FutureUtil$.prototype.futureFromTry__s_util_Try__s_concurrent_Future = (function(x) {
+  var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
+  $f_s_concurrent_Promise__complete__s_util_Try__s_concurrent_Promise(promise, x);
+  return promise
+});
+var $d_Lorg_scalajs_testcommon_FutureUtil$ = new $TypeData().initClass({
+  Lorg_scalajs_testcommon_FutureUtil$: 0
+}, false, "org.scalajs.testcommon.FutureUtil$", {
+  Lorg_scalajs_testcommon_FutureUtil$: 1,
+  O: 1
+});
+$c_Lorg_scalajs_testcommon_FutureUtil$.prototype.$classData = $d_Lorg_scalajs_testcommon_FutureUtil$;
+var $n_Lorg_scalajs_testcommon_FutureUtil$ = (void 0);
+function $m_Lorg_scalajs_testcommon_FutureUtil$() {
+  if ((!$n_Lorg_scalajs_testcommon_FutureUtil$)) {
+    $n_Lorg_scalajs_testcommon_FutureUtil$ = new $c_Lorg_scalajs_testcommon_FutureUtil$().init___()
+  };
+  return $n_Lorg_scalajs_testcommon_FutureUtil$
+}
+/** @constructor */
+function $c_Lorg_scalajs_testcommon_JSEndpoints$() {
   $c_O.call(this);
-  this.newRunner$1 = null;
-  this.runnerDone$1 = null;
+  this.detectFrameworks$1 = null;
+  this.createMasterRunner$1 = null;
+  this.createSlaveRunner$1 = null;
+  this.msgSlave$1 = null;
+  this.msgMaster$1 = null;
   this.tasks$1 = null;
-  this.msg$1 = null
-}
-$c_Lorg_scalajs_testcommon_JSMasterEndpoints$.prototype = new $h_O();
-$c_Lorg_scalajs_testcommon_JSMasterEndpoints$.prototype.constructor = $c_Lorg_scalajs_testcommon_JSMasterEndpoints$;
-/** @constructor */
-function $h_Lorg_scalajs_testcommon_JSMasterEndpoints$() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testcommon_JSMasterEndpoints$.prototype = $c_Lorg_scalajs_testcommon_JSMasterEndpoints$.prototype;
-$c_Lorg_scalajs_testcommon_JSMasterEndpoints$.prototype.init___ = (function() {
-  $n_Lorg_scalajs_testcommon_JSMasterEndpoints$ = this;
-  this.newRunner$1 = $m_Lorg_scalajs_testcommon_RPCEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(2, $m_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$(), $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$());
-  this.runnerDone$1 = $m_Lorg_scalajs_testcommon_RPCEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(3, $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$(), $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$());
-  var jsx$2 = $m_Lorg_scalajs_testcommon_RPCEndpoint$();
-  var evidence$3 = $m_Lorg_scalajs_testcommon_Serializer$TaskDefSerializer$();
-  var jsx$1 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
-  var evidence$3$1 = $m_Lorg_scalajs_testcommon_TaskInfo$TaskInfoSerializer$();
-  this.tasks$1 = jsx$2.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(4, jsx$1, new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$1));
-  this.msg$1 = $m_Lorg_scalajs_testcommon_MsgEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(5, $m_Lorg_scalajs_testcommon_FrameworkMessage$FrameworkMessageSerializer$());
-  return this
-});
-var $d_Lorg_scalajs_testcommon_JSMasterEndpoints$ = new $TypeData().initClass({
-  Lorg_scalajs_testcommon_JSMasterEndpoints$: 0
-}, false, "org.scalajs.testcommon.JSMasterEndpoints$", {
-  Lorg_scalajs_testcommon_JSMasterEndpoints$: 1,
-  O: 1
-});
-$c_Lorg_scalajs_testcommon_JSMasterEndpoints$.prototype.$classData = $d_Lorg_scalajs_testcommon_JSMasterEndpoints$;
-var $n_Lorg_scalajs_testcommon_JSMasterEndpoints$ = (void 0);
-function $m_Lorg_scalajs_testcommon_JSMasterEndpoints$() {
-  if ((!$n_Lorg_scalajs_testcommon_JSMasterEndpoints$)) {
-    $n_Lorg_scalajs_testcommon_JSMasterEndpoints$ = new $c_Lorg_scalajs_testcommon_JSMasterEndpoints$().init___()
-  };
-  return $n_Lorg_scalajs_testcommon_JSMasterEndpoints$
-}
-/** @constructor */
-function $c_Lorg_scalajs_testcommon_JSSlaveEndpoints$() {
-  $c_O.call(this);
-  this.newRunner$1 = null;
   this.execute$1 = null;
-  this.stopSlave$1 = null;
-  this.msg$1 = null
+  this.done$1 = null
 }
-$c_Lorg_scalajs_testcommon_JSSlaveEndpoints$.prototype = new $h_O();
-$c_Lorg_scalajs_testcommon_JSSlaveEndpoints$.prototype.constructor = $c_Lorg_scalajs_testcommon_JSSlaveEndpoints$;
+$c_Lorg_scalajs_testcommon_JSEndpoints$.prototype = new $h_O();
+$c_Lorg_scalajs_testcommon_JSEndpoints$.prototype.constructor = $c_Lorg_scalajs_testcommon_JSEndpoints$;
 /** @constructor */
-function $h_Lorg_scalajs_testcommon_JSSlaveEndpoints$() {
+function $h_Lorg_scalajs_testcommon_JSEndpoints$() {
   /*<skip>*/
 }
-$h_Lorg_scalajs_testcommon_JSSlaveEndpoints$.prototype = $c_Lorg_scalajs_testcommon_JSSlaveEndpoints$.prototype;
-$c_Lorg_scalajs_testcommon_JSSlaveEndpoints$.prototype.init___ = (function() {
-  $n_Lorg_scalajs_testcommon_JSSlaveEndpoints$ = this;
-  this.newRunner$1 = $m_Lorg_scalajs_testcommon_RPCEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(2, $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$(), $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$());
+$h_Lorg_scalajs_testcommon_JSEndpoints$.prototype = $c_Lorg_scalajs_testcommon_JSEndpoints$.prototype;
+$c_Lorg_scalajs_testcommon_JSEndpoints$.prototype.init___ = (function() {
+  $n_Lorg_scalajs_testcommon_JSEndpoints$ = this;
   var jsx$2 = $m_Lorg_scalajs_testcommon_RPCEndpoint$();
-  var jsx$1 = $m_Lorg_scalajs_testcommon_ExecuteRequest$ExecuteRequestSerializer$();
-  var evidence$3 = $m_Lorg_scalajs_testcommon_TaskInfo$TaskInfoSerializer$();
-  this.execute$1 = jsx$2.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(3, jsx$1, new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3));
-  this.stopSlave$1 = $m_Lorg_scalajs_testcommon_RPCEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(4, $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$(), $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$());
-  this.msg$1 = $m_Lorg_scalajs_testcommon_MsgEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(5, $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$());
+  var evidence$3 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
+  var evidence$3$1 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
+  var jsx$1 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$1);
+  var evidence$4 = $m_Lorg_scalajs_testcommon_FrameworkInfo$FrameworkInfoSerializer$();
+  var evidence$3$2 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$5().init___Lorg_scalajs_testcommon_Serializer(evidence$4);
+  this.detectFrameworks$1 = jsx$2.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(2, jsx$1, new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$2));
+  this.createMasterRunner$1 = $m_Lorg_scalajs_testcommon_RPCEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(3, $m_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$(), $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$());
+  this.createSlaveRunner$1 = $m_Lorg_scalajs_testcommon_RPCEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(4, $m_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$(), $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$());
+  var jsx$3 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
+  var evidence$1 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
+  this.msgSlave$1 = jsx$3.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(5, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1));
+  var jsx$4 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
+  var evidence$1$1 = $m_Lorg_scalajs_testcommon_FrameworkMessage$FrameworkMessageSerializer$();
+  this.msgMaster$1 = jsx$4.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(6, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$1));
+  var jsx$6 = $m_Lorg_scalajs_testcommon_RPCEndpoint$();
+  var evidence$3$3 = $m_Lorg_scalajs_testcommon_Serializer$TaskDefSerializer$();
+  var evidence$1$2 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$3);
+  var jsx$5 = new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$2);
+  var evidence$3$4 = $m_Lorg_scalajs_testcommon_TaskInfo$TaskInfoSerializer$();
+  this.tasks$1 = jsx$6.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(7, jsx$5, new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$4));
+  var jsx$8 = $m_Lorg_scalajs_testcommon_RPCEndpoint$();
+  var evidence$1$3 = $m_Lorg_scalajs_testcommon_ExecuteRequest$ExecuteRequestSerializer$();
+  var jsx$7 = new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$3);
+  var evidence$3$5 = $m_Lorg_scalajs_testcommon_TaskInfo$TaskInfoSerializer$();
+  this.execute$1 = jsx$8.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(8, jsx$7, new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$5));
+  var jsx$9 = $m_Lorg_scalajs_testcommon_RPCEndpoint$();
+  var evidence$1$4 = $m_Lorg_scalajs_testcommon_Serializer$UnitSerializer$();
+  this.done$1 = jsx$9.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_RPCEndpoint(9, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$4), $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$());
   return this
 });
-var $d_Lorg_scalajs_testcommon_JSSlaveEndpoints$ = new $TypeData().initClass({
-  Lorg_scalajs_testcommon_JSSlaveEndpoints$: 0
-}, false, "org.scalajs.testcommon.JSSlaveEndpoints$", {
-  Lorg_scalajs_testcommon_JSSlaveEndpoints$: 1,
+var $d_Lorg_scalajs_testcommon_JSEndpoints$ = new $TypeData().initClass({
+  Lorg_scalajs_testcommon_JSEndpoints$: 0
+}, false, "org.scalajs.testcommon.JSEndpoints$", {
+  Lorg_scalajs_testcommon_JSEndpoints$: 1,
   O: 1
 });
-$c_Lorg_scalajs_testcommon_JSSlaveEndpoints$.prototype.$classData = $d_Lorg_scalajs_testcommon_JSSlaveEndpoints$;
-var $n_Lorg_scalajs_testcommon_JSSlaveEndpoints$ = (void 0);
-function $m_Lorg_scalajs_testcommon_JSSlaveEndpoints$() {
-  if ((!$n_Lorg_scalajs_testcommon_JSSlaveEndpoints$)) {
-    $n_Lorg_scalajs_testcommon_JSSlaveEndpoints$ = new $c_Lorg_scalajs_testcommon_JSSlaveEndpoints$().init___()
+$c_Lorg_scalajs_testcommon_JSEndpoints$.prototype.$classData = $d_Lorg_scalajs_testcommon_JSEndpoints$;
+var $n_Lorg_scalajs_testcommon_JSEndpoints$ = (void 0);
+function $m_Lorg_scalajs_testcommon_JSEndpoints$() {
+  if ((!$n_Lorg_scalajs_testcommon_JSEndpoints$)) {
+    $n_Lorg_scalajs_testcommon_JSEndpoints$ = new $c_Lorg_scalajs_testcommon_JSEndpoints$().init___()
   };
-  return $n_Lorg_scalajs_testcommon_JSSlaveEndpoints$
+  return $n_Lorg_scalajs_testcommon_JSEndpoints$
 }
 /** @constructor */
-function $c_Lorg_scalajs_testcommon_JVMMasterEndpoints$() {
+function $c_Lorg_scalajs_testcommon_JVMEndpoints$() {
   $c_O.call(this);
-  this.msg$1 = null
-}
-$c_Lorg_scalajs_testcommon_JVMMasterEndpoints$.prototype = new $h_O();
-$c_Lorg_scalajs_testcommon_JVMMasterEndpoints$.prototype.constructor = $c_Lorg_scalajs_testcommon_JVMMasterEndpoints$;
-/** @constructor */
-function $h_Lorg_scalajs_testcommon_JVMMasterEndpoints$() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testcommon_JVMMasterEndpoints$.prototype = $c_Lorg_scalajs_testcommon_JVMMasterEndpoints$.prototype;
-$c_Lorg_scalajs_testcommon_JVMMasterEndpoints$.prototype.init___ = (function() {
-  $n_Lorg_scalajs_testcommon_JVMMasterEndpoints$ = this;
-  this.msg$1 = $m_Lorg_scalajs_testcommon_MsgEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(2, $m_Lorg_scalajs_testcommon_FrameworkMessage$FrameworkMessageSerializer$());
-  return this
-});
-var $d_Lorg_scalajs_testcommon_JVMMasterEndpoints$ = new $TypeData().initClass({
-  Lorg_scalajs_testcommon_JVMMasterEndpoints$: 0
-}, false, "org.scalajs.testcommon.JVMMasterEndpoints$", {
-  Lorg_scalajs_testcommon_JVMMasterEndpoints$: 1,
-  O: 1
-});
-$c_Lorg_scalajs_testcommon_JVMMasterEndpoints$.prototype.$classData = $d_Lorg_scalajs_testcommon_JVMMasterEndpoints$;
-var $n_Lorg_scalajs_testcommon_JVMMasterEndpoints$ = (void 0);
-function $m_Lorg_scalajs_testcommon_JVMMasterEndpoints$() {
-  if ((!$n_Lorg_scalajs_testcommon_JVMMasterEndpoints$)) {
-    $n_Lorg_scalajs_testcommon_JVMMasterEndpoints$ = new $c_Lorg_scalajs_testcommon_JVMMasterEndpoints$().init___()
-  };
-  return $n_Lorg_scalajs_testcommon_JVMMasterEndpoints$
-}
-/** @constructor */
-function $c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$() {
-  $c_O.call(this);
-  this.msg$1 = null;
+  this.msgSlave$1 = null;
+  this.msgMaster$1 = null;
   this.event$1 = null;
   this.logError$1 = null;
   this.logWarn$1 = null;
@@ -3608,47 +3598,59 @@ function $c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$() {
   this.logDebug$1 = null;
   this.logTrace$1 = null
 }
-$c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$.prototype = new $h_O();
-$c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$.prototype.constructor = $c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$;
+$c_Lorg_scalajs_testcommon_JVMEndpoints$.prototype = new $h_O();
+$c_Lorg_scalajs_testcommon_JVMEndpoints$.prototype.constructor = $c_Lorg_scalajs_testcommon_JVMEndpoints$;
 /** @constructor */
-function $h_Lorg_scalajs_testcommon_JVMSlaveEndpoints$() {
+function $h_Lorg_scalajs_testcommon_JVMEndpoints$() {
   /*<skip>*/
 }
-$h_Lorg_scalajs_testcommon_JVMSlaveEndpoints$.prototype = $c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$.prototype;
-$c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$.prototype.init___ = (function() {
-  $n_Lorg_scalajs_testcommon_JVMSlaveEndpoints$ = this;
-  this.msg$1 = $m_Lorg_scalajs_testcommon_MsgEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(2, $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$());
-  this.event$1 = $m_Lorg_scalajs_testcommon_MsgEndpoint$().apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(3, $m_Lorg_scalajs_testcommon_Serializer$EventSerializer$());
+$h_Lorg_scalajs_testcommon_JVMEndpoints$.prototype = $c_Lorg_scalajs_testcommon_JVMEndpoints$.prototype;
+$c_Lorg_scalajs_testcommon_JVMEndpoints$.prototype.init___ = (function() {
+  $n_Lorg_scalajs_testcommon_JVMEndpoints$ = this;
   var jsx$1 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
   var evidence$1 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
-  this.logError$1 = jsx$1.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(4, new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1));
+  this.msgSlave$1 = jsx$1.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(2, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1));
   var jsx$2 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
-  var evidence$1$1 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
-  this.logWarn$1 = jsx$2.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(5, new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$1));
+  var evidence$1$1 = $m_Lorg_scalajs_testcommon_FrameworkMessage$FrameworkMessageSerializer$();
+  this.msgMaster$1 = jsx$2.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(3, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$1));
   var jsx$3 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
-  var evidence$1$2 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
-  this.logInfo$1 = jsx$3.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(6, new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$2));
+  var evidence$1$2 = $m_Lorg_scalajs_testcommon_Serializer$EventSerializer$();
+  this.event$1 = jsx$3.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(4, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$2));
   var jsx$4 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
   var evidence$1$3 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
-  this.logDebug$1 = jsx$4.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(7, new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$3));
+  var evidence$1$4 = new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$3);
+  this.logError$1 = jsx$4.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(5, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$4));
   var jsx$5 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
-  var evidence$1$4 = $m_Lorg_scalajs_testcommon_Serializer$ThrowableSerializer$();
-  this.logTrace$1 = jsx$5.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(8, new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$4));
+  var evidence$1$5 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
+  var evidence$1$6 = new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$5);
+  this.logWarn$1 = jsx$5.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(6, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$6));
+  var jsx$6 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
+  var evidence$1$7 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
+  var evidence$1$8 = new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$7);
+  this.logInfo$1 = jsx$6.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(7, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$8));
+  var jsx$7 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
+  var evidence$1$9 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
+  var evidence$1$10 = new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$9);
+  this.logDebug$1 = jsx$7.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(8, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$10));
+  var jsx$8 = $m_Lorg_scalajs_testcommon_MsgEndpoint$();
+  var evidence$1$11 = $m_Lorg_scalajs_testcommon_Serializer$ThrowableSerializer$();
+  var evidence$1$12 = new $c_Lorg_scalajs_testcommon_LogElement$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$11);
+  this.logTrace$1 = jsx$8.apply__B__Lorg_scalajs_testcommon_Serializer__Lorg_scalajs_testcommon_MsgEndpoint(9, new $c_Lorg_scalajs_testcommon_RunMux$$anon$1().init___Lorg_scalajs_testcommon_Serializer(evidence$1$12));
   return this
 });
-var $d_Lorg_scalajs_testcommon_JVMSlaveEndpoints$ = new $TypeData().initClass({
-  Lorg_scalajs_testcommon_JVMSlaveEndpoints$: 0
-}, false, "org.scalajs.testcommon.JVMSlaveEndpoints$", {
-  Lorg_scalajs_testcommon_JVMSlaveEndpoints$: 1,
+var $d_Lorg_scalajs_testcommon_JVMEndpoints$ = new $TypeData().initClass({
+  Lorg_scalajs_testcommon_JVMEndpoints$: 0
+}, false, "org.scalajs.testcommon.JVMEndpoints$", {
+  Lorg_scalajs_testcommon_JVMEndpoints$: 1,
   O: 1
 });
-$c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$.prototype.$classData = $d_Lorg_scalajs_testcommon_JVMSlaveEndpoints$;
-var $n_Lorg_scalajs_testcommon_JVMSlaveEndpoints$ = (void 0);
-function $m_Lorg_scalajs_testcommon_JVMSlaveEndpoints$() {
-  if ((!$n_Lorg_scalajs_testcommon_JVMSlaveEndpoints$)) {
-    $n_Lorg_scalajs_testcommon_JVMSlaveEndpoints$ = new $c_Lorg_scalajs_testcommon_JVMSlaveEndpoints$().init___()
+$c_Lorg_scalajs_testcommon_JVMEndpoints$.prototype.$classData = $d_Lorg_scalajs_testcommon_JVMEndpoints$;
+var $n_Lorg_scalajs_testcommon_JVMEndpoints$ = (void 0);
+function $m_Lorg_scalajs_testcommon_JVMEndpoints$() {
+  if ((!$n_Lorg_scalajs_testcommon_JVMEndpoints$)) {
+    $n_Lorg_scalajs_testcommon_JVMEndpoints$ = new $c_Lorg_scalajs_testcommon_JVMEndpoints$().init___()
   };
-  return $n_Lorg_scalajs_testcommon_JVMSlaveEndpoints$
+  return $n_Lorg_scalajs_testcommon_JVMEndpoints$
 }
 /** @constructor */
 function $c_Lorg_scalajs_testcommon_LogElement() {
@@ -3725,7 +3727,9 @@ function $m_Lorg_scalajs_testcommon_MsgEndpoint$() {
 /** @constructor */
 function $c_Lorg_scalajs_testcommon_RPCCore() {
   $c_O.call(this);
+  this.ex$1 = null;
   this.pending$1 = null;
+  this.closeReason$1 = null;
   this.nextID$1 = null;
   this.endpoints$1 = null
 }
@@ -3738,12 +3742,6 @@ function $h_Lorg_scalajs_testcommon_RPCCore() {
 $h_Lorg_scalajs_testcommon_RPCCore.prototype = $c_Lorg_scalajs_testcommon_RPCCore.prototype;
 $c_Lorg_scalajs_testcommon_RPCCore.prototype.attach__Lorg_scalajs_testcommon_MsgEndpoint__F1__V = (function(ep, ex) {
   this.attach__p1__Lorg_scalajs_testcommon_RPCCore$BoundEndpoint__V(new $c_Lorg_scalajs_testcommon_RPCCore$$anon$1().init___Lorg_scalajs_testcommon_RPCCore__Lorg_scalajs_testcommon_MsgEndpoint__F1(this, ep, ex))
-});
-$c_Lorg_scalajs_testcommon_RPCCore.prototype.init___ = (function() {
-  this.pending$1 = new $c_ju_concurrent_ConcurrentHashMap().init___();
-  this.nextID$1 = new $c_ju_concurrent_atomic_AtomicLong().init___J($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong());
-  this.endpoints$1 = new $c_ju_concurrent_ConcurrentHashMap().init___();
-  return this
 });
 $c_Lorg_scalajs_testcommon_RPCCore.prototype.send__Lorg_scalajs_testcommon_MsgEndpoint__O__V = (function(ep, msg) {
   this.send__T__V(this.makeMsgMsg__p1__B__O__Lorg_scalajs_testcommon_Serializer__T(ep.opCode$1, msg, ep.msgSerializer$1))
@@ -3864,6 +3862,7 @@ $c_Lorg_scalajs_testcommon_RPCCore.prototype.handleMessage__T__V = (function(msg
         var lo = t$3.lo$2;
         var hi = t$3.hi$2;
         var ep$2 = x4.endpoint$1;
+        var jsx$4 = $m_Lorg_scalajs_testcommon_FutureUtil$();
         try {
           var s$3 = ep$2.reqSerializer$1;
           var jsx$3 = new $c_s_util_Success().init___O(s$3.deserialize__Ljava_io_DataInputStream__O($in))
@@ -3885,12 +3884,12 @@ $c_Lorg_scalajs_testcommon_RPCCore.prototype.handleMessage__T__V = (function(msg
             throw e$4
           }
         };
-        this.futureFromTry__p1__s_util_Try__s_concurrent_Future(jsx$3).flatMap__F1__s_concurrent_ExecutionContext__s_concurrent_Future(x4.exec$1, $m_s_concurrent_ExecutionContext$Implicits$().global__s_concurrent_ExecutionContext()).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4$1, callID, ep$2$1) {
+        jsx$4.futureFromTry__s_util_Try__s_concurrent_Future(jsx$3).flatMap__F1__s_concurrent_ExecutionContext__s_concurrent_Future(x4.exec$1, this.ex$1).onComplete__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4$1, callID, ep$2$1) {
           return (function(repl$2) {
             var repl = $as_s_util_Try(repl$2);
             this$4$1.send__T__V(this$4$1.makeReply__p1__J__s_util_Try__Lorg_scalajs_testcommon_Serializer__T(callID, repl, ep$2$1.respSerializer$1))
           })
-        })(this, new $c_sjsr_RuntimeLong().init___I__I(lo, hi), ep$2)), $m_s_concurrent_ExecutionContext$Implicits$().global__s_concurrent_ExecutionContext())
+        })(this, new $c_sjsr_RuntimeLong().init___I__I(lo, hi), ep$2)), this.ex$1)
       }
     }
   } finally {
@@ -3900,6 +3899,7 @@ $c_Lorg_scalajs_testcommon_RPCCore.prototype.handleMessage__T__V = (function(msg
 $c_Lorg_scalajs_testcommon_RPCCore.prototype.attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V = (function(ep, ex) {
   this.attachAsync__Lorg_scalajs_testcommon_RPCEndpoint__F1__V(ep, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, ex$2) {
     return (function(x$2) {
+      var jsx$2 = $m_Lorg_scalajs_testcommon_FutureUtil$();
       try {
         var jsx$1 = new $c_s_util_Success().init___O(ex$2.apply__O__O(x$2))
       } catch (e) {
@@ -3920,7 +3920,7 @@ $c_Lorg_scalajs_testcommon_RPCCore.prototype.attach__Lorg_scalajs_testcommon_RPC
           throw e
         }
       };
-      return $this.futureFromTry__p1__s_util_Try__s_concurrent_Future(jsx$1)
+      return jsx$2.futureFromTry__s_util_Try__s_concurrent_Future(jsx$1)
     })
   })(this, ex)))
 });
@@ -3955,11 +3955,6 @@ $c_Lorg_scalajs_testcommon_RPCCore.prototype.makeMsgMsg__p1__B__O__Lorg_scalajs_
   };
   var value = $makeNativeArrayWrapper($d_C.getArrayOf(), elems$2);
   return this$15.newString__AC__I__I__T(value, 0, value.u.length)
-});
-$c_Lorg_scalajs_testcommon_RPCCore.prototype.futureFromTry__p1__s_util_Try__s_concurrent_Future = (function(x) {
-  var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
-  $f_s_concurrent_Promise__complete__s_util_Try__s_concurrent_Promise(promise, x);
-  return promise
 });
 $c_Lorg_scalajs_testcommon_RPCCore.prototype.attach__p1__Lorg_scalajs_testcommon_RPCCore$BoundEndpoint__V = (function(bep) {
   var opCode = bep.endpoint__Lorg_scalajs_testcommon_Endpoint().opCode__B();
@@ -3996,6 +3991,13 @@ $c_Lorg_scalajs_testcommon_RPCCore.prototype.getPending$1__p1__Ljava_io_DataInpu
   var hi = t.hi$2;
   return $m_s_Option$().apply__O__s_Option(this.pending$1.remove__O__O(new $c_sjsr_RuntimeLong().init___I__I(lo, hi)))
 });
+$c_Lorg_scalajs_testcommon_RPCCore.prototype.init___s_concurrent_ExecutionContext = (function(ex) {
+  this.ex$1 = ex;
+  this.pending$1 = new $c_ju_concurrent_ConcurrentHashMap().init___();
+  this.nextID$1 = new $c_ju_concurrent_atomic_AtomicLong().init___J($m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong());
+  this.endpoints$1 = new $c_ju_concurrent_ConcurrentHashMap().init___();
+  return this
+});
 $c_Lorg_scalajs_testcommon_RPCCore.prototype.makeRPCMsg__p1__B__J__O__Lorg_scalajs_testcommon_Serializer__T = (function(opCode, id, payload, evidence$2) {
   var byteOut = new $c_Ljava_io_ByteArrayOutputStream().init___();
   var dataOut = new $c_Ljava_io_DataOutputStream().init___Ljava_io_OutputStream(byteOut);
@@ -4030,6 +4032,13 @@ $c_Lorg_scalajs_testcommon_RPCCore.prototype.makeRPCMsg__p1__B__J__O__Lorg_scala
   };
   var value = $makeNativeArrayWrapper($d_C.getArrayOf(), elems$2);
   return this$15.newString__AC__I__I__T(value, 0, value.u.length)
+});
+$c_Lorg_scalajs_testcommon_RPCCore.prototype.detach__Lorg_scalajs_testcommon_Endpoint__V = (function(ep) {
+  var old = $as_Lorg_scalajs_testcommon_RPCCore$BoundEndpoint(this.endpoints$1.remove__O__O(ep.opCode__B()));
+  var requirement = (old !== null);
+  if ((!requirement)) {
+    throw new $c_jl_IllegalArgumentException().init___T("requirement failed: Endpoint was not attached.")
+  }
 });
 /** @constructor */
 function $c_Lorg_scalajs_testcommon_RPCCore$() {
@@ -4126,8 +4135,173 @@ function $m_Lorg_scalajs_testcommon_RPCEndpoint$() {
   return $n_Lorg_scalajs_testcommon_RPCEndpoint$
 }
 /** @constructor */
+function $c_Lorg_scalajs_testcommon_RunMux() {
+  $c_O.call(this);
+  this.runId$1 = 0;
+  this.value$1 = null
+}
+$c_Lorg_scalajs_testcommon_RunMux.prototype = new $h_O();
+$c_Lorg_scalajs_testcommon_RunMux.prototype.constructor = $c_Lorg_scalajs_testcommon_RunMux;
+/** @constructor */
+function $h_Lorg_scalajs_testcommon_RunMux() {
+  /*<skip>*/
+}
+$h_Lorg_scalajs_testcommon_RunMux.prototype = $c_Lorg_scalajs_testcommon_RunMux.prototype;
+$c_Lorg_scalajs_testcommon_RunMux.prototype.init___I__O = (function(runId, value) {
+  this.runId$1 = runId;
+  this.value$1 = value;
+  return this
+});
+function $is_Lorg_scalajs_testcommon_RunMux(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lorg_scalajs_testcommon_RunMux)))
+}
+function $as_Lorg_scalajs_testcommon_RunMux(obj) {
+  return (($is_Lorg_scalajs_testcommon_RunMux(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "org.scalajs.testcommon.RunMux"))
+}
+function $isArrayOf_Lorg_scalajs_testcommon_RunMux(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lorg_scalajs_testcommon_RunMux)))
+}
+function $asArrayOf_Lorg_scalajs_testcommon_RunMux(obj, depth) {
+  return (($isArrayOf_Lorg_scalajs_testcommon_RunMux(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lorg.scalajs.testcommon.RunMux;", depth))
+}
+var $d_Lorg_scalajs_testcommon_RunMux = new $TypeData().initClass({
+  Lorg_scalajs_testcommon_RunMux: 0
+}, false, "org.scalajs.testcommon.RunMux", {
+  Lorg_scalajs_testcommon_RunMux: 1,
+  O: 1
+});
+$c_Lorg_scalajs_testcommon_RunMux.prototype.$classData = $d_Lorg_scalajs_testcommon_RunMux;
+/** @constructor */
+function $c_Lorg_scalajs_testcommon_RunMuxRPC() {
+  $c_O.call(this);
+  this.rpc$1 = null;
+  this.mux$1 = null
+}
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype = new $h_O();
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.constructor = $c_Lorg_scalajs_testcommon_RunMuxRPC;
+/** @constructor */
+function $h_Lorg_scalajs_testcommon_RunMuxRPC() {
+  /*<skip>*/
+}
+$h_Lorg_scalajs_testcommon_RunMuxRPC.prototype = $c_Lorg_scalajs_testcommon_RunMuxRPC.prototype;
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.init___Lorg_scalajs_testcommon_RPCCore = (function(rpc) {
+  this.rpc$1 = rpc;
+  this.mux$1 = new $c_scm_HashMap().init___();
+  return this
+});
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.newDispatchMap$1__p1__F1__ju_concurrent_ConcurrentHashMap = (function(attach$1) {
+  var dispatch = new $c_ju_concurrent_ConcurrentHashMap().init___();
+  attach$1.apply__O__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, dispatch$1) {
+    return (function(r$2) {
+      var r = $as_Lorg_scalajs_testcommon_RunMux(r$2);
+      var this$1 = $m_s_Option$().apply__O__s_Option(dispatch$1.get__O__O(r.runId$1));
+      if (this$1.isEmpty__Z()) {
+        throw new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Unknown run ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([r.runId$1])))
+      } else {
+        var arg1 = this$1.get__O();
+        var f = $as_F1(arg1);
+        return f.apply__O__O(r.value$1)
+      }
+    })
+  })(this, dispatch)));
+  return dispatch
+});
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.attachMux__p1__B__I__F1__F1__V = (function(opCode, runId, ex, attach) {
+  var dispatch = $as_ju_concurrent_ConcurrentHashMap(this.mux$1.getOrElseUpdate__O__F0__O(opCode, new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this, attach$1) {
+    return (function() {
+      return $this.newDispatchMap$1__p1__F1__ju_concurrent_ConcurrentHashMap(attach$1)
+    })
+  })(this, attach))));
+  var old = $as_F1(dispatch.put__O__O__O(runId, ex));
+  var requirement = (old === null);
+  if ((!requirement)) {
+    throw new $c_jl_IllegalArgumentException().init___T(("requirement failed: " + new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Duplicate endpoint for opcode ", " run ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([opCode, runId]))))
+  }
+});
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.send__Lorg_scalajs_testcommon_MsgEndpoint__I__O__V = (function(ep, runId, msg) {
+  this.rpc$1.send__Lorg_scalajs_testcommon_MsgEndpoint__O__V(ep, new $c_Lorg_scalajs_testcommon_RunMux().init___I__O(runId, msg))
+});
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.attach__Lorg_scalajs_testcommon_MsgEndpoint__I__F1__V = (function(ep, runId, ex) {
+  this.attachMux__p1__B__I__F1__F1__V(ep.opCode$1, runId, ex, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, ep$1) {
+    return (function(ex$2$2) {
+      var ex$2 = $as_F1(ex$2$2);
+      $this.rpc$1.attach__Lorg_scalajs_testcommon_MsgEndpoint__F1__V(ep$1, ex$2)
+    })
+  })(this, ep)))
+});
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.detach__Lorg_scalajs_testcommon_Endpoint__I__V = (function(ep, runId) {
+  var opCode = ep.opCode__B();
+  var this$1 = this.mux$1;
+  var x1 = this$1.get__O__s_Option(opCode);
+  if ((!$is_s_Some(x1))) {
+    var x = $m_s_None$();
+    if ((x === x1)) {
+      throw new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["No endpoint attached for opCode ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([opCode])))
+    };
+    throw new $c_s_MatchError().init___O(x1)
+  };
+  var x2 = $as_s_Some(x1);
+  var v = x2.value$2;
+  var dispatch = $as_ju_concurrent_ConcurrentHashMap(v);
+  var old = dispatch.remove__O__O(runId);
+  var requirement = (old !== null);
+  if ((!requirement)) {
+    throw new $c_jl_IllegalArgumentException().init___T(("requirement failed: " + new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["No endpoint attached for opCode ", " run ", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([opCode, runId]))))
+  };
+  var this$3 = dispatch.java$util$concurrent$ConcurrentHashMap$$inner$2;
+  if ($f_sc_MapLike__isEmpty__Z(this$3)) {
+    this.rpc$1.detach__Lorg_scalajs_testcommon_Endpoint__V(ep);
+    this.mux$1.$$minus$eq__O__scm_MapLike(opCode)
+  }
+});
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.attachAsync__Lorg_scalajs_testcommon_RPCEndpoint__I__F1__V = (function(ep, runId, ex) {
+  this.attachMux__p1__B__I__F1__F1__V(ep.opCode$1, runId, ex, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, ep$2) {
+    return (function(ex$3$2) {
+      var ex$3 = $as_F1(ex$3$2);
+      $this.rpc$1.attachAsync__Lorg_scalajs_testcommon_RPCEndpoint__F1__V(ep$2, ex$3)
+    })
+  })(this, ep)))
+});
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.attach__Lorg_scalajs_testcommon_RPCEndpoint__I__F1__V = (function(ep, runId, ex) {
+  this.attachAsync__Lorg_scalajs_testcommon_RPCEndpoint__I__F1__V(ep, runId, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, ex$1) {
+    return (function(x$2) {
+      var jsx$2 = $m_Lorg_scalajs_testcommon_FutureUtil$();
+      try {
+        var jsx$1 = new $c_s_util_Success().init___O(ex$1.apply__O__O(x$2))
+      } catch (e) {
+        var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+        if ((e$2 !== null)) {
+          matchEnd8: {
+            var jsx$1;
+            var o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
+            if ((!o11.isEmpty__Z())) {
+              var e$3 = $as_jl_Throwable(o11.get__O());
+              var jsx$1 = new $c_s_util_Failure().init___jl_Throwable(e$3);
+              break matchEnd8
+            };
+            throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+          }
+        } else {
+          var jsx$1;
+          throw e
+        }
+      };
+      return jsx$2.futureFromTry__s_util_Try__s_concurrent_Future(jsx$1)
+    })
+  })(this, ex)))
+});
+var $d_Lorg_scalajs_testcommon_RunMuxRPC = new $TypeData().initClass({
+  Lorg_scalajs_testcommon_RunMuxRPC: 0
+}, false, "org.scalajs.testcommon.RunMuxRPC", {
+  Lorg_scalajs_testcommon_RunMuxRPC: 1,
+  O: 1
+});
+$c_Lorg_scalajs_testcommon_RunMuxRPC.prototype.$classData = $d_Lorg_scalajs_testcommon_RunMuxRPC;
+/** @constructor */
 function $c_Lorg_scalajs_testcommon_RunnerArgs() {
   $c_O.call(this);
+  this.runID$1 = 0;
+  this.frameworkImpl$1 = null;
   this.args$1 = null;
   this.remoteArgs$1 = null
 }
@@ -4138,7 +4312,9 @@ function $h_Lorg_scalajs_testcommon_RunnerArgs() {
   /*<skip>*/
 }
 $h_Lorg_scalajs_testcommon_RunnerArgs.prototype = $c_Lorg_scalajs_testcommon_RunnerArgs.prototype;
-$c_Lorg_scalajs_testcommon_RunnerArgs.prototype.init___sci_List__sci_List = (function(args, remoteArgs) {
+$c_Lorg_scalajs_testcommon_RunnerArgs.prototype.init___I__T__sci_List__sci_List = (function(runID, frameworkImpl, args, remoteArgs) {
+  this.runID$1 = runID;
+  this.frameworkImpl$1 = frameworkImpl;
   this.args$1 = args;
   this.remoteArgs$1 = remoteArgs;
   return this
@@ -5272,20 +5448,368 @@ function $m_Lorg_scalajs_testinterface_TestUtils$() {
   return $n_Lorg_scalajs_testinterface_TestUtils$
 }
 /** @constructor */
-function $c_Lorg_scalajs_testinterface_internal_FrameworkDetector$() {
-  $c_O.call(this)
+function $c_Lorg_scalajs_testinterface_internal_Bridge$() {
+  $c_O.call(this);
+  this.org$scalajs$testinterface$internal$Bridge$$mux$f = null
 }
-$c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype = new $h_O();
-$c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_FrameworkDetector$;
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype = new $h_O();
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_Bridge$;
 /** @constructor */
-function $h_Lorg_scalajs_testinterface_internal_FrameworkDetector$() {
+function $h_Lorg_scalajs_testinterface_internal_Bridge$() {
   /*<skip>*/
 }
-$h_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype = $c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype;
-$c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.init___ = (function() {
+$h_Lorg_scalajs_testinterface_internal_Bridge$.prototype = $c_Lorg_scalajs_testinterface_internal_Bridge$.prototype;
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.init___ = (function() {
+  $n_Lorg_scalajs_testinterface_internal_Bridge$ = this;
+  this.org$scalajs$testinterface$internal$Bridge$$mux$f = new $c_Lorg_scalajs_testcommon_RunMuxRPC().init___Lorg_scalajs_testcommon_RPCCore($m_Lorg_scalajs_testinterface_internal_JSRPC$());
   return this
 });
-$c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.frameworkExistsInReflect$1__p1__T__Z = (function(name) {
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.createRunnerFun__p1__Z__F1 = (function(isMaster) {
+  return new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, isMaster$1) {
+    return (function(args$2) {
+      var args = $as_Lorg_scalajs_testcommon_RunnerArgs(args$2);
+      $m_Lorg_scalajs_testinterface_internal_FrameworkLoader$().loadFramework__T__Lsbt_testing_Framework(args.frameworkImpl$1);
+      var loader = new $c_Lorg_scalajs_testinterface_ScalaJSClassLoader().init___sjs_js_Dynamic($env.exportsNamespace);
+      var runID = args.runID$1;
+      if (isMaster$1) {
+        var this$3 = args.args$1;
+        var len = $f_sc_LinearSeqOptimized__length__I(this$3);
+        var result = $newArrayObject($d_T.getArrayOf(), [len]);
+        $f_sc_TraversableOnce__copyToArray__O__I__V(this$3, result, 0);
+        var this$5 = args.remoteArgs$1;
+        var len$1 = $f_sc_LinearSeqOptimized__length__I(this$5);
+        var result$1 = $newArrayObject($d_T.getArrayOf(), [len$1]);
+        $f_sc_TraversableOnce__copyToArray__O__I__V(this$5, result$1, 0);
+        var runner = new $c_Lorg_scalatest_tools_MasterRunner().init___AT__AT__jl_ClassLoader(result, result$1, loader)
+      } else {
+        var this$7 = args.args$1;
+        var len$2 = $f_sc_LinearSeqOptimized__length__I(this$7);
+        var result$2 = $newArrayObject($d_T.getArrayOf(), [len$2]);
+        $f_sc_TraversableOnce__copyToArray__O__I__V(this$7, result$2, 0);
+        var this$9 = args.remoteArgs$1;
+        var len$3 = $f_sc_LinearSeqOptimized__length__I(this$9);
+        var result$3 = $newArrayObject($d_T.getArrayOf(), [len$3]);
+        $f_sc_TraversableOnce__copyToArray__O__I__V(this$9, result$3, 0);
+        var send = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1, runID$1) {
+          return (function(msg$2) {
+            var msg = $as_T(msg$2);
+            $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.send__Lorg_scalajs_testcommon_MsgEndpoint__I__O__V($m_Lorg_scalajs_testcommon_JVMEndpoints$().msgSlave$1, runID$1, msg)
+          })
+        })($this, runID));
+        var runner = new $c_Lorg_scalatest_tools_SlaveRunner().init___AT__AT__jl_ClassLoader__F1(result$2, result$3, loader, send)
+      };
+      $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.attach__Lorg_scalajs_testcommon_RPCEndpoint__I__F1__V($m_Lorg_scalajs_testcommon_JSEndpoints$().tasks$1, runID, $m_Lorg_scalajs_testinterface_internal_Bridge$().tasksFun__p1__Lsbt_testing_Runner__F1(runner));
+      $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.attachAsync__Lorg_scalajs_testcommon_RPCEndpoint__I__F1__V($m_Lorg_scalajs_testcommon_JSEndpoints$().execute$1, runID, $m_Lorg_scalajs_testinterface_internal_Bridge$().executeFun__p1__I__Lsbt_testing_Runner__F1(runID, runner));
+      $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.attach__Lorg_scalajs_testcommon_RPCEndpoint__I__F1__V($m_Lorg_scalajs_testcommon_JSEndpoints$().done$1, runID, $m_Lorg_scalajs_testinterface_internal_Bridge$().doneFun__p1__I__Lsbt_testing_Runner__Z__F1(runID, runner, isMaster$1));
+      if (isMaster$1) {
+        $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.attach__Lorg_scalajs_testcommon_MsgEndpoint__I__F1__V($m_Lorg_scalajs_testcommon_JSEndpoints$().msgMaster$1, runID, $m_Lorg_scalajs_testinterface_internal_Bridge$().msgMasterFun__p1__I__Lsbt_testing_Runner__F1(runID, runner))
+      } else {
+        $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.attach__Lorg_scalajs_testcommon_MsgEndpoint__I__F1__V($m_Lorg_scalajs_testcommon_JSEndpoints$().msgSlave$1, runID, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1, runner$1) {
+          return (function(msg$3$2) {
+            var msg$3 = $as_T(msg$3$2);
+            runner$1.receiveMessage__T__s_Option(msg$3)
+          })
+        })($this, runner)))
+      }
+    })
+  })(this, isMaster))
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.doneFun__p1__I__Lsbt_testing_Runner__Z__F1 = (function(runID, runner, isMaster) {
+  return new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, runID$1, runner$1, isMaster$1) {
+    return (function(x$4$2) {
+      $asUnit(x$4$2);
+      try {
+        return runner$1.done__T()
+      } finally {
+        $m_Lorg_scalajs_testinterface_internal_Bridge$().detachRunnerCommands__p1__I__Z__V(runID$1, isMaster$1)
+      }
+    })
+  })(this, runID, runner, isMaster))
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.executeFun__p1__I__Lsbt_testing_Runner__F1 = (function(runID, runner) {
+  return new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, runID$1, runner$1) {
+    return (function(req$2) {
+      var req = $as_Lorg_scalajs_testcommon_ExecuteRequest(req$2);
+      var task = $m_Lorg_scalajs_testinterface_internal_TaskInfoBuilder$().attachTask__Lorg_scalajs_testcommon_TaskInfo__Lsbt_testing_Runner__Lsbt_testing_Task(req.taskInfo$1, runner$1);
+      var eventHandler = new $c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler().init___I(runID$1);
+      var this$2 = req.loggerColorSupport$1;
+      var this$1 = $m_sci_List$();
+      var bf = this$1.ReusableCBFInstance$2;
+      var jsx$2 = $as_sc_TraversableLike($f_sc_IterableLike__zipWithIndex__scg_CanBuildFrom__O(this$2, bf)).withFilter__F1__scg_FilterMonadic(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1) {
+        return (function(check$ifrefutable$1$2) {
+          var check$ifrefutable$1 = $as_T2(check$ifrefutable$1$2);
+          return (check$ifrefutable$1 !== null)
+        })
+      })($this)));
+      var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1, runID$2) {
+        return (function(x$2$2) {
+          var x$2 = $as_T2(x$2$2);
+          if ((x$2 !== null)) {
+            var withColor = x$2.$$und1$mcZ$sp__Z();
+            var i = $uI(x$2.$$und2__O());
+            return new $c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger().init___I__I__Z(runID$2, i, withColor)
+          } else {
+            throw new $c_s_MatchError().init___O(x$2)
+          }
+        })
+      })($this, runID$1));
+      var this$3 = $m_sci_List$();
+      var loggers = $as_sci_List(jsx$2.map__F1__scg_CanBuildFrom__O(jsx$1, this$3.ReusableCBFInstance$2));
+      var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
+      try {
+        var len = $f_sc_LinearSeqOptimized__length__I(loggers);
+        var result = $newArrayObject($d_Lsbt_testing_Logger.getArrayOf(), [len]);
+        $f_sc_TraversableOnce__copyToArray__O__I__V(loggers, result, 0);
+        task.execute__Lsbt_testing_EventHandler__ALsbt_testing_Logger__F1__V(eventHandler, result, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1, runner$3, promise$1) {
+          return (function(tasks$2) {
+            var tasks = $asArrayOf_Lsbt_testing_Task(tasks$2, 1);
+            this$3$1.cont$1__p1__ALsbt_testing_Task__Lsbt_testing_Runner__s_concurrent_Promise__s_concurrent_Promise(tasks, runner$3, promise$1)
+          })
+        })($this, runner$1, promise)))
+      } catch (e) {
+        var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+        if ((e$2 !== null)) {
+          matchEnd8: {
+            var o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
+            if ((!o11.isEmpty__Z())) {
+              var t = $as_jl_Throwable(o11.get__O());
+              $f_s_concurrent_Promise__tryFailure__jl_Throwable__Z(promise, t);
+              break matchEnd8
+            };
+            throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+          }
+        } else {
+          throw e
+        }
+      };
+      return promise
+    })
+  })(this, runID, runner))
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.msgMasterFun__p1__I__Lsbt_testing_Runner__F1 = (function(runID, runner) {
+  return new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, runID$1, runner$1) {
+    return (function(msg$2) {
+      var msg = $as_Lorg_scalajs_testcommon_FrameworkMessage(msg$2);
+      var this$1 = runner$1.receiveMessage__T__s_Option(msg.msg$1);
+      if ((!this$1.isEmpty__Z())) {
+        var arg1 = this$1.get__O();
+        var reply = $as_T(arg1);
+        var fm = new $c_Lorg_scalajs_testcommon_FrameworkMessage().init___J__T(msg.slaveId$1, reply);
+        $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.send__Lorg_scalajs_testcommon_MsgEndpoint__I__O__V($m_Lorg_scalajs_testcommon_JVMEndpoints$().msgMaster$1, runID$1, fm)
+      }
+    })
+  })(this, runID, runner))
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.detectFrameworksFun__p1__F1 = (function() {
+  return new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
+    return (function(names$2) {
+      var names = $as_sci_List(names$2);
+      var this$6 = $m_Lorg_scalajs_testinterface_internal_FrameworkLoader$().detectFrameworkNames__sci_List__sci_List(names);
+      var f = (function($this$1) {
+        return (function(maybeName$2) {
+          var maybeName = $as_s_Option(maybeName$2);
+          if (maybeName.isEmpty__Z()) {
+            return $m_s_None$()
+          } else {
+            var arg1 = maybeName.get__O();
+            var name = $as_T(arg1);
+            var framework = $m_Lorg_scalajs_testinterface_internal_FrameworkLoader$().loadFramework__T__Lsbt_testing_Framework(name);
+            var xs = framework.fingerprints__ALsbt_testing_Fingerprint();
+            var this$2 = $m_sci_List$();
+            var cbf = this$2.ReusableCBFInstance$2;
+            var b = cbf.apply__scm_Builder();
+            var x1 = xs.u.length;
+            switch (x1) {
+              case (-1): {
+                break
+              }
+              default: {
+                b.sizeHint__I__V(x1)
+              }
+            };
+            b.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_scm_WrappedArray$ofRef().init___AO(xs));
+            return new $c_s_Some().init___O(new $c_Lorg_scalajs_testcommon_FrameworkInfo().init___T__T__sci_List(name, "ScalaTest", $as_sci_List(b.result__O())))
+          }
+        })
+      })($this);
+      var this$5 = $m_sci_List$();
+      var bf = this$5.ReusableCBFInstance$2;
+      if ((bf === $m_sci_List$().ReusableCBFInstance$2)) {
+        if ((this$6 === $m_sci_Nil$())) {
+          var jsx$1 = $m_sci_Nil$()
+        } else {
+          var arg1$1 = this$6.head__O();
+          var h = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$1), $m_sci_Nil$());
+          var t = h;
+          var rest = $as_sci_List(this$6.tail__O());
+          while ((rest !== $m_sci_Nil$())) {
+            var arg1$2 = rest.head__O();
+            var nx = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$2), $m_sci_Nil$());
+            t.tl$5 = nx;
+            t = nx;
+            rest = $as_sci_List(rest.tail__O())
+          };
+          var jsx$1 = h
+        }
+      } else {
+        var b$1 = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$6, bf);
+        var these = this$6;
+        while ((!these.isEmpty__Z())) {
+          var arg1$3 = these.head__O();
+          b$1.$$plus$eq__O__scm_Builder(f(arg1$3));
+          these = $as_sci_List(these.tail__O())
+        };
+        var jsx$1 = b$1.result__O()
+      };
+      return $as_sci_List(jsx$1)
+    })
+  })(this))
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.start__V = (function() {
+  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSEndpoints$().detectFrameworks$1, this.detectFrameworksFun__p1__F1());
+  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSEndpoints$().createMasterRunner$1, this.createRunnerFun__p1__Z__F1(true));
+  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSEndpoints$().createSlaveRunner$1, this.createRunnerFun__p1__Z__F1(false))
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.cont$1__p1__ALsbt_testing_Task__Lsbt_testing_Runner__s_concurrent_Promise__s_concurrent_Promise = (function(tasks, runner$3, promise$1) {
+  try {
+    var elems$2 = null;
+    elems$2 = [];
+    var x1 = tasks.u.length;
+    switch (x1) {
+      case (-1): {
+        break
+      }
+    };
+    var i = 0;
+    var len = tasks.u.length;
+    while ((i < len)) {
+      var index = i;
+      var arg1 = tasks.get(index);
+      var x$3 = $as_Lsbt_testing_Task(arg1);
+      var elem = $m_Lorg_scalajs_testinterface_internal_TaskInfoBuilder$().detachTask__Lsbt_testing_Task__Lsbt_testing_Runner__Lorg_scalajs_testcommon_TaskInfo(x$3, runner$3);
+      var unboxedElem = ((elem === null) ? null : elem);
+      elems$2.push(unboxedElem);
+      i = ((1 + i) | 0)
+    };
+    var xs = $makeNativeArrayWrapper($d_Lorg_scalajs_testcommon_TaskInfo.getArrayOf(), elems$2);
+    var this$11 = $m_sci_List$();
+    var cbf = this$11.ReusableCBFInstance$2;
+    var b = cbf.apply__scm_Builder();
+    var x1$1 = xs.u.length;
+    switch (x1$1) {
+      case (-1): {
+        break
+      }
+      default: {
+        b.sizeHint__I__V(x1$1)
+      }
+    };
+    b.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_scm_WrappedArray$ofRef().init___AO(xs));
+    var result = new $c_s_util_Success().init___O($as_sci_List(b.result__O()))
+  } catch (e) {
+    var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+    if ((e$2 !== null)) {
+      matchEnd8: {
+        var result;
+        var o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
+        if ((!o11.isEmpty__Z())) {
+          var e$3 = $as_jl_Throwable(o11.get__O());
+          var result = new $c_s_util_Failure().init___jl_Throwable(e$3);
+          break matchEnd8
+        };
+        throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+      }
+    } else {
+      var result;
+      throw e
+    }
+  };
+  return $f_s_concurrent_Promise__complete__s_util_Try__s_concurrent_Promise(promise$1, result)
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.detachRunnerCommands__p1__I__Z__V = (function(runID, isMaster) {
+  this.org$scalajs$testinterface$internal$Bridge$$mux$f.detach__Lorg_scalajs_testcommon_Endpoint__I__V($m_Lorg_scalajs_testcommon_JSEndpoints$().tasks$1, runID);
+  this.org$scalajs$testinterface$internal$Bridge$$mux$f.detach__Lorg_scalajs_testcommon_Endpoint__I__V($m_Lorg_scalajs_testcommon_JSEndpoints$().execute$1, runID);
+  this.org$scalajs$testinterface$internal$Bridge$$mux$f.detach__Lorg_scalajs_testcommon_Endpoint__I__V($m_Lorg_scalajs_testcommon_JSEndpoints$().done$1, runID);
+  if (isMaster) {
+    this.org$scalajs$testinterface$internal$Bridge$$mux$f.detach__Lorg_scalajs_testcommon_Endpoint__I__V($m_Lorg_scalajs_testcommon_JSEndpoints$().msgMaster$1, runID)
+  } else {
+    this.org$scalajs$testinterface$internal$Bridge$$mux$f.detach__Lorg_scalajs_testcommon_Endpoint__I__V($m_Lorg_scalajs_testcommon_JSEndpoints$().msgSlave$1, runID)
+  }
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.tasksFun__p1__Lsbt_testing_Runner__F1 = (function(runner) {
+  return new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, runner$1) {
+    return (function(taskDefs$2) {
+      var taskDefs = $as_sci_List(taskDefs$2);
+      var len = $f_sc_LinearSeqOptimized__length__I(taskDefs);
+      var result = $newArrayObject($d_Lsbt_testing_TaskDef.getArrayOf(), [len]);
+      $f_sc_TraversableOnce__copyToArray__O__I__V(taskDefs, result, 0);
+      var tasks = runner$1.tasks__ALsbt_testing_TaskDef__ALsbt_testing_Task(result);
+      var elems$2 = null;
+      elems$2 = [];
+      var x1 = tasks.u.length;
+      switch (x1) {
+        case (-1): {
+          break
+        }
+      };
+      var i = 0;
+      var len$1 = tasks.u.length;
+      while ((i < len$1)) {
+        var index = i;
+        var arg1 = tasks.get(index);
+        var x$1 = $as_Lsbt_testing_Task(arg1);
+        var elem = $m_Lorg_scalajs_testinterface_internal_TaskInfoBuilder$().detachTask__Lsbt_testing_Task__Lsbt_testing_Runner__Lorg_scalajs_testcommon_TaskInfo(x$1, runner$1);
+        var unboxedElem = ((elem === null) ? null : elem);
+        elems$2.push(unboxedElem);
+        i = ((1 + i) | 0)
+      };
+      var xs = $makeNativeArrayWrapper($d_Lorg_scalajs_testcommon_TaskInfo.getArrayOf(), elems$2);
+      var this$11 = $m_sci_List$();
+      var cbf = this$11.ReusableCBFInstance$2;
+      var b = cbf.apply__scm_Builder();
+      var x1$1 = xs.u.length;
+      switch (x1$1) {
+        case (-1): {
+          break
+        }
+        default: {
+          b.sizeHint__I__V(x1$1)
+        }
+      };
+      b.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_scm_WrappedArray$ofRef().init___AO(xs));
+      return $as_sci_List(b.result__O())
+    })
+  })(this, runner))
+});
+var $d_Lorg_scalajs_testinterface_internal_Bridge$ = new $TypeData().initClass({
+  Lorg_scalajs_testinterface_internal_Bridge$: 0
+}, false, "org.scalajs.testinterface.internal.Bridge$", {
+  Lorg_scalajs_testinterface_internal_Bridge$: 1,
+  O: 1
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_Bridge$;
+var $n_Lorg_scalajs_testinterface_internal_Bridge$ = (void 0);
+function $m_Lorg_scalajs_testinterface_internal_Bridge$() {
+  if ((!$n_Lorg_scalajs_testinterface_internal_Bridge$)) {
+    $n_Lorg_scalajs_testinterface_internal_Bridge$ = new $c_Lorg_scalajs_testinterface_internal_Bridge$().init___()
+  };
+  return $n_Lorg_scalajs_testinterface_internal_Bridge$
+}
+/** @constructor */
+function $c_Lorg_scalajs_testinterface_internal_FrameworkLoader$() {
+  $c_O.call(this)
+}
+$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype = new $h_O();
+$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_FrameworkLoader$;
+/** @constructor */
+function $h_Lorg_scalajs_testinterface_internal_FrameworkLoader$() {
+  /*<skip>*/
+}
+$h_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype = $c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype;
+$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.init___ = (function() {
+  return this
+});
+$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.frameworkExistsInReflect$1__p1__T__Z = (function(name) {
   var this$1 = $m_sjs_reflect_Reflect$();
   var this$2 = this$1.instantiatableClasses$1.get__O__s_Option(name);
   if ((!this$2.isEmpty__Z())) {
@@ -5296,10 +5820,57 @@ $c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.frameworkExi
     return false
   }
 });
-$c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.frameworkExists$1__p1__T__Z = (function(name) {
+$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.frameworkExists$1__p1__T__Z = (function(name) {
   return (this.frameworkExistsInReflect$1__p1__T__Z(name) || this.frameworkExistsInExportsNamespace$1__p1__T__Z(name))
 });
-$c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.frameworkExistsInExportsNamespace$1__p1__T__Z = (function(name) {
+$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.detectFrameworkNames__sci_List__sci_List = (function(names) {
+  var f = (function($this) {
+    return (function(frameworkNames$2) {
+      var frameworkNames = $as_sci_List(frameworkNames$2);
+      var these = frameworkNames;
+      while ((!these.isEmpty__Z())) {
+        var arg1 = these.head__O();
+        var x$4 = $as_T(arg1);
+        if ($this.frameworkExists$1__p1__T__Z(x$4)) {
+          return new $c_s_Some().init___O(these.head__O())
+        };
+        these = $as_sc_LinearSeqOptimized(these.tail__O())
+      };
+      return $m_s_None$()
+    })
+  })(this);
+  var this$1 = $m_sci_List$();
+  var bf = this$1.ReusableCBFInstance$2;
+  if ((bf === $m_sci_List$().ReusableCBFInstance$2)) {
+    if ((names === $m_sci_Nil$())) {
+      var jsx$1 = $m_sci_Nil$()
+    } else {
+      var arg1$1 = names.head__O();
+      var h = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$1), $m_sci_Nil$());
+      var t = h;
+      var rest = $as_sci_List(names.tail__O());
+      while ((rest !== $m_sci_Nil$())) {
+        var arg1$2 = rest.head__O();
+        var nx = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$2), $m_sci_Nil$());
+        t.tl$5 = nx;
+        t = nx;
+        rest = $as_sci_List(rest.tail__O())
+      };
+      var jsx$1 = h
+    }
+  } else {
+    var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(names, bf);
+    var these$1 = names;
+    while ((!these$1.isEmpty__Z())) {
+      var arg1$3 = these$1.head__O();
+      b.$$plus$eq__O__scm_Builder(f(arg1$3));
+      these$1 = $as_sci_List(these$1.tail__O())
+    };
+    var jsx$1 = b.result__O()
+  };
+  return $as_sci_List(jsx$1)
+});
+$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.frameworkExistsInExportsNamespace$1__p1__T__Z = (function(name) {
   var exportsNamespace = $env.exportsNamespace;
   var this$3 = new $c_sci_StringOps().init___T(name);
   var xs = $f_sci_StringLike__split__C__AT(this$3, 46);
@@ -5330,77 +5901,6 @@ $c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.frameworkExi
     break
   };
   return (value$1 !== (void 0))
-});
-$c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.detectFrameworks__sjs_js_Array__sjs_js_Array = (function(frameworksData) {
-  var array = [];
-  var x1 = $uI(frameworksData.length);
-  switch (x1) {
-    case (-1): {
-      break
-    }
-  };
-  var i = 0;
-  var len = $uI(frameworksData.length);
-  while ((i < len)) {
-    var index = i;
-    var arg1 = frameworksData[index];
-    var len$1 = $uI(arg1.length);
-    var i$1 = 0;
-    while (true) {
-      if ((i$1 < len$1)) {
-        var index$1 = i$1;
-        var arg1$1 = arg1[index$1];
-        var x$2 = $as_T(arg1$1);
-        var jsx$1 = (!this.frameworkExists$1__p1__T__Z(x$2))
-      } else {
-        var jsx$1 = false
-      };
-      if (jsx$1) {
-        i$1 = ((1 + i$1) | 0)
-      } else {
-        break
-      }
-    };
-    var i$2 = i$1;
-    var opt = ((i$2 < $uI(arg1.length)) ? new $c_s_Some().init___O(arg1[i$2]) : $m_s_None$());
-    if (opt.isEmpty__Z()) {
-      var elem = (void 0)
-    } else {
-      var arg1$2 = opt.get__O();
-      var elem = arg1$2
-    };
-    array.push(elem);
-    i = ((1 + i) | 0)
-  };
-  return array
-});
-var $d_Lorg_scalajs_testinterface_internal_FrameworkDetector$ = new $TypeData().initClass({
-  Lorg_scalajs_testinterface_internal_FrameworkDetector$: 0
-}, false, "org.scalajs.testinterface.internal.FrameworkDetector$", {
-  Lorg_scalajs_testinterface_internal_FrameworkDetector$: 1,
-  O: 1
-});
-$c_Lorg_scalajs_testinterface_internal_FrameworkDetector$.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_FrameworkDetector$;
-var $n_Lorg_scalajs_testinterface_internal_FrameworkDetector$ = (void 0);
-function $m_Lorg_scalajs_testinterface_internal_FrameworkDetector$() {
-  if ((!$n_Lorg_scalajs_testinterface_internal_FrameworkDetector$)) {
-    $n_Lorg_scalajs_testinterface_internal_FrameworkDetector$ = new $c_Lorg_scalajs_testinterface_internal_FrameworkDetector$().init___()
-  };
-  return $n_Lorg_scalajs_testinterface_internal_FrameworkDetector$
-}
-/** @constructor */
-function $c_Lorg_scalajs_testinterface_internal_FrameworkLoader$() {
-  $c_O.call(this)
-}
-$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype = new $h_O();
-$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_FrameworkLoader$;
-/** @constructor */
-function $h_Lorg_scalajs_testinterface_internal_FrameworkLoader$() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype = $c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype;
-$c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.init___ = (function() {
-  return this
 });
 $c_Lorg_scalajs_testinterface_internal_FrameworkLoader$.prototype.loadFramework__T__Lsbt_testing_Framework = (function(frameworkName) {
   var this$1 = $m_sjs_reflect_Reflect$();
@@ -5451,451 +5951,6 @@ function $m_Lorg_scalajs_testinterface_internal_FrameworkLoader$() {
   };
   return $n_Lorg_scalajs_testinterface_internal_FrameworkLoader$
 }
-/** @constructor */
-function $c_Lorg_scalajs_testinterface_internal_InfoSender() {
-  $c_O.call(this);
-  this.frameworkName$1 = null
-}
-$c_Lorg_scalajs_testinterface_internal_InfoSender.prototype = new $h_O();
-$c_Lorg_scalajs_testinterface_internal_InfoSender.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_InfoSender;
-/** @constructor */
-function $h_Lorg_scalajs_testinterface_internal_InfoSender() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testinterface_internal_InfoSender.prototype = $c_Lorg_scalajs_testinterface_internal_InfoSender.prototype;
-$c_Lorg_scalajs_testinterface_internal_InfoSender.prototype.sendFrameworkInfo__p1__V = (function() {
-  var framework = $m_Lorg_scalajs_testinterface_internal_FrameworkLoader$().loadFramework__T__Lsbt_testing_Framework(this.frameworkName$1);
-  var xs = framework.fingerprints__ALsbt_testing_Fingerprint();
-  var this$2 = $m_sci_List$();
-  var cbf = this$2.ReusableCBFInstance$2;
-  var b = cbf.apply__scm_Builder();
-  var x1 = xs.u.length;
-  switch (x1) {
-    case (-1): {
-      break
-    }
-    default: {
-      b.sizeHint__I__V(x1)
-    }
-  };
-  b.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_scm_WrappedArray$ofRef().init___AO(xs));
-  var info = new $c_Lorg_scalajs_testcommon_FrameworkInfo().init___T__sci_List("ScalaTest", $as_sci_List(b.result__O()));
-  $g.scalajsCom.send($m_Lorg_scalajs_testcommon_Serializer$().serialize__O__Lorg_scalajs_testcommon_Serializer__T(info, $m_Lorg_scalajs_testcommon_FrameworkInfo$FrameworkInfoSerializer$()))
-});
-$c_Lorg_scalajs_testinterface_internal_InfoSender.prototype.$$js$exported$meth$initAndSend__O = (function() {
-  this.initAndSend__V()
-});
-$c_Lorg_scalajs_testinterface_internal_InfoSender.prototype.initAndSend__V = (function() {
-  $g.scalajsCom.init((function(arg$outer) {
-    return (function(arg1$2) {
-      $as_T(arg1$2)
-    })
-  })(this));
-  this.sendFrameworkInfo__p1__V();
-  $g.scalajsCom.close()
-});
-$c_Lorg_scalajs_testinterface_internal_InfoSender.prototype.init___T = (function(frameworkName) {
-  this.frameworkName$1 = frameworkName;
-  return this
-});
-$c_Lorg_scalajs_testinterface_internal_InfoSender.prototype.initAndSend = (function() {
-  return this.$$js$exported$meth$initAndSend__O()
-});
-var $d_Lorg_scalajs_testinterface_internal_InfoSender = new $TypeData().initClass({
-  Lorg_scalajs_testinterface_internal_InfoSender: 0
-}, false, "org.scalajs.testinterface.internal.InfoSender", {
-  Lorg_scalajs_testinterface_internal_InfoSender: 1,
-  O: 1
-});
-$c_Lorg_scalajs_testinterface_internal_InfoSender.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_InfoSender;
-/** @constructor */
-function $c_Lorg_scalajs_testinterface_internal_Master() {
-  $c_O.call(this);
-  this.frameworkName$1 = null;
-  this.runner$1 = null
-}
-$c_Lorg_scalajs_testinterface_internal_Master.prototype = new $h_O();
-$c_Lorg_scalajs_testinterface_internal_Master.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_Master;
-/** @constructor */
-function $h_Lorg_scalajs_testinterface_internal_Master() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testinterface_internal_Master.prototype = $c_Lorg_scalajs_testinterface_internal_Master.prototype;
-$c_Lorg_scalajs_testinterface_internal_Master.prototype.tasks__p1__sci_List__sci_List = (function(taskDefs) {
-  this.ensureRunnerExists__p1__V();
-  var jsx$1 = this.runner$1;
-  var len = $f_sc_LinearSeqOptimized__length__I(taskDefs);
-  var result = $newArrayObject($d_Lsbt_testing_TaskDef.getArrayOf(), [len]);
-  $f_sc_TraversableOnce__copyToArray__O__I__V(taskDefs, result, 0);
-  var tasks = jsx$1.tasks__ALsbt_testing_TaskDef__ALsbt_testing_Task(result);
-  var elems$2 = null;
-  elems$2 = [];
-  var x1 = tasks.u.length;
-  switch (x1) {
-    case (-1): {
-      break
-    }
-  };
-  var i = 0;
-  var len$1 = tasks.u.length;
-  while ((i < len$1)) {
-    var index = i;
-    var arg1 = tasks.get(index);
-    var x$1 = $as_Lsbt_testing_Task(arg1);
-    var elem = $m_Lorg_scalajs_testinterface_internal_TaskInfoBuilder$().detachTask__Lsbt_testing_Task__Lsbt_testing_Runner__Lorg_scalajs_testcommon_TaskInfo(x$1, this.runner$1);
-    var unboxedElem = ((elem === null) ? null : elem);
-    elems$2.push(unboxedElem);
-    i = ((1 + i) | 0)
-  };
-  var xs = $makeNativeArrayWrapper($d_Lorg_scalajs_testcommon_TaskInfo.getArrayOf(), elems$2);
-  var this$11 = $m_sci_List$();
-  var cbf = this$11.ReusableCBFInstance$2;
-  var b = cbf.apply__scm_Builder();
-  var x1$1 = xs.u.length;
-  switch (x1$1) {
-    case (-1): {
-      break
-    }
-    default: {
-      b.sizeHint__I__V(x1$1)
-    }
-  };
-  b.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_scm_WrappedArray$ofRef().init___AO(xs));
-  return $as_sci_List(b.result__O())
-});
-$c_Lorg_scalajs_testinterface_internal_Master.prototype.runnerDone__p1__sr_BoxedUnit__T = (function(req) {
-  this.ensureRunnerExists__p1__V();
-  try {
-    return this.runner$1.done__T()
-  } finally {
-    this.runner$1 = null
-  }
-});
-$c_Lorg_scalajs_testinterface_internal_Master.prototype.ensureRunnerExists__p1__V = (function() {
-  if ((this.runner$1 === null)) {
-    throw new $c_jl_IllegalStateException().init___T("No runner created")
-  }
-});
-$c_Lorg_scalajs_testinterface_internal_Master.prototype.newRunner__p1__Lorg_scalajs_testcommon_RunnerArgs__V = (function(req) {
-  $m_Lorg_scalajs_testinterface_internal_FrameworkLoader$().loadFramework__T__Lsbt_testing_Framework(this.frameworkName$1);
-  var loader = new $c_Lorg_scalajs_testinterface_ScalaJSClassLoader().init___sjs_js_Dynamic($env.exportsNamespace);
-  var this$3 = req.args$1;
-  var len = $f_sc_LinearSeqOptimized__length__I(this$3);
-  var result = $newArrayObject($d_T.getArrayOf(), [len]);
-  $f_sc_TraversableOnce__copyToArray__O__I__V(this$3, result, 0);
-  var this$5 = req.remoteArgs$1;
-  var len$1 = $f_sc_LinearSeqOptimized__length__I(this$5);
-  var result$1 = $newArrayObject($d_T.getArrayOf(), [len$1]);
-  $f_sc_TraversableOnce__copyToArray__O__I__V(this$5, result$1, 0);
-  this.runner$1 = new $c_Lorg_scalatest_tools_MasterRunner().init___AT__AT__jl_ClassLoader(result, result$1, loader)
-});
-$c_Lorg_scalajs_testinterface_internal_Master.prototype.inboundMessage__p1__Lorg_scalajs_testcommon_FrameworkMessage__V = (function(msg) {
-  this.ensureRunnerExists__p1__V();
-  var this$1 = this.runner$1.receiveMessage__T__s_Option(msg.msg$1);
-  if ((!this$1.isEmpty__Z())) {
-    var arg1 = this$1.get__O();
-    var reply = $as_T(arg1);
-    $m_Lorg_scalajs_testinterface_internal_JSRPC$().send__Lorg_scalajs_testcommon_MsgEndpoint__O__V($m_Lorg_scalajs_testcommon_JVMMasterEndpoints$().msg$1, new $c_Lorg_scalajs_testcommon_FrameworkMessage().init___J__T(msg.slaveId$1, reply))
-  }
-});
-$c_Lorg_scalajs_testinterface_internal_Master.prototype.init___T = (function(frameworkName) {
-  this.frameworkName$1 = frameworkName;
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSMasterEndpoints$().newRunner$1, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
-    return (function(req$2) {
-      var req = $as_Lorg_scalajs_testcommon_RunnerArgs(req$2);
-      $this.newRunner__p1__Lorg_scalajs_testcommon_RunnerArgs__V(req)
-    })
-  })(this)));
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSMasterEndpoints$().runnerDone$1, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
-    return (function(req$3$2) {
-      var req$3 = $asUnit(req$3$2);
-      return this$2.runnerDone__p1__sr_BoxedUnit__T(req$3)
-    })
-  })(this)));
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSMasterEndpoints$().tasks$1, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3) {
-    return (function(taskDefs$2) {
-      var taskDefs = $as_sci_List(taskDefs$2);
-      return this$3.tasks__p1__sci_List__sci_List(taskDefs)
-    })
-  })(this)));
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_MsgEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSMasterEndpoints$().msg$1, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4) {
-    return (function(msg$2) {
-      var msg = $as_Lorg_scalajs_testcommon_FrameworkMessage(msg$2);
-      this$4.inboundMessage__p1__Lorg_scalajs_testcommon_FrameworkMessage__V(msg)
-    })
-  })(this)));
-  return this
-});
-var $d_Lorg_scalajs_testinterface_internal_Master = new $TypeData().initClass({
-  Lorg_scalajs_testinterface_internal_Master: 0
-}, false, "org.scalajs.testinterface.internal.Master", {
-  Lorg_scalajs_testinterface_internal_Master: 1,
-  O: 1
-});
-$c_Lorg_scalajs_testinterface_internal_Master.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_Master;
-/** @constructor */
-function $c_Lorg_scalajs_testinterface_internal_Slave() {
-  $c_O.call(this);
-  this.frameworkName$1 = null;
-  this.args$1 = null;
-  this.remoteArgs$1 = null;
-  this.runner$1 = null
-}
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype = new $h_O();
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_Slave;
-/** @constructor */
-function $h_Lorg_scalajs_testinterface_internal_Slave() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testinterface_internal_Slave.prototype = $c_Lorg_scalajs_testinterface_internal_Slave.prototype;
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.execute__p1__Lorg_scalajs_testcommon_ExecuteRequest__s_concurrent_Future = (function(req) {
-  this.ensureRunnerExists__p1__V();
-  var task = $m_Lorg_scalajs_testinterface_internal_TaskInfoBuilder$().attachTask__Lorg_scalajs_testcommon_TaskInfo__Lsbt_testing_Runner__Lsbt_testing_Task(req.taskInfo$1, this.runner$1);
-  var eventHandler = new $c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler().init___Lorg_scalajs_testinterface_internal_Slave(this);
-  var this$2 = req.loggerColorSupport$1;
-  var this$1 = $m_sci_List$();
-  var bf = this$1.ReusableCBFInstance$2;
-  var jsx$2 = $as_sc_TraversableLike($f_sc_IterableLike__zipWithIndex__scg_CanBuildFrom__O(this$2, bf)).withFilter__F1__scg_FilterMonadic(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
-    return (function(check$ifrefutable$1$2) {
-      var check$ifrefutable$1 = $as_T2(check$ifrefutable$1$2);
-      return (check$ifrefutable$1 !== null)
-    })
-  })(this)));
-  var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1) {
-    return (function(x$1$2) {
-      var x$1 = $as_T2(x$1$2);
-      if ((x$1 !== null)) {
-        var withColor = x$1.$$und1$mcZ$sp__Z();
-        var i = $uI(x$1.$$und2__O());
-        return new $c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger().init___Lorg_scalajs_testinterface_internal_Slave__I__Z(this$2$1, i, withColor)
-      } else {
-        throw new $c_s_MatchError().init___O(x$1)
-      }
-    })
-  })(this));
-  var this$3 = $m_sci_List$();
-  var loggers = $as_sci_List(jsx$2.map__F1__scg_CanBuildFrom__O(jsx$1, this$3.ReusableCBFInstance$2));
-  var promise = new $c_s_concurrent_impl_Promise$DefaultPromise().init___();
-  try {
-    var len = $f_sc_LinearSeqOptimized__length__I(loggers);
-    var result = $newArrayObject($d_Lsbt_testing_Logger.getArrayOf(), [len]);
-    $f_sc_TraversableOnce__copyToArray__O__I__V(loggers, result, 0);
-    task.execute__Lsbt_testing_EventHandler__ALsbt_testing_Logger__F1__V(eventHandler, result, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1, eventHandler$1, loggers$1, promise$1) {
-      return (function(tasks$2) {
-        var tasks = $asArrayOf_Lsbt_testing_Task(tasks$2, 1);
-        this$3$1.cont$1__p1__ALsbt_testing_Task__Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler__sci_List__s_concurrent_Promise__s_concurrent_Promise(tasks, eventHandler$1, loggers$1, promise$1)
-      })
-    })(this, eventHandler, loggers, promise)))
-  } catch (e) {
-    var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-    if ((e$2 !== null)) {
-      matchEnd8: {
-        var o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
-        if ((!o11.isEmpty__Z())) {
-          var t = $as_jl_Throwable(o11.get__O());
-          $f_s_concurrent_Promise__tryFailure__jl_Throwable__Z(promise, t);
-          break matchEnd8
-        };
-        throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
-      }
-    } else {
-      throw e
-    }
-  };
-  return promise
-});
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.ensureRunnerExists__p1__V = (function() {
-  if ((this.runner$1 === null)) {
-    throw new $c_jl_IllegalStateException().init___T("No runner created")
-  }
-});
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.cont$1__p1__ALsbt_testing_Task__Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler__sci_List__s_concurrent_Promise__s_concurrent_Promise = (function(tasks, eventHandler$1, loggers$1, promise$1) {
-  try {
-    var elems$2 = null;
-    elems$2 = [];
-    var x1 = tasks.u.length;
-    switch (x1) {
-      case (-1): {
-        break
-      }
-    };
-    var i = 0;
-    var len = tasks.u.length;
-    while ((i < len)) {
-      var index = i;
-      var arg1 = tasks.get(index);
-      var x$2 = $as_Lsbt_testing_Task(arg1);
-      var elem = $m_Lorg_scalajs_testinterface_internal_TaskInfoBuilder$().detachTask__Lsbt_testing_Task__Lsbt_testing_Runner__Lorg_scalajs_testcommon_TaskInfo(x$2, this.runner$1);
-      var unboxedElem = ((elem === null) ? null : elem);
-      elems$2.push(unboxedElem);
-      i = ((1 + i) | 0)
-    };
-    var xs = $makeNativeArrayWrapper($d_Lorg_scalajs_testcommon_TaskInfo.getArrayOf(), elems$2);
-    var this$11 = $m_sci_List$();
-    var cbf = this$11.ReusableCBFInstance$2;
-    var b = cbf.apply__scm_Builder();
-    var x1$1 = xs.u.length;
-    switch (x1$1) {
-      case (-1): {
-        break
-      }
-      default: {
-        b.sizeHint__I__V(x1$1)
-      }
-    };
-    b.$$plus$plus$eq__sc_TraversableOnce__scg_Growable(new $c_scm_WrappedArray$ofRef().init___AO(xs));
-    var result = new $c_s_util_Success().init___O($as_sci_List(b.result__O()))
-  } catch (e) {
-    var e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
-    if ((e$2 !== null)) {
-      matchEnd8: {
-        var result;
-        var o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
-        if ((!o11.isEmpty__Z())) {
-          var e$3 = $as_jl_Throwable(o11.get__O());
-          var result = new $c_s_util_Failure().init___jl_Throwable(e$3);
-          break matchEnd8
-        };
-        throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
-      }
-    } else {
-      var result;
-      throw e
-    }
-  };
-  eventHandler$1.org$scalajs$testinterface$internal$Slave$$invalidate__V();
-  var these = loggers$1;
-  while ((!these.isEmpty__Z())) {
-    var arg1$1 = these.head__O();
-    var x$3 = $as_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger(arg1$1);
-    x$3.org$scalajs$testinterface$internal$Slave$$invalidate__V();
-    these = $as_sci_List(these.tail__O())
-  };
-  return $f_s_concurrent_Promise__complete__s_util_Try__s_concurrent_Promise(promise$1, result)
-});
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.newRunner__p1__sr_BoxedUnit__V = (function(req) {
-  $m_Lorg_scalajs_testinterface_internal_FrameworkLoader$().loadFramework__T__Lsbt_testing_Framework(this.frameworkName$1);
-  var loader = new $c_Lorg_scalajs_testinterface_ScalaJSClassLoader().init___sjs_js_Dynamic($env.exportsNamespace);
-  var array = this.args$1;
-  var len = $uI(array.length);
-  var result = $newArrayObject($d_T.getArrayOf(), [len]);
-  var len$1 = result.u.length;
-  var i = 0;
-  var j = 0;
-  var x = $uI(array.length);
-  var x$1 = ((x < len$1) ? x : len$1);
-  var that = result.u.length;
-  var end = ((x$1 < that) ? x$1 : that);
-  while ((i < end)) {
-    var jsx$1 = j;
-    var index = i;
-    result.set(jsx$1, array[index]);
-    i = ((1 + i) | 0);
-    j = ((1 + j) | 0)
-  };
-  var array$1 = this.remoteArgs$1;
-  var len$2 = $uI(array$1.length);
-  var result$1 = $newArrayObject($d_T.getArrayOf(), [len$2]);
-  var len$3 = result$1.u.length;
-  var i$1 = 0;
-  var j$1 = 0;
-  var x$2 = $uI(array$1.length);
-  var x$3 = ((x$2 < len$3) ? x$2 : len$3);
-  var that$1 = result$1.u.length;
-  var end$1 = ((x$3 < that$1) ? x$3 : that$1);
-  while ((i$1 < end$1)) {
-    var jsx$2 = j$1;
-    var index$1 = i$1;
-    result$1.set(jsx$2, array$1[index$1]);
-    i$1 = ((1 + i$1) | 0);
-    j$1 = ((1 + j$1) | 0)
-  };
-  var send = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
-    return (function(msg$2) {
-      var msg = $as_T(msg$2);
-      $m_Lorg_scalajs_testinterface_internal_JSRPC$().send__Lorg_scalajs_testcommon_MsgEndpoint__O__V($m_Lorg_scalajs_testcommon_JVMSlaveEndpoints$().msg$1, msg)
-    })
-  })(this));
-  this.runner$1 = new $c_Lorg_scalatest_tools_SlaveRunner().init___AT__AT__jl_ClassLoader__F1(result, result$1, loader, send)
-});
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.stopSlave__p1__sr_BoxedUnit__V = (function(req) {
-  this.ensureRunnerExists__p1__V();
-  try {
-    this.runner$1.done__T()
-  } finally {
-    this.runner$1 = null
-  }
-});
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.init___T__sjs_js_Array__sjs_js_Array = (function(frameworkName, args, remoteArgs) {
-  this.frameworkName$1 = frameworkName;
-  this.args$1 = args;
-  this.remoteArgs$1 = remoteArgs;
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSSlaveEndpoints$().newRunner$1, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
-    return (function(req$2) {
-      var req = $asUnit(req$2);
-      $this.newRunner__p1__sr_BoxedUnit__V(req)
-    })
-  })(this)));
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attachAsync__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSSlaveEndpoints$().execute$1, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
-    return (function(req$3$2) {
-      var req$3 = $as_Lorg_scalajs_testcommon_ExecuteRequest(req$3$2);
-      return this$2.execute__p1__Lorg_scalajs_testcommon_ExecuteRequest__s_concurrent_Future(req$3)
-    })
-  })(this)));
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_RPCEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSSlaveEndpoints$().stopSlave$1, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3) {
-    return (function(req$4$2) {
-      var req$4 = $asUnit(req$4$2);
-      this$3.stopSlave__p1__sr_BoxedUnit__V(req$4)
-    })
-  })(this)));
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().attach__Lorg_scalajs_testcommon_MsgEndpoint__F1__V($m_Lorg_scalajs_testcommon_JSSlaveEndpoints$().msg$1, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4) {
-    return (function(msg$2) {
-      var msg = $as_T(msg$2);
-      this$4.receiveMessage__p1__T__V(msg)
-    })
-  })(this)));
-  return this
-});
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.receiveMessage__p1__T__V = (function(msg) {
-  this.runner$1.receiveMessage__T__s_Option(msg)
-});
-var $d_Lorg_scalajs_testinterface_internal_Slave = new $TypeData().initClass({
-  Lorg_scalajs_testinterface_internal_Slave: 0
-}, false, "org.scalajs.testinterface.internal.Slave", {
-  Lorg_scalajs_testinterface_internal_Slave: 1,
-  O: 1
-});
-$c_Lorg_scalajs_testinterface_internal_Slave.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_Slave;
-/** @constructor */
-function $c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable() {
-  $c_O.call(this);
-  this.valid$1 = false;
-  this.$$outer$1 = null
-}
-$c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype = new $h_O();
-$c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable;
-/** @constructor */
-function $h_Lorg_scalajs_testinterface_internal_Slave$Invalidatable() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype = $c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype;
-$c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype.ensureValid__V = (function() {
-  if ((!this.valid$1)) {
-    throw new $c_jl_IllegalStateException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", " has been invalidated"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([this])))
-  }
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype.org$scalajs$testinterface$internal$Slave$$invalidate__V = (function() {
-  this.valid$1 = false
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype.init___Lorg_scalajs_testinterface_internal_Slave = (function($$outer) {
-  if (($$outer === null)) {
-    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
-  } else {
-    this.$$outer$1 = $$outer
-  };
-  this.valid$1 = true;
-  return this
-});
 /** @constructor */
 function $c_Lorg_scalajs_testinterface_internal_TaskInfoBuilder$() {
   $c_O.call(this)
@@ -17661,9 +17716,11 @@ function $m_sr_Statics$() {
 /** @constructor */
 function $c_Ljava_nio_charset_Charset() {
   $c_O.call(this);
+  this.aliasesSet$1 = null;
   this.cachedDecoder$1 = null;
   this.cachedEncoder$1 = null;
   this.canonicalName$1 = null;
+  this.$$undaliases$1 = null;
   this.bitmap$0$1 = 0
 }
 $c_Ljava_nio_charset_Charset.prototype = new $h_O();
@@ -17673,17 +17730,18 @@ function $h_Ljava_nio_charset_Charset() {
   /*<skip>*/
 }
 $h_Ljava_nio_charset_Charset.prototype = $c_Ljava_nio_charset_Charset.prototype;
-$c_Ljava_nio_charset_Charset.prototype.init___T__AT = (function(canonicalName, aliases) {
+$c_Ljava_nio_charset_Charset.prototype.init___T__AT = (function(canonicalName, _aliases) {
   this.canonicalName$1 = canonicalName;
+  this.$$undaliases$1 = _aliases;
   return this
 });
 $c_Ljava_nio_charset_Charset.prototype.cachedDecoder__p1__Ljava_nio_charset_CharsetDecoder = (function() {
-  return (((1 & this.bitmap$0$1) === 0) ? this.cachedDecoder$lzycompute__p1__Ljava_nio_charset_CharsetDecoder() : this.cachedDecoder$1)
+  return (((2 & this.bitmap$0$1) === 0) ? this.cachedDecoder$lzycompute__p1__Ljava_nio_charset_CharsetDecoder() : this.cachedDecoder$1)
 });
 $c_Ljava_nio_charset_Charset.prototype.cachedDecoder$lzycompute__p1__Ljava_nio_charset_CharsetDecoder = (function() {
-  if (((1 & this.bitmap$0$1) === 0)) {
+  if (((2 & this.bitmap$0$1) === 0)) {
     this.cachedDecoder$1 = new $c_sjs_niocharset_UTF$und8$Decoder().init___().onMalformedInput__Ljava_nio_charset_CodingErrorAction__Ljava_nio_charset_CharsetDecoder($m_Ljava_nio_charset_CodingErrorAction$().REPLACE$1).onUnmappableCharacter__Ljava_nio_charset_CodingErrorAction__Ljava_nio_charset_CharsetDecoder($m_Ljava_nio_charset_CodingErrorAction$().REPLACE$1);
-    this.bitmap$0$1 = (1 | this.bitmap$0$1)
+    this.bitmap$0$1 = (2 | this.bitmap$0$1)
   };
   return this.cachedDecoder$1
 });
@@ -17971,21 +18029,24 @@ $c_Lorg_scalajs_testcommon_FrameworkInfo$FrameworkInfoSerializer$.prototype.init
   return this
 });
 $c_Lorg_scalajs_testcommon_FrameworkInfo$FrameworkInfoSerializer$.prototype.serialize__Lorg_scalajs_testcommon_FrameworkInfo__Ljava_io_DataOutputStream__V = (function(x, out) {
-  var t = x.name$1;
+  var t = x.implName$1;
   out.writeUTF__T__V(t);
-  var t$1 = x.fingerprints$1;
+  var t$1 = x.displayName$1;
+  out.writeUTF__T__V(t$1);
+  var t$2 = x.fingerprints$1;
   var evidence$3 = $m_Lorg_scalajs_testcommon_Serializer$FingerprintSerializer$();
-  var s$1 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
-  s$1.serialize__sci_List__Ljava_io_DataOutputStream__V(t$1, out)
+  var s$2 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
+  s$2.serialize__sci_List__Ljava_io_DataOutputStream__V(t$2, out)
 });
 $c_Lorg_scalajs_testcommon_FrameworkInfo$FrameworkInfoSerializer$.prototype.serialize__O__Ljava_io_DataOutputStream__V = (function(x, out) {
   this.serialize__Lorg_scalajs_testcommon_FrameworkInfo__Ljava_io_DataOutputStream__V($as_Lorg_scalajs_testcommon_FrameworkInfo(x), out)
 });
 $c_Lorg_scalajs_testcommon_FrameworkInfo$FrameworkInfoSerializer$.prototype.deserialize__Ljava_io_DataInputStream__Lorg_scalajs_testcommon_FrameworkInfo = (function($in) {
+  var jsx$2 = $in.readUTF__T();
   var jsx$1 = $in.readUTF__T();
   var evidence$3 = $m_Lorg_scalajs_testcommon_Serializer$FingerprintSerializer$();
-  var s$1 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
-  return new $c_Lorg_scalajs_testcommon_FrameworkInfo().init___T__sci_List(jsx$1, s$1.deserialize__Ljava_io_DataInputStream__sci_List($in))
+  var s$2 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
+  return new $c_Lorg_scalajs_testcommon_FrameworkInfo().init___T__T__sci_List(jsx$2, jsx$1, s$2.deserialize__Ljava_io_DataInputStream__sci_List($in))
 });
 $c_Lorg_scalajs_testcommon_FrameworkInfo$FrameworkInfoSerializer$.prototype.deserialize__Ljava_io_DataInputStream__O = (function($in) {
   return this.deserialize__Ljava_io_DataInputStream__Lorg_scalajs_testcommon_FrameworkInfo($in)
@@ -18098,6 +18159,48 @@ var $d_Lorg_scalajs_testcommon_LogElement$$anon$1 = new $TypeData().initClass({
 });
 $c_Lorg_scalajs_testcommon_LogElement$$anon$1.prototype.$classData = $d_Lorg_scalajs_testcommon_LogElement$$anon$1;
 /** @constructor */
+function $c_Lorg_scalajs_testcommon_RunMux$$anon$1() {
+  $c_O.call(this);
+  this.evidence$1$1$1 = null
+}
+$c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype = new $h_O();
+$c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype.constructor = $c_Lorg_scalajs_testcommon_RunMux$$anon$1;
+/** @constructor */
+function $h_Lorg_scalajs_testcommon_RunMux$$anon$1() {
+  /*<skip>*/
+}
+$h_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype = $c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype;
+$c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype.serialize__Lorg_scalajs_testcommon_RunMux__Ljava_io_DataOutputStream__V = (function(x, out) {
+  var t = x.runId$1;
+  out.writeInt__I__V(t);
+  var t$1 = x.value$1;
+  var s$1 = this.evidence$1$1$1;
+  s$1.serialize__O__Ljava_io_DataOutputStream__V(t$1, out)
+});
+$c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype.serialize__O__Ljava_io_DataOutputStream__V = (function(x, out) {
+  this.serialize__Lorg_scalajs_testcommon_RunMux__Ljava_io_DataOutputStream__V($as_Lorg_scalajs_testcommon_RunMux(x), out)
+});
+$c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype.init___Lorg_scalajs_testcommon_Serializer = (function(evidence$1$1) {
+  this.evidence$1$1$1 = evidence$1$1;
+  return this
+});
+$c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype.deserialize__Ljava_io_DataInputStream__O = (function($in) {
+  return this.deserialize__Ljava_io_DataInputStream__Lorg_scalajs_testcommon_RunMux($in)
+});
+$c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype.deserialize__Ljava_io_DataInputStream__Lorg_scalajs_testcommon_RunMux = (function($in) {
+  var jsx$1 = $in.readInt__I();
+  var s$1 = this.evidence$1$1$1;
+  return new $c_Lorg_scalajs_testcommon_RunMux().init___I__O(jsx$1, s$1.deserialize__Ljava_io_DataInputStream__O($in))
+});
+var $d_Lorg_scalajs_testcommon_RunMux$$anon$1 = new $TypeData().initClass({
+  Lorg_scalajs_testcommon_RunMux$$anon$1: 0
+}, false, "org.scalajs.testcommon.RunMux$$anon$1", {
+  Lorg_scalajs_testcommon_RunMux$$anon$1: 1,
+  O: 1,
+  Lorg_scalajs_testcommon_Serializer: 1
+});
+$c_Lorg_scalajs_testcommon_RunMux$$anon$1.prototype.$classData = $d_Lorg_scalajs_testcommon_RunMux$$anon$1;
+/** @constructor */
 function $c_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$() {
   $c_O.call(this)
 }
@@ -18112,25 +18215,31 @@ $c_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$.prototype.init___ = 
   return this
 });
 $c_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$.prototype.serialize__Lorg_scalajs_testcommon_RunnerArgs__Ljava_io_DataOutputStream__V = (function(x, out) {
-  var t = x.args$1;
+  var t = x.runID$1;
+  out.writeInt__I__V(t);
+  var t$1 = x.frameworkImpl$1;
+  out.writeUTF__T__V(t$1);
+  var t$2 = x.args$1;
   var evidence$3 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
-  var s = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
-  s.serialize__sci_List__Ljava_io_DataOutputStream__V(t, out);
-  var t$1 = x.remoteArgs$1;
+  var s$2 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
+  s$2.serialize__sci_List__Ljava_io_DataOutputStream__V(t$2, out);
+  var t$3 = x.remoteArgs$1;
   var evidence$3$1 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
-  var s$1 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$1);
-  s$1.serialize__sci_List__Ljava_io_DataOutputStream__V(t$1, out)
+  var s$3 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$1);
+  s$3.serialize__sci_List__Ljava_io_DataOutputStream__V(t$3, out)
 });
 $c_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$.prototype.serialize__O__Ljava_io_DataOutputStream__V = (function(x, out) {
   this.serialize__Lorg_scalajs_testcommon_RunnerArgs__Ljava_io_DataOutputStream__V($as_Lorg_scalajs_testcommon_RunnerArgs(x), out)
 });
 $c_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$.prototype.deserialize__Ljava_io_DataInputStream__Lorg_scalajs_testcommon_RunnerArgs = (function($in) {
+  var jsx$3 = $in.readInt__I();
+  var jsx$2 = $in.readUTF__T();
   var evidence$3 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
-  var s = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
-  var jsx$1 = s.deserialize__Ljava_io_DataInputStream__sci_List($in);
+  var s$2 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3);
+  var jsx$1 = s$2.deserialize__Ljava_io_DataInputStream__sci_List($in);
   var evidence$3$1 = $m_Lorg_scalajs_testcommon_Serializer$StringSerializer$();
-  var s$1 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$1);
-  return new $c_Lorg_scalajs_testcommon_RunnerArgs().init___sci_List__sci_List(jsx$1, s$1.deserialize__Ljava_io_DataInputStream__sci_List($in))
+  var s$3 = new $c_Lorg_scalajs_testcommon_Serializer$$anon$4().init___Lorg_scalajs_testcommon_Serializer(evidence$3$1);
+  return new $c_Lorg_scalajs_testcommon_RunnerArgs().init___I__T__sci_List__sci_List(jsx$3, jsx$2, jsx$1, s$3.deserialize__Ljava_io_DataInputStream__sci_List($in))
 });
 $c_Lorg_scalajs_testcommon_RunnerArgs$RunnerArgsSerializer$.prototype.deserialize__Ljava_io_DataInputStream__O = (function($in) {
   return this.deserialize__Ljava_io_DataInputStream__Lorg_scalajs_testcommon_RunnerArgs($in)
@@ -19468,6 +19577,76 @@ var $d_Lorg_scalajs_testinterface_ScalaJSClassLoader = new $TypeData().initClass
 });
 $c_Lorg_scalajs_testinterface_ScalaJSClassLoader.prototype.$classData = $d_Lorg_scalajs_testinterface_ScalaJSClassLoader;
 /** @constructor */
+function $c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler() {
+  $c_O.call(this);
+  this.runID$1 = 0
+}
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler.prototype = new $h_O();
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler;
+/** @constructor */
+function $h_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler() {
+  /*<skip>*/
+}
+$h_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler.prototype = $c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler.prototype;
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler.prototype.init___I = (function(runID) {
+  this.runID$1 = runID;
+  return this
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler.prototype.handle__Lsbt_testing_Event__V = (function(event) {
+  $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.send__Lorg_scalajs_testcommon_MsgEndpoint__I__O__V($m_Lorg_scalajs_testcommon_JVMEndpoints$().event$1, this.runID$1, event)
+});
+var $d_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler = new $TypeData().initClass({
+  Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler: 0
+}, false, "org.scalajs.testinterface.internal.Bridge$RemoteEventHandler", {
+  Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler: 1,
+  O: 1,
+  Lsbt_testing_EventHandler: 1
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_Bridge$RemoteEventHandler;
+/** @constructor */
+function $c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger() {
+  $c_O.call(this);
+  this.runID$1 = 0;
+  this.index$1 = 0;
+  this.ansiCodesSupported$1 = false
+}
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype = new $h_O();
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger;
+/** @constructor */
+function $h_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger() {
+  /*<skip>*/
+}
+$h_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype = $c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype;
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype.l__p1__O__Lorg_scalajs_testcommon_LogElement = (function(x) {
+  return new $c_Lorg_scalajs_testcommon_LogElement().init___I__O(this.index$1, x)
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype.ansiCodesSupported__Z = (function() {
+  return this.ansiCodesSupported$1
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype.error__T__V = (function(msg) {
+  $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.send__Lorg_scalajs_testcommon_MsgEndpoint__I__O__V($m_Lorg_scalajs_testcommon_JVMEndpoints$().logError$1, this.runID$1, this.l__p1__O__Lorg_scalajs_testcommon_LogElement(msg))
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype.init___I__I__Z = (function(runID, index, ansiCodesSupported) {
+  this.runID$1 = runID;
+  this.index$1 = index;
+  this.ansiCodesSupported$1 = ansiCodesSupported;
+  return this
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype.trace__jl_Throwable__V = (function(t) {
+  $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.send__Lorg_scalajs_testcommon_MsgEndpoint__I__O__V($m_Lorg_scalajs_testcommon_JVMEndpoints$().logTrace$1, this.runID$1, this.l__p1__O__Lorg_scalajs_testcommon_LogElement(t))
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype.info__T__V = (function(msg) {
+  $m_Lorg_scalajs_testinterface_internal_Bridge$().org$scalajs$testinterface$internal$Bridge$$mux$f.send__Lorg_scalajs_testcommon_MsgEndpoint__I__O__V($m_Lorg_scalajs_testcommon_JVMEndpoints$().logInfo$1, this.runID$1, this.l__p1__O__Lorg_scalajs_testcommon_LogElement(msg))
+});
+var $d_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger = new $TypeData().initClass({
+  Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger: 0
+}, false, "org.scalajs.testinterface.internal.Bridge$RemoteLogger", {
+  Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger: 1,
+  O: 1,
+  Lsbt_testing_Logger: 1
+});
+$c_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_Bridge$RemoteLogger;
+/** @constructor */
 function $c_Lorg_scalajs_testinterface_internal_JSRPC$() {
   $c_Lorg_scalajs_testcommon_RPCCore.call(this)
 }
@@ -19479,7 +19658,7 @@ function $h_Lorg_scalajs_testinterface_internal_JSRPC$() {
 }
 $h_Lorg_scalajs_testinterface_internal_JSRPC$.prototype = $c_Lorg_scalajs_testinterface_internal_JSRPC$.prototype;
 $c_Lorg_scalajs_testinterface_internal_JSRPC$.prototype.init___ = (function() {
-  $c_Lorg_scalajs_testcommon_RPCCore.prototype.init___.call(this);
+  $c_Lorg_scalajs_testcommon_RPCCore.prototype.init___s_concurrent_ExecutionContext.call(this, $m_s_concurrent_ExecutionContext$Implicits$().global__s_concurrent_ExecutionContext());
   $n_Lorg_scalajs_testinterface_internal_JSRPC$ = this;
   $g.scalajsCom.init((function(arg1$2) {
     var arg1 = $as_T(arg1$2);
@@ -24858,89 +25037,6 @@ var $d_Lorg_scalajs_testinterface_HTMLRunner$UI$RunningTest = new $TypeData().in
   Lorg_scalajs_testinterface_HTMLRunner$UI$TestTask: 1
 });
 $c_Lorg_scalajs_testinterface_HTMLRunner$UI$RunningTest.prototype.$classData = $d_Lorg_scalajs_testinterface_HTMLRunner$UI$RunningTest;
-/** @constructor */
-function $c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler() {
-  $c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.call(this)
-}
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler.prototype = new $h_Lorg_scalajs_testinterface_internal_Slave$Invalidatable();
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler;
-/** @constructor */
-function $h_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler.prototype = $c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler.prototype;
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler.prototype.handle__Lsbt_testing_Event__V = (function(event) {
-  this.ensureValid__V();
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().send__Lorg_scalajs_testcommon_MsgEndpoint__O__V($m_Lorg_scalajs_testcommon_JVMSlaveEndpoints$().event$1, event)
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler.prototype.init___Lorg_scalajs_testinterface_internal_Slave = (function($$outer) {
-  $c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype.init___Lorg_scalajs_testinterface_internal_Slave.call(this, $$outer);
-  return this
-});
-var $d_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler = new $TypeData().initClass({
-  Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler: 0
-}, false, "org.scalajs.testinterface.internal.Slave$RemoteEventHandler", {
-  Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler: 1,
-  Lorg_scalajs_testinterface_internal_Slave$Invalidatable: 1,
-  O: 1,
-  Lsbt_testing_EventHandler: 1
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_Slave$RemoteEventHandler;
-/** @constructor */
-function $c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger() {
-  $c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.call(this);
-  this.index$2 = 0;
-  this.ansiCodesSupported$2 = false
-}
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype = new $h_Lorg_scalajs_testinterface_internal_Slave$Invalidatable();
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype.constructor = $c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger;
-/** @constructor */
-function $h_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger() {
-  /*<skip>*/
-}
-$h_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype = $c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype;
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype.init___Lorg_scalajs_testinterface_internal_Slave__I__Z = (function($$outer, index, ansiCodesSupported) {
-  this.index$2 = index;
-  this.ansiCodesSupported$2 = ansiCodesSupported;
-  $c_Lorg_scalajs_testinterface_internal_Slave$Invalidatable.prototype.init___Lorg_scalajs_testinterface_internal_Slave.call(this, $$outer);
-  return this
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype.ansiCodesSupported__Z = (function() {
-  return this.ansiCodesSupported$2
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype.error__T__V = (function(msg) {
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().send__Lorg_scalajs_testcommon_MsgEndpoint__O__V($m_Lorg_scalajs_testcommon_JVMSlaveEndpoints$().logError$1, this.l__p2__O__Lorg_scalajs_testcommon_LogElement(msg))
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype.trace__jl_Throwable__V = (function(t) {
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().send__Lorg_scalajs_testcommon_MsgEndpoint__O__V($m_Lorg_scalajs_testcommon_JVMSlaveEndpoints$().logTrace$1, this.l__p2__O__Lorg_scalajs_testcommon_LogElement(t))
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype.l__p2__O__Lorg_scalajs_testcommon_LogElement = (function(x) {
-  return new $c_Lorg_scalajs_testcommon_LogElement().init___I__O(this.index$2, x)
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype.info__T__V = (function(msg) {
-  $m_Lorg_scalajs_testinterface_internal_JSRPC$().send__Lorg_scalajs_testcommon_MsgEndpoint__O__V($m_Lorg_scalajs_testcommon_JVMSlaveEndpoints$().logInfo$1, this.l__p2__O__Lorg_scalajs_testcommon_LogElement(msg))
-});
-function $is_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lorg_scalajs_testinterface_internal_Slave$RemoteLogger)))
-}
-function $as_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger(obj) {
-  return (($is_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "org.scalajs.testinterface.internal.Slave$RemoteLogger"))
-}
-function $isArrayOf_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lorg_scalajs_testinterface_internal_Slave$RemoteLogger)))
-}
-function $asArrayOf_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger(obj, depth) {
-  return (($isArrayOf_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lorg.scalajs.testinterface.internal.Slave$RemoteLogger;", depth))
-}
-var $d_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger = new $TypeData().initClass({
-  Lorg_scalajs_testinterface_internal_Slave$RemoteLogger: 0
-}, false, "org.scalajs.testinterface.internal.Slave$RemoteLogger", {
-  Lorg_scalajs_testinterface_internal_Slave$RemoteLogger: 1,
-  Lorg_scalajs_testinterface_internal_Slave$Invalidatable: 1,
-  O: 1,
-  Lsbt_testing_Logger: 1
-});
-$c_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger.prototype.$classData = $d_Lorg_scalajs_testinterface_internal_Slave$RemoteLogger;
 /** @constructor */
 function $c_Lorg_scalatest_CompositeStatus() {
   $c_O.call(this);
@@ -35867,6 +35963,18 @@ $c_ju_concurrent_ConcurrentHashMap.prototype.remove__O__O = (function(key) {
   var this$1 = this.java$util$concurrent$ConcurrentHashMap$$inner$2.remove__O__s_Option(new $c_ju_package$Box().init___O(key));
   return (this$1.isEmpty__Z() ? null : this$1.get__O())
 });
+function $is_ju_concurrent_ConcurrentHashMap(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.ju_concurrent_ConcurrentHashMap)))
+}
+function $as_ju_concurrent_ConcurrentHashMap(obj) {
+  return (($is_ju_concurrent_ConcurrentHashMap(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "java.util.concurrent.ConcurrentHashMap"))
+}
+function $isArrayOf_ju_concurrent_ConcurrentHashMap(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.ju_concurrent_ConcurrentHashMap)))
+}
+function $asArrayOf_ju_concurrent_ConcurrentHashMap(obj, depth) {
+  return (($isArrayOf_ju_concurrent_ConcurrentHashMap(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.util.concurrent.ConcurrentHashMap;", depth))
+}
 var $d_ju_concurrent_ConcurrentHashMap = new $TypeData().initClass({
   ju_concurrent_ConcurrentHashMap: 0
 }, false, "java.util.concurrent.ConcurrentHashMap", {
@@ -71198,48 +71306,9 @@ $e.org = ($e.org || {});
 $e.org.scalajs = ($e.org.scalajs || {});
 $e.org.scalajs.testinterface = ($e.org.scalajs.testinterface || {});
 $e.org.scalajs.testinterface.internal = ($e.org.scalajs.testinterface.internal || {});
-$e.org.scalajs.testinterface.internal.detectFrameworks = (function(arg$1) {
-  var prep0 = arg$1;
-  return $m_Lorg_scalajs_testinterface_internal_FrameworkDetector$().detectFrameworks__sjs_js_Array__sjs_js_Array(prep0)
+$e.org.scalajs.testinterface.internal.startBridge = (function() {
+  $m_Lorg_scalajs_testinterface_internal_Bridge$().start__V()
 });
-$e.org = ($e.org || {});
-$e.org.scalajs = ($e.org.scalajs || {});
-$e.org.scalajs.testinterface = ($e.org.scalajs.testinterface || {});
-$e.org.scalajs.testinterface.internal = ($e.org.scalajs.testinterface.internal || {});
-/** @constructor */
-$e.org.scalajs.testinterface.internal.InfoSender = (function(arg$1) {
-  var $thiz = new $c_Lorg_scalajs_testinterface_internal_InfoSender();
-  var prep0 = $as_T(arg$1);
-  $c_Lorg_scalajs_testinterface_internal_InfoSender.prototype.init___T.call($thiz, prep0);
-  return $thiz
-});
-$e.org.scalajs.testinterface.internal.InfoSender.prototype = $c_Lorg_scalajs_testinterface_internal_InfoSender.prototype;
-$e.org = ($e.org || {});
-$e.org.scalajs = ($e.org.scalajs || {});
-$e.org.scalajs.testinterface = ($e.org.scalajs.testinterface || {});
-$e.org.scalajs.testinterface.internal = ($e.org.scalajs.testinterface.internal || {});
-/** @constructor */
-$e.org.scalajs.testinterface.internal.Master = (function(arg$1) {
-  var $thiz = new $c_Lorg_scalajs_testinterface_internal_Master();
-  var prep0 = $as_T(arg$1);
-  $c_Lorg_scalajs_testinterface_internal_Master.prototype.init___T.call($thiz, prep0);
-  return $thiz
-});
-$e.org.scalajs.testinterface.internal.Master.prototype = $c_Lorg_scalajs_testinterface_internal_Master.prototype;
-$e.org = ($e.org || {});
-$e.org.scalajs = ($e.org.scalajs || {});
-$e.org.scalajs.testinterface = ($e.org.scalajs.testinterface || {});
-$e.org.scalajs.testinterface.internal = ($e.org.scalajs.testinterface.internal || {});
-/** @constructor */
-$e.org.scalajs.testinterface.internal.Slave = (function(arg$1, arg$2, arg$3) {
-  var $thiz = new $c_Lorg_scalajs_testinterface_internal_Slave();
-  var prep0 = $as_T(arg$1);
-  var prep1 = arg$2;
-  var prep2 = arg$3;
-  $c_Lorg_scalajs_testinterface_internal_Slave.prototype.init___T__sjs_js_Array__sjs_js_Array.call($thiz, prep0, prep1, prep2);
-  return $thiz
-});
-$e.org.scalajs.testinterface.internal.Slave.prototype = $c_Lorg_scalajs_testinterface_internal_Slave.prototype;
 $e.org = ($e.org || {});
 $e.org.scalatest = ($e.org.scalatest || {});
 $e.org.scalatest.tools = ($e.org.scalatest.tools || {});
