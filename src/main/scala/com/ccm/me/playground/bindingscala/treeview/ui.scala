@@ -84,7 +84,7 @@ class ui extends ShowCase {
       </div>
   }
 
-  @dom def onTreeNodeClick(tree: TreeNode): Unit = tree.state.bind match {
+  @dom def onTreeNodeClick(tree: TreeNode): Unit = tree.state.value match {
     case UnloadedState =>
       tree.state.value = LoadingState
 
