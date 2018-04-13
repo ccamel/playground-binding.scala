@@ -26,18 +26,35 @@ package com.ccm.me.playground.bindingscala.ledmatrix
 import com.thoughtworks.binding.Binding.Var
 
 case class Screen(w: Int, h: Int) {
-  val cells: Array[Array[Var[Int]]] = Array.tabulate(w, h) { (i, j) => Var(0xFFFFFF) }
+  val cells: Array[Array[Var[Int]]] = Array.tabulate(w, h) { (_, _) => Var(0xFFFFFF) }
 
-  def apply(x: Int, y: Int, c: Int): Unit = cells(x)(y).value = c
-  def apply(x: Int, y: Int, r: Int, g: Int, b: Int): Unit = cells(x)(y).value = ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff)
+  @inline def apply(x: Int, y: Int, c: Int): Unit = cells(x)(y).value = c
+
+  @inline def apply(x: Int, y: Int, r: Int, g: Int, b: Int): Unit = this (x, y, Screen.rgb2int(r, g, b))
+
   def apply(from: Screen): Unit = {
-    for( x <- 0 until w;
+    for (x <- 0 until w;
          y <- 0 until h) {
-      this(x,y, from.cells(x)(y).value)
+      this (x, y, from.cells(x)(y).value)
     }
   }
 
-  def clear(c: Int):Unit = cells.flatten.foreach( _.value = c )
+  @inline def clear(c: Int): Unit = foreach {
+    _.value = c
+  }
+
+  def foreach[U](f: Var[Int] => U): Unit = cells.flatten.foreach(f)
+
+  def buffer(): Screen = {
+    val b = Screen(w, h)
+    b.apply(this)
+    b
+  }
+
+  def --(qt: Int): Unit = foreach { c =>
+    val (r, g, b) = Screen.int2rgb(c.value)
+    c.value = Screen.rgb2int((r - qt).max(0), (g - qt).max(0), (b - qt).max(0))
+  }
 }
 
 
@@ -45,4 +62,8 @@ object Screen {
   def apply(): Screen = {
     Screen(60, 34)
   }
+
+  @inline def int2rgb(c: Int): (Int, Int, Int) = ((c & 0xff0000) >> 16, (c & 0xff00) >> 8, c & 0xff)
+
+  @inline def rgb2int(r: Int, g: Int, b: Int): Int = ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff)
 }
