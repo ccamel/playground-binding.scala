@@ -117,7 +117,7 @@ case class PlasmaDemo() extends Demo {
 
   var offset = 0d
 
-  type EffectFn = (Int, Int, Double) ⇒ Int  // x,y,t => color
+  type EffectFn = (Int, Int, Double) ⇒ Int // x,y,t => color
   type Demo = (String, EffectFn)
 
   val demos = Seq[Demo](
@@ -133,7 +133,7 @@ case class PlasmaDemo() extends Demo {
       <div class="col s12">
         <label>Choose plasma effect</label>
         <select onchange={e: Event => selectedPlasma.value = e.target.asInstanceOf[HTMLSelectElement].value}>
-        { for ((name, _) <- Constants(demos: _*)) yield {
+          {for ((name, _) <- Constants(demos: _*)) yield {
           <option value={name}>
             {name}
           </option>
@@ -147,7 +147,6 @@ case class PlasmaDemo() extends Demo {
   }
 
   override def apply(screen: Screen): Unit = {
-    val d = screen.h / 2
     val step = 2 * math.Pi / screen.w
     val f: EffectFn = demos.find(_._1 == selectedPlasma.value).map(_._2).getOrElse((x, y, t) => 0)
 
@@ -165,4 +164,80 @@ case class PlasmaDemo() extends Demo {
   }
 
   override def name: String = "Plasma"
+}
+
+case class LissajousDemo() extends Demo {
+
+  import math.{Pi, round, sin}
+
+  val a = Var(1)
+  val b = Var(2)
+  val vp = Var(5)
+
+  @dom override def renderForm(): Binding[Element] = {
+    <div>
+      <div class="col s12">
+        <div class="col s12">
+          <label for="lissajous-a">Parameter a for the lissajous curve (
+            {a.bind.toString}
+            )</label>
+          <p class="range-field">
+            <input type="range"
+                   id="lissajous-a"
+                   min="1"
+                   max="10"
+                   value={a.bind.toString}
+                   oninput={e: Event => a.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+          </p>
+          <label for="lissajous-b">Parameter b for the lissajous curve (
+            {b.bind.toString}
+            )</label>
+          <p class="range-field">
+            <input type="range"
+                   id="lissajous-b"
+                   min="1"
+                   max="10"
+                   value={b.bind.toString}
+                   oninput={e: Event => b.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+          </p>
+          <label for="lissajous-velociy-phase">Velocity of the phase in turns per minutes (
+            {vp.bind.toString}
+            tr/min)</label>
+          <p class="range-field">
+            <input type="range"
+                   id="lissajous-velociy-phase"
+                   min="0"
+                   max="100"
+                   value={vp.bind.toString}
+                   oninput={e: Event => vp.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+          </p>
+        </div>
+      </div>
+      <script>
+        $('select').material_select()
+      </script>
+    </div>
+  }
+
+  override def apply(screen: Screen): Unit = {
+    val (w2, h2) = (screen.w / 2 - 2, screen.h / 2 - 2)
+    val buffer = screen.buffer()
+    val delta = (System.currentTimeMillis() / 1000d) % 60
+    val phase = (delta * vp.value * Pi / 30d) % (2 * Pi)
+
+    buffer -- round(delta / 2.1).toInt // fadeout sync with time
+
+    for (t: Double <- 0d until 2 * Pi by 0.01d) {
+      val x = round(w2 * sin(a.value * t + phase) + w2 + 1).toInt
+      val y = round(h2 * sin(b.value * t) + h2 + 1).toInt
+
+      if ((0 until screen.w).contains(x) && (0 until screen.h).contains(y)) {
+        buffer(x, y, 0xAA00)
+      }
+    }
+
+    screen.apply(buffer)
+  }
+
+  override def name: String = "Lissajous curves"
 }

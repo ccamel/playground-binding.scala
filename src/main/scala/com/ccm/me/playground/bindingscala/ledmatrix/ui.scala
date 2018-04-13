@@ -64,15 +64,22 @@ class ui extends ShowCase {
   val surface: Var[String] = Var("Normal")
   val timerHandle: Var[Option[SetTimeoutHandle]] = Var(None)
   val timerInterval: Var[Int] = Var(50)
-  val demos = Seq(ConstantColorDemo(), RandomDemo(), PlasmaDemo())
+  val demos = Seq(ConstantColorDemo(), RandomDemo(), PlasmaDemo(), LissajousDemo())
   val selectedDemo: Var[Option[Demo]] = Var(None)
   val dotSize: Var[Int] = Var(6)
   val dotSpace: Var[Int] = Var(0)
   val dotRadius: Var[Int] = Var(1)
+
+  val isPlaying = Binding {
+    timerHandle.bind.isDefined
+  }
+
   // metrics
   val renderTime = Var(0d)
 
-  screen.clear(0x777777)
+  screen.clear(ui.screenBackgroundColor)
+
+  onPlaying.watch()
 
   @dom def css: Binding[BindingSeq[Node]] =
       <style>{
@@ -249,7 +256,7 @@ class ui extends ShowCase {
   }
 
   def pause: Unit = {
-    timerHandle.value.foreach(timers.clearTimeout(_))
+    timerHandle.value.foreach(timers.clearTimeout)
     timerHandle.value = None
   }
 
@@ -303,9 +310,19 @@ class ui extends ShowCase {
     "000000" + cell.bind.toHexString takeRight 6
   }
 
+  def onPlaying = Binding {
+    if (isPlaying.bind) {
+      screen.clear(ui.screenBackgroundColor)
+    }
+  }
+
   override def name: String = "playground-binding.scala/led-matrix"
   @dom override def description: Binding[Node] = <div>A led-matrix with some nice demo effects</div>
   override def link: String = s"#playground-binding.scala/led-matrix"
   override def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/nXYqFFS/3")
 
+}
+
+object ui {
+  val screenBackgroundColor = 0x777777
 }
