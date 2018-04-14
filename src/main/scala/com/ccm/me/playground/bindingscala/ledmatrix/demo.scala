@@ -34,20 +34,21 @@ trait Name {
   def name: String
 }
 
-trait Render extends Function1[Screen, Unit] {
-
-}
+trait Render extends Function1[Screen, Unit]
 
 trait Form {
   // render a form to control the options of the demo
   @dom def renderForm(): Binding[Element] = <div/>
 }
 
-trait Demo extends Render with Form with Name {
-
+trait State {
+  def started: Var[Boolean]
 }
 
+trait Demo extends Render with Form with Name with State
+
 case class ConstantColorDemo() extends Demo {
+  val started = Var(false)
 
   val color = (Var(0xdb), Var(0xe8), Var(0xff))
 
@@ -84,6 +85,7 @@ case class ConstantColorDemo() extends Demo {
 }
 
 case class RandomDemo() extends Demo {
+  val started = Var(false)
   val r = new Random()
 
   val monochrome = Var(false)
@@ -115,6 +117,7 @@ case class PlasmaDemo() extends Demo {
 
   import math.{round, sin, sqrt}
 
+  val started = Var(false)
   var offset = 0d
 
   type EffectFn = (Int, Int, Double) ⇒ Int // x,y,t => color
@@ -170,9 +173,13 @@ case class LissajousDemo() extends Demo {
 
   import math.{Pi, round, sin}
 
+  val started = Var(false)
+  var firstFrame = false
   val a = Var(1)
   val b = Var(2)
   val vp = Var(5)
+
+  onStateChange.watch()
 
   @dom override def renderForm(): Binding[Element] = {
     <div>
@@ -220,23 +227,33 @@ case class LissajousDemo() extends Demo {
   }
 
   override def apply(screen: Screen): Unit = {
-    val (w2, h2) = (screen.w / 2 - 2, screen.h / 2 - 2)
-    val buffer = screen.buffer()
-    val delta = (System.currentTimeMillis() / 1000d) % 60
-    val phase = (delta * vp.value * Pi / 30d) % (2 * Pi)
+    if (firstFrame) {
+      screen.clear(0x000000)
+      firstFrame = false
+    } else {
+      val (w2, h2) = (screen.w / 2 - 2, screen.h / 2 - 2)
+      val buffer = screen.buffer()
+      val delta = (System.currentTimeMillis() / 1000d) % 60
+      val phase = (delta * vp.value * Pi / 30d) % (2 * Pi)
 
-    buffer -- round(delta / 2.1).toInt // fadeout sync with time
+      buffer -- round(delta / 2.1).toInt // fadeout sync with time
 
-    for (t: Double <- 0d until 2 * Pi by 0.01d) {
-      val x = round(w2 * sin(a.value * t + phase) + w2 + 1).toInt
-      val y = round(h2 * sin(b.value * t) + h2 + 1).toInt
+      for (t: Double <- 0d until 2 * Pi by 0.01d) {
+        val x = round(w2 * sin(a.value * t + phase) + w2 + 1).toInt
+        val y = round(h2 * sin(b.value * t) + h2 + 1).toInt
 
-      if ((0 until screen.w).contains(x) && (0 until screen.h).contains(y)) {
-        buffer(x, y, 0xAA00)
+        if ((0 until screen.w).contains(x) && (0 until screen.h).contains(y)) {
+          buffer(x, y, 0xAA00)
+        }
       }
+      screen.apply(buffer)
     }
+  }
 
-    screen.apply(buffer)
+  def onStateChange = Binding {
+    if (started.bind) {
+      firstFrame = true
+    }
   }
 
   override def name: String = "Lissajous curves"

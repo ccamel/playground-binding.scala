@@ -30,6 +30,7 @@ import org.scalajs.dom.Node
 import org.scalajs.dom.raw._
 
 import scala.language.implicitConversions
+import scala.reflect.macros.whitebox
 import scala.scalajs.js.timers
 import scala.scalajs.js.timers.SetTimeoutHandle
 
@@ -70,24 +71,25 @@ class ui extends ShowCase {
   val dotSpace: Var[Int] = Var(0)
   val dotRadius: Var[Int] = Var(1)
 
+  // runs
   val isPlaying = Binding {
     timerHandle.bind.isDefined
-  }
-
-  // metrics
+  } // alias
   val renderTime = Var(0d)
+  val pulse = Var(false)
 
   screen.clear(ui.screenBackgroundColor)
 
   onPlaying.watch()
+  onPulse.watch()
 
   @dom def css: Binding[BindingSeq[Node]] =
-      <style>{
-        val space = dotSpace.bind
-        val size = dotSize.bind
-        val radius = dotRadius.bind
+    <style>
+      {val space = dotSpace.bind
+    val size = dotSize.bind
+    val radius = dotRadius.bind
 
-        s"""
+    s"""
           .cell-row {
           margin-bottom: ${space}px;
           padding: 0px;
@@ -104,13 +106,15 @@ class ui extends ShowCase {
           margin-bottom: ${space}px;
           padding: 0px;
           }
-        """}</style>
-      <!-- -->
+        """}
+    </style>
+
+  <!-- -->
 
   @dom def render: Binding[Node] = {
-      <div class="container">
-        {renderContent.bind}
-      </div>
+    <div class="container">
+      {renderContent.bind}
+    </div>
   }
 
   @dom def renderContent = {
@@ -129,7 +133,11 @@ class ui extends ShowCase {
         <p class="caption">Metrics:</p>
         <div class="row">
           <div class="col s4">
-            <a><span class="badge">{f"${renderTime.bind}%.2f"} ms</span>Rendering time</a>
+            <a>
+              <span class="badge">
+                {f"${renderTime.bind}%.2f"}
+                ms</span>
+              Rendering time</a>
           </div>
         </div>
       </div>
@@ -140,15 +148,14 @@ class ui extends ShowCase {
     <div class="row">
       <div class="col s12">
         <label>Selected demo</label>
-        <select onchange={e: Event => selectedDemo.value = Some(demos(e.target.asInstanceOf[HTMLSelectElement].value.toInt))}>
-          <option value="" disabled={true} selected={true}>Chose a demo</option>{
-            for {
-              i <- Constants(0 until demos.size: _*)
-            } yield {
-              <option value={i.toString}>
-                {demos(i).name}
-              </option>
-            }}
+        <select onchange={e: Event => selectDemo(Some(demos(e.target.asInstanceOf[HTMLSelectElement].value.toInt)))}>
+          <option value="" disabled={true} selected={true}>Chose a demo</option>{for {
+          i <- Constants(0 until demos.size: _*)
+        } yield {
+          <option value={i.toString}>
+            {demos(i).name}
+          </option>
+        }}
         </select>
       </div>
     </div>
@@ -187,7 +194,9 @@ class ui extends ShowCase {
           </p>
         </div>
         <div class="col s4">
-          <label for="dot-space">Dot space ({dotSpace.bind.toString} pixels)</label>
+          <label for="dot-space">Dot space (
+            {dotSpace.bind.toString}
+            pixels)</label>
           <p class="range-field">
             <input type="range"
                    id="dot-space"
@@ -243,14 +252,7 @@ class ui extends ShowCase {
 
   def play: Unit = {
     timerHandle.value = Some(timers.setTimeout(timerInterval.value) {
-      selectedDemo.value
-        .map( d => (s: Screen) => {
-          val t0 = System.nanoTime()
-          d(s)
-          renderTime.value = (System.nanoTime() - t0) / (1000*1000d)
-        })
-        .foreach(_ (screen))
-      // trigger for next run
+      pulse.value = !pulse.value
       play
     })
   }
@@ -270,13 +272,13 @@ class ui extends ShowCase {
 
   @dom def renderScreenSpan = {
     <div data:type={surface.bind}>
-      {for(j <- Constants(0 until screen.h: _*)) yield {
-        <div class="row cell-row">
-        {for(i <- Constants(0 until screen.w: _*)) yield {
-          renderCellSpan(i, j).bind
-        }}
-        </div>
+      {for (j <- Constants(0 until screen.h: _*)) yield {
+      <div class="row cell-row">
+        {for (i <- Constants(0 until screen.w: _*)) yield {
+        renderCellSpan(i, j).bind
       }}
+      </div>
+    }}
     </div>
   }
 
@@ -284,10 +286,10 @@ class ui extends ShowCase {
     implicit def toSvgTags(a: dom.Runtime.TagsAndTags2.type) = scalatags.JsDom.svgTags
 
     <svg width="800" height="800">
-      {for( i <- Constants(0 until screen.w: _*);
+      {for (i <- Constants(0 until screen.w: _*);
             j <- Constants(0 until screen.h: _*)) yield {
-        renderCellSvg(i, j).bind
-      }}
+      renderCellSvg(i, j).bind
+    }}
     </svg>
   }
 
@@ -298,11 +300,11 @@ class ui extends ShowCase {
   @dom def renderCellSvg(i: Int, j: Int) = {
     implicit def toSvgTags(a: dom.Runtime.TagsAndTags2.type) = scalatags.JsDom.svgTags
 
-    <rect x={i * (dotSize.bind + dotSpace.bind)}
-          y={j * (dotSize.bind + dotSpace.bind)}
-          width={dotSize.bind}
-          height={dotSize.bind}
-          data:style={"fill: #" + color(i, j).bind}/>
+      <rect x={i * (dotSize.bind + dotSpace.bind)}
+            y={j * (dotSize.bind + dotSpace.bind)}
+            width={dotSize.bind}
+            height={dotSize.bind}
+            data:style={"fill: #" + color(i, j).bind}/>
   }
 
   @dom def color(i: Int, j: Int) = {
@@ -310,15 +312,44 @@ class ui extends ShowCase {
     "000000" + cell.bind.toHexString takeRight 6
   }
 
+
+  def selectDemo(demo: Option[Demo]): Unit = {
+    val oldValue: Boolean = selectedDemo.value.exists(d => d.started.value)
+    selectedDemo.value.foreach {
+      _.started.value = false
+    }
+    selectedDemo.value = demo
+  }
+
   def onPlaying = Binding {
-    if (isPlaying.bind) {
+    if (!isPlaying.bind) {
       screen.clear(ui.screenBackgroundColor)
+    }
+
+    selectedDemo.bind match {
+      case Some(d) => d.started.value = isPlaying.bind
+      case None =>
     }
   }
 
+  def onPulse = Binding {
+    pulse.bind
+
+    selectedDemo.value
+      .map(d => (s: Screen) => {
+        val t0 = System.nanoTime()
+        d(s)
+        renderTime.value = (System.nanoTime() - t0) / (1000 * 1000d)
+      })
+      .foreach(_ (screen))
+  }
+
   override def name: String = "playground-binding.scala/led-matrix"
+
   @dom override def description: Binding[Node] = <div>A led-matrix with some nice demo effects</div>
+
   override def link: String = s"#playground-binding.scala/led-matrix"
+
   override def scalaFiddle: Option[String] = Some("https://scalafiddle.io/sf/nXYqFFS/3")
 
 }
