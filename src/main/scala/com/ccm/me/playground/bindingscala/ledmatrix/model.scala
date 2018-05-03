@@ -25,7 +25,9 @@ package com.ccm.me.playground.bindingscala.ledmatrix
 
 import com.thoughtworks.binding.Binding.Var
 
-case class Screen(w: Int, h: Int) {
+import scala.collection.mutable
+
+case class Screen(w: Int, h: Int) extends Iterable[Var[Int]] {
   val cells: Array[Array[Var[Int]]] = Array.tabulate(w, h) { (_, _) => Var(0xFFFFFF) }
 
   @inline def apply(x: Int, y: Int, c: Int): Unit = cells(x)(y).value = c
@@ -43,8 +45,6 @@ case class Screen(w: Int, h: Int) {
     _.value = c
   }
 
-  def foreach[U](f: Var[Int] => U): Unit = cells.flatten.foreach(f)
-
   def buffer(): Screen = {
     val b = Screen(w, h)
     b.apply(this)
@@ -55,6 +55,10 @@ case class Screen(w: Int, h: Int) {
     val (r, g, b) = Screen.int2rgb(c.value)
     c.value = Screen.rgb2int((r - qt).max(0), (g - qt).max(0), (b - qt).max(0))
   }
+
+  override def iterator: Iterator[Var[Int]] = cells.flatten.iterator
+
+  override protected[this] def newBuilder: mutable.Builder[Var[Int], Seq[Var[Int]]] = new mutable.ListBuffer
 }
 
 
