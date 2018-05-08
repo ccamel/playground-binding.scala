@@ -70,4 +70,33 @@ object Screen {
   @inline def int2rgb(c: Int): (Int, Int, Int) = ((c & 0xff0000) >> 16, (c & 0xff00) >> 8, c & 0xff)
 
   @inline def rgb2int(r: Int, g: Int, b: Int): Int = ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff)
+
+  @inline def hsl2rgb(hsl: (Float, Float, Float)): (Int, Int, Int) = {
+    import math.round
+
+    val (h, s, l) = hsl
+
+    def normalize(q: Float, p: Float, c: Float): Int = round(c match {
+      case c if c < 1.0f => p + (q - p) * c
+      case c if c < 3.0f => q
+      case c if c < 4.0f => p + (q - p) * (4.0f - c)
+      case _ => p
+    })
+
+    if (s > 0.0f) {
+      val h2 = if (h < 1.0f) h * 6.0f else 0.0f
+
+      val q = l + s * (if (l > 0.5f) 1.0f - l else l)
+      val p = 2.0f * l - q
+
+      (normalize(q, p, if (h2 < 4.0f) h2 + 2.0f else h2 - 4.0f),
+        normalize(q, p, h2),
+        normalize(q, p, if (h2 < 2.0f) h2 + 4.0f else h2 - 2.0f))
+    } else {
+      val v = round(l)
+      (v, v, v)
+    }
+  }
+
+
 }
