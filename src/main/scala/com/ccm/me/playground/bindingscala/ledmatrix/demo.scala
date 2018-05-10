@@ -28,6 +28,7 @@ import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.html.Element
 import org.scalajs.dom.raw.{Event, HTMLInputElement, HTMLSelectElement}
 
+import scala.math.min
 import scala.util.Random
 
 trait Name {
@@ -257,4 +258,66 @@ case class LissajousDemo() extends Demo {
   }
 
   override def name: String = "Lissajous curves"
+}
+
+case class FireDemo() extends Demo {
+
+  val started = Var(false)
+  var firstFrame = false
+  var buffer: Screen = _
+
+  val palette: Array[(Int, Int, Int)] = Array.tabulate(256) { i => Screen.hsl2rgb((i / 3.0f, 255, min(255, i * 2))) }
+  val r = new Random()
+
+  onStateChange.watch()
+
+  @dom override def renderForm(): Binding[Element] = {
+    <div>
+      <div class="col s12">
+        <div class="col s12">
+        </div>
+      </div>
+      <script>
+        $('select').material_select()
+      </script>
+    </div>
+  }
+
+  override def apply(screen: Screen): Unit = {
+    if (firstFrame) {
+      screen.clear(0x000000)
+
+      buffer = screen.buffer()
+
+      firstFrame = false
+    } else {
+
+      val (w, h) = (buffer.w, buffer.h)
+
+      for (x <- 0 until w) {
+        buffer.apply(x, h - 1, r.nextInt(256))
+      }
+
+      for (y <- 0 until h - 1;
+           x <- 0 until w) {
+
+        val c = (buffer.cells((x - 1 + w) % w)((y + 1) % h).value
+          + buffer.cells(x)((y + 1) % h).value
+          + buffer.cells((x + 1) % w)((y + 1) % h).value
+          + buffer.cells(x)((y + 2) % h).value) * 32 / 129
+
+        buffer.apply(x, y, c)
+      }
+
+      screen.zip(buffer).foreach { case (i, o) => i.value = (Screen.rgb2int _).tupled(palette(o.value)) }
+    }
+  }
+
+  def onStateChange = Binding {
+    if (started.bind) {
+      firstFrame = true
+    }
+  }
+
+  override def name: String = "Fire"
 }

@@ -30,7 +30,6 @@ import org.scalajs.dom.Node
 import org.scalajs.dom.raw._
 
 import scala.language.implicitConversions
-import scala.reflect.macros.whitebox
 import scala.scalajs.js.timers
 import scala.scalajs.js.timers.SetTimeoutHandle
 
@@ -65,7 +64,7 @@ class ui extends ShowCase {
   val surface: Var[String] = Var("Normal")
   val timerHandle: Var[Option[SetTimeoutHandle]] = Var(None)
   val timerInterval: Var[Int] = Var(50)
-  val demos = Seq(ConstantColorDemo(), RandomDemo(), PlasmaDemo(), LissajousDemo())
+  val demos = Seq(ConstantColorDemo(), RandomDemo(), PlasmaDemo(), LissajousDemo(), FireDemo())
   val selectedDemo: Var[Option[Demo]] = Var(None)
   val dotSize: Var[Int] = Var(6)
   val dotSpace: Var[Int] = Var(0)
