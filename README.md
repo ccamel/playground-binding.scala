@@ -78,7 +78,8 @@ Beside this, some (simple) demos have been implemented that play with the virtua
 - _Constant color_ demo:  display a single background color. The components r, g, b of the color can be adjusted in real time.
 - _Random_ demo: turns on random pixels with random colors.
 - _Plasma_ demo: display some (minimal) [plasma effects](https://en.wikipedia.org/wiki/Plasma_effect).
-- _Lissajous curves_ demo: display a moving [Lissajou curve](https://en.wikipedia.org/wiki/Lissajous_curve) with some adjustable paramters (δ ratio, speed)
+- _Lissajous curves_ demo: display a moving [Lissajou curve](https://en.wikipedia.org/wiki/Lissajous_curve) with some adjustable paramters (δ ratio, speed).
+- _Fire_ demo: render the very classic (and old) Fire Effect.
 
 ### Loan Calculator
 
