@@ -1,6 +1,6 @@
 playground-binding.scala
 ========================
-[![release](https://img.shields.io/github/release/ccamel/playground-binding.scala.svg?style=flat)](https://github.com/ccamel/playground-binding.scala/releases/tag/v0.1) [![licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg?style=flat)](https://tldrlegal.com/license/mit-license) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala)
+[![release](https://img.shields.io/github/release/ccamel/playground-binding.scala.svg?style=flat)](https://github.com/ccamel/playground-binding.scala/releases/latest) [![licence](https://img.shields.io/badge/licence-MIT-lightgrey.svg?style=flat)](https://tldrlegal.com/license/mit-license) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala)
 
 [![Scala](https://img.shields.io/badge/scala-2.12.4-blue.svg?style=flat)](https://www.scala-lang.org/) [![Scala.js](https://img.shields.io/badge/scala.js-0.6.22-blue.svg?style=flat)](https://www.scala-js.org) [![Binding.scala](https://img.shields.io/badge/binding.scala-11.0.1-blue.svg?style=flat)](https://github.com/ThoughtWorksInc/Binding.scala)
 
