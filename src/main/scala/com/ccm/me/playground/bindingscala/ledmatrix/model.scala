@@ -27,7 +27,7 @@ import com.thoughtworks.binding.Binding.Var
 
 import scala.collection.mutable
 
-case class Screen(w: Int, h: Int) extends Iterable[Var[Int]] {
+case class Screen(w: Int, h: Int) extends PartialFunction[(Int, Int), Screen] with Iterable[Var[Int]] {
   val cells: Array[Array[Var[Int]]] = Array.tabulate(w, h) { (_, _) => Var(0xFFFFFF) }
 
   @inline def apply(x: Int, y: Int, c: Int): Unit = cells(x)(y).value = c
@@ -59,6 +59,8 @@ case class Screen(w: Int, h: Int) extends Iterable[Var[Int]] {
   override def iterator: Iterator[Var[Int]] = cells.flatten.iterator
 
   override protected[this] def newBuilder: mutable.Builder[Var[Int], Seq[Var[Int]]] = new mutable.ListBuffer
+
+  override def isDefinedAt(x: (Int, Int)): Boolean = (cells runWith (_ isDefinedAt x._2)) (x._1)
 }
 
 
