@@ -23,6 +23,7 @@ SOFTWARE.
  */
 package com.ccm.me.playground.bindingscala.ledmatrix
 
+import com.ccm.me.playground.bindingscala.ledmatrix.Screen.rgb2int
 import com.thoughtworks.binding.Binding.{Constants, Var}
 import com.thoughtworks.binding.{Binding, dom}
 import org.scalajs.dom.html.Element
@@ -78,7 +79,7 @@ case class ConstantColorDemo() extends Demo {
 
   override def apply(screen: Screen): Unit = {
     for (i <- 0 until screen.w; j <- 0 until screen.h) {
-      screen(i, j, color._1.value, color._2.value, color._3.value)
+      screen(i, j).value = rgb2int(color._1.value, color._2.value, color._3.value)
     }
   }
 
@@ -107,7 +108,7 @@ case class RandomDemo() extends Demo {
 
   override def apply(screen: Screen): Unit = {
     for (i <- 0 until screen.w; j <- 0 until screen.h) {
-      screen.cells(i)(j).value = (if (monochrome.value) if (r.nextBoolean()) 0xFFFFFF else 0x000000 else r.nextInt(16777215))
+      screen(i, j).value = (if (monochrome.value) if (r.nextBoolean()) 0xFFFFFF else 0x000000 else r.nextInt(16777215))
     }
   }
 
@@ -158,7 +159,7 @@ case class PlasmaDemo() extends Demo {
          x <- 0 until screen.w
     ) {
       val c = f(x, y, offset)
-      screen(x, y, c)
+      screen(x, y).value = c
     }
 
     offset += step
@@ -244,10 +245,10 @@ case class LissajousDemo() extends Demo {
         val y = round(h2 * sin(b.value * t) + h2 + 1).toInt
 
         if ((0 until screen.w).contains(x) && (0 until screen.h).contains(y)) {
-          buffer(x, y, 0xAA00)
+          buffer(x, y).value = 0xAA00
         }
       }
-      screen.apply(buffer)
+      screen.copy(buffer)
     }
   }
 
@@ -295,21 +296,21 @@ case class FireDemo() extends Demo {
       val (w, h) = (buffer.w, buffer.h)
 
       for (x <- 0 until w) {
-        buffer.apply(x, h - 1, r.nextInt(256))
+        buffer(x, h - 1).value = r.nextInt(256)
       }
 
       for (y <- 0 until h - 1;
            x <- 0 until w) {
 
-        val c = (buffer.cells((x - 1 + w) % w)((y + 1) % h).value
-          + buffer.cells(x)((y + 1) % h).value
-          + buffer.cells((x + 1) % w)((y + 1) % h).value
-          + buffer.cells(x)((y + 2) % h).value) * 32 / 129
+        val c = (buffer((x - 1 + w) % w, (y + 1) % h).value
+          + buffer(x, (y + 1) % h).value
+          + buffer((x + 1) % w, (y + 1) % h).value
+          + buffer(x, (y + 2) % h).value) * 32 / 129
 
-        buffer.apply(x, y, c)
+        buffer(x, y).value = c
       }
 
-      screen.zip(buffer).foreach { case (i, o) => i.value = (Screen.rgb2int _).tupled(palette(o.value)) }
+      screen.zip(buffer).foreach { case (i, o) => i.value = (rgb2int _).tupled(palette(o.value)) }
     }
   }
 

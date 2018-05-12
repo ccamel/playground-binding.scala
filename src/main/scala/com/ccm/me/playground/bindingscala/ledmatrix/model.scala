@@ -27,19 +27,12 @@ import com.thoughtworks.binding.Binding.Var
 
 import scala.collection.mutable
 
-case class Screen(w: Int, h: Int) extends PartialFunction[(Int, Int), Screen] with Iterable[Var[Int]] {
-  val cells: Array[Array[Var[Int]]] = Array.tabulate(w, h) { (_, _) => Var(0xFFFFFF) }
+case class Screen(w: Int, h: Int) extends PartialFunction[(Int, Int), Var[Int]] with Iterable[Var[Int]] {
+  private[this] val cells: Array[Array[Var[Int]]] = Array.tabulate(w, h) { (_, _) => Var(0xFFFFFF) }
 
-  @inline def apply(x: Int, y: Int, c: Int): Unit = cells(x)(y).value = c
+  @inline def apply(p: (Int, Int)): Var[Int] = cells(p._1)(p._2)
 
-  @inline def apply(x: Int, y: Int, r: Int, g: Int, b: Int): Unit = this (x, y, Screen.rgb2int(r, g, b))
-
-  def apply(from: Screen): Unit = {
-    for (x <- 0 until w;
-         y <- 0 until h) {
-      this (x, y, from.cells(x)(y).value)
-    }
-  }
+  def copy(from: Screen): Unit = zip(from).foreach { case (d, s) => d.value = s.value }
 
   @inline def clear(c: Int): Unit = foreach {
     _.value = c
@@ -47,7 +40,7 @@ case class Screen(w: Int, h: Int) extends PartialFunction[(Int, Int), Screen] wi
 
   def buffer(): Screen = {
     val b = Screen(w, h)
-    b.apply(this)
+    b.copy(this)
     b
   }
 
@@ -62,7 +55,6 @@ case class Screen(w: Int, h: Int) extends PartialFunction[(Int, Int), Screen] wi
 
   override def isDefinedAt(x: (Int, Int)): Boolean = (cells runWith (_ isDefinedAt x._2)) (x._1)
 }
-
 
 object Screen {
   def apply(): Screen = {
@@ -99,6 +91,4 @@ object Screen {
       (v, v, v)
     }
   }
-
-
 }

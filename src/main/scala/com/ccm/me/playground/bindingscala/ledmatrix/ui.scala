@@ -307,7 +307,7 @@ class ui extends ShowCase {
   }
 
   @dom def color(i: Int, j: Int) = {
-    val cell = screen.cells(i)(j)
+    val cell = screen(i, j)
     "000000" + cell.bind.toHexString takeRight 6
   }
 
