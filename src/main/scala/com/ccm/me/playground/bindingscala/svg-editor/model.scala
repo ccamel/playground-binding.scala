@@ -26,7 +26,7 @@ package com.ccm.me.playground.bindingscala.svgeditor
 import com.thoughtworks.binding.Binding.Var
 
 trait Label {
-  def label(): Var[String]
+  def label: Var[String]
 }
 
 trait Shape extends Label
