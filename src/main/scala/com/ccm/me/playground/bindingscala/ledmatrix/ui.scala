@@ -332,7 +332,7 @@ class ui extends ShowCase {
   }
 
   def onPulse = Binding {
-    pulse.bind
+    val _ = pulse.bind
 
     selectedDemo.value
       .map(d => (s: Screen) => {
