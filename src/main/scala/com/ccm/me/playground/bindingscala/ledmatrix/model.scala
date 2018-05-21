@@ -78,6 +78,8 @@ package object font {
     }
 
     def textWidth(t: String): Int = t.foldLeft(0)(_ + f(_).w)
+
+    def textHeight(t: String): Int = t.foldLeft(0)(_ max f(_).h)
   }
 
   implicit def fontToFont(f: Font): WritableFont = new WritableFont(f)
@@ -186,6 +188,7 @@ package object font {
       (i + 32).toChar -> new Glyph {
         val w = 5
         val h = 7
+
         override def write(s: Screen, x: Int, y: Int, color: Int): Unit = {
           val pixels = for (i <- 0 until w; f = e(i); j <- 0 until h; if ((f >> j) & 1) == 1) yield (x + i, y + j)
 
