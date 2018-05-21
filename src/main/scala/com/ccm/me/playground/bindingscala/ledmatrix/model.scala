@@ -54,7 +54,7 @@ case class Screen(w: Int, h: Int) extends PartialFunction[(Int, Int), Var[Int]] 
 
   override protected[this] def newBuilder: mutable.Builder[Var[Int], Seq[Var[Int]]] = new mutable.ListBuffer
 
-  override def isDefinedAt(x: (Int, Int)): Boolean = (cells runWith (_ isDefinedAt x._2)) (x._1)
+  override def isDefinedAt(x: (Int, Int)): Boolean = cells.isDefinedAt(x._1) && cells(x._1).isDefinedAt(x._2)
 }
 
 package object font {
