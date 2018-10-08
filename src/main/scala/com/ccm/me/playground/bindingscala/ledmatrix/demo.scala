@@ -240,9 +240,9 @@ case class LissajousDemo() extends Demo {
 
       buffer -- round(delta / 2.1).toInt // fadeout sync with time
 
-      for (t: Double <- 0d until 2 * Pi by 0.01d) {
-        val x = round(w2 * sin(a.value * t + phase) + w2 + 1).toInt
-        val y = round(h2 * sin(b.value * t) + h2 + 1).toInt
+      for (t <- BigDecimal(0) until 2 * Pi by 0.01) {
+        val x = round(w2 * sin(a.value * t.doubleValue() + phase) + w2 + 1).toInt
+        val y = round(h2 * sin(b.value * t.doubleValue()) + h2 + 1).toInt
 
         if ((0 until screen.w).contains(x) && (0 until screen.h).contains(y)) {
           buffer(x, y).value = 0xAA00
