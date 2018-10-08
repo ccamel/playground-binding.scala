@@ -174,6 +174,7 @@ Then, open `./dist/index.html` file in your browser.
 ## Technologies
 
 [![scala-logo][scala-logo]][scala]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fccamel%2Fplayground-binding.scala.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fccamel%2Fplayground-binding.scala?ref=badge_shield)
 
 [![scalajs-logo][scalajs-logo]][scalajs]
 
@@ -205,3 +206,6 @@ Then, open `./dist/index.html` file in your browser.
 
 [Chris Camel]: https://github.com/ccamel
 [MIT]: https://tldrlegal.com/license/mit-license
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fccamel%2Fplayground-binding.scala.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fccamel%2Fplayground-binding.scala?ref=badge_large)
