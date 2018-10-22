@@ -58,9 +58,7 @@ class ui extends ShowCase {
     </div>
 
   @dom def renderContent = {
-    def handleChange[T : ClassTag](e: Event, to: Var[T] ) = {
-      val i = e.target.asInstanceOf[HTMLInputElement]
-
+    def handleChange[T: ClassTag](i: HTMLInputElement, to: Var[T]) = {
       try{
         to match {
           case aDouble: Var[Double @unchecked] if classTag[T] == classTag[Double] ⇒ aDouble.value = i.value.toDouble
@@ -79,18 +77,18 @@ class ui extends ShowCase {
         <p>Enter the loan amount, interest rate and duration (in years) in the fields below</p>
         <div class="row">
           <div class="input-field col s3">
-            <input placeholder="2000" id="amount-borrowed" type="text" class="centered" value={loan.loan.bind.toString}
-                   onchange={e: Event => handleChange(e, loan.loan)}/>
+            <input placeholder="2000" id="amount-borrowed" local-id="itAmountBorrowed" type="text" class="centered" value={loan.loan.bind.toString}
+                   onchange={_: Event => handleChange(itAmountBorrowed, loan.loan)}/>
             <label for="amount-borrowed" data:data-error="Value must be a number">Loan amount ($)</label>
           </div>
           <div class="input-field col s3">
-            <input placeholder="0.5" id="interrest-rate" type="text" class="centered" value={loan.interrestRate.bind.toString}
-                   onchange={e: Event => handleChange(e, loan.interrestRate)}/>
+            <input placeholder="0.5" id="interrest-rate" local-id="itInterrestRate" type="text" class="centered" value={loan.interrestRate.bind.toString}
+                   onchange={_: Event => handleChange(itInterrestRate, loan.interrestRate)}/>
             <label for="interrest-rate" data:data-error="Value must be a decimal">Interest rate (%)</label>
           </div>
           <div class="input-field col s3">
-            <input placeholder="0.5" id="amortization" type="text" class="centered" value={loan.amortization.bind.toString}
-                   onchange={e: Event => handleChange(e, loan.amortization)}/>
+            <input placeholder="0.5" id="amortization" local-id="itAmortization" type="text" class="centered" value={loan.amortization.bind.toString}
+                   onchange={_: Event => handleChange(itAmortization, loan.amortization)}/>
             <label for="amortization" data:data-error="Value must be a decimal">Amortization (years)</label>
           </div>
         </div>

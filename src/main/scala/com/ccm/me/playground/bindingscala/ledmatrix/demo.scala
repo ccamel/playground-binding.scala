@@ -70,7 +70,14 @@ case class ConstantColorDemo() extends Demo {
         s"$label ($p %)"}
         </label>
         <p class="range-field">
-          <input type="range" id="interval" min="0" max="255" value={color(i).value.toString} oninput={e: Event => color(i).value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+          <input
+          type="range"
+          id="interval"
+          local-id="it"
+          min="0"
+          max="255"
+          value={color(i).value.toString}
+          oninput={_: Event => color(i).value = it.value.toInt}/>
         </p>
       </div>
     }}
@@ -98,7 +105,10 @@ case class RandomDemo() extends Demo {
       <div class="switch">
         <label>
           No
-          <input type="checkbox" onclick={e: Event => monochrome.value = e.target.asInstanceOf[HTMLInputElement].checked}/>
+          <input
+          type="checkbox"
+          local-id="it"
+          onclick={_: Event => monochrome.value = it.checked}/>
           <span class="lever"></span>
           Yes
         </label>
@@ -137,7 +147,7 @@ case class PlasmaDemo() extends Demo {
     <div>
       <div class="col s12">
         <label>Choose plasma effect</label>
-        <select onchange={e: Event => selectedPlasma.value = e.target.asInstanceOf[HTMLSelectElement].value}>
+        <select local-id="it" onchange={_: Event => selectedPlasma.value = it.value}>
           {for ((name, _) <- Constants(demos: _*)) yield {
           <option value={name}>
             {name}
@@ -193,10 +203,11 @@ case class LissajousDemo() extends Demo {
           <p class="range-field">
             <input type="range"
                    id="lissajous-a"
+                   local-id="itA"
                    min="1"
                    max="10"
                    value={a.bind.toString}
-                   oninput={e: Event => a.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+                   oninput={_: Event => a.value = itA.value.toInt}/>
           </p>
           <label for="lissajous-b">Parameter b for the lissajous curve (
             {b.bind.toString}
@@ -204,10 +215,11 @@ case class LissajousDemo() extends Demo {
           <p class="range-field">
             <input type="range"
                    id="lissajous-b"
+                   local-id="itB"
                    min="1"
                    max="10"
                    value={b.bind.toString}
-                   oninput={e: Event => b.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+                   oninput={_: Event => b.value = itB.value.toInt}/>
           </p>
           <label for="lissajous-velociy-phase">Velocity of the phase in turns per minutes (
             {vp.bind.toString}
@@ -215,10 +227,11 @@ case class LissajousDemo() extends Demo {
           <p class="range-field">
             <input type="range"
                    id="lissajous-velociy-phase"
+                   local-id="itVp"
                    min="0"
                    max="100"
                    value={vp.bind.toString}
-                   oninput={e: Event => vp.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+                   oninput={_: Event => vp.value = itVp.value.toInt}/>
           </p>
         </div>
       </div>

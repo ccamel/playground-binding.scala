@@ -147,7 +147,7 @@ class ui extends ShowCase {
     <div class="row">
       <div class="col s12">
         <label>Selected demo</label>
-        <select onchange={e: Event => selectDemo(Some(demos(e.target.asInstanceOf[HTMLSelectElement].value.toInt)))}>
+        <select local-id="itDemo" onchange={_: Event => selectDemo(Some(demos(itDemo.value.toInt)))}>
           <option value="" disabled={true} selected={true}>Chose a demo</option>{for {
           i <- Constants(0 until demos.size: _*)
         } yield {
@@ -161,7 +161,7 @@ class ui extends ShowCase {
       <div class="row">
         <div class="col s12">
           <label>Rendering surface</label>
-          <select onchange={e: Event => surface.value = e.target.asInstanceOf[HTMLSelectElement].value}>
+          <select local-id="itSurface" onchange={_: Event => surface.value = itSurface.value}>
             <option value="Span" selected={true}>Grid of div/span elements</option>
             <option value="Svg">SVG elements</option>
           </select>
@@ -186,10 +186,11 @@ class ui extends ShowCase {
           <p class="range-field">
             <input type="range"
                    id="dot-size"
+                   local-id="itSize"
                    min="0"
                    max="10"
                    value={dotSize.bind.toString}
-                   oninput={e: Event => dotSize.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+                   oninput={_: Event => dotSize.value = itSize.value.toInt}/>
           </p>
         </div>
         <div class="col s4">
@@ -199,10 +200,11 @@ class ui extends ShowCase {
           <p class="range-field">
             <input type="range"
                    id="dot-space"
+                   local-id="itSpace"
                    min="0"
                    max="5"
                    value={dotSpace.bind.toString}
-                   oninput={e: Event => dotSpace.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+                   oninput={_: Event => dotSpace.value = itSpace.value.toInt}/>
           </p>
         </div>
         <div class="col s4">
@@ -212,10 +214,11 @@ class ui extends ShowCase {
           <p class="range-field">
             <input type="range"
                    id="dot-radius"
+                   local-id="itRadius"
                    min="0"
                    max="5"
                    value={dotRadius.bind.toString}
-                   oninput={e: Event => dotRadius.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+                   oninput={_: Event => dotRadius.value = itRadius.value.toInt}/>
           </p>
         </div>
       </div>
@@ -226,8 +229,9 @@ class ui extends ShowCase {
             <label>
               Off
               <input type="checkbox"
+                     local-id="itPlay"
                      disabled={selectedDemo.bind.isEmpty}
-                     onclick={e: Event => if (e.target.asInstanceOf[HTMLInputElement].checked) play else pause}/>
+                     onclick={_: Event => if (itPlay.checked) play else pause}/>
               <span class="lever"></span>
               On
             </label>
@@ -240,10 +244,11 @@ class ui extends ShowCase {
           <p class="range-field">
             <input type="range"
                    id="interval"
+                   local-id="itInterval"
                    min="0"
                    max="1000"
                    value={timerInterval.bind.toString}
-                   oninput={e: Event => timerInterval.value = e.target.asInstanceOf[HTMLInputElement].value.toInt}/>
+                   oninput={_: Event => timerInterval.value = itInterval.value.toInt}/>
           </p>
         </div>
       </div>
