@@ -1,6 +1,7 @@
 playground-binding.scala
 ========================
 [![release](https://img.shields.io/github/release/ccamel/playground-binding.scala.svg?style=flat)](https://github.com/ccamel/playground-binding.scala/releases/latest) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fccamel%2Fplayground-binding.scala.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fccamel%2Fplayground-binding.scala?ref=badge_shield) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2f7756339782c433b1d1/maintainability)](https://codeclimate.com/github/ccamel/playground-binding.scala/maintainability)
 
 [![Scala](https://img.shields.io/badge/scala-2.12.4-blue.svg?style=flat)](https://www.scala-lang.org/) [![Scala.js](https://img.shields.io/badge/scala.js-0.6.22-blue.svg?style=flat)](https://www.scala-js.org) [![Binding.scala](https://img.shields.io/badge/binding.scala-11.0.1-blue.svg?style=flat)](https://github.com/ThoughtWorksInc/Binding.scala)
 
