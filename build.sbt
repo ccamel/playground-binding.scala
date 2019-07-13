@@ -25,8 +25,8 @@ scalaVersion := "2.12.7"
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.7",
   "org.scala-lang.modules" % "scala-xml_2.12" % "1.2.0",
-  "com.thoughtworks.binding" %%% "dom" % "11.8.0",
-  "com.thoughtworks.binding" %%% "route" % "11.8.0",
+  "com.thoughtworks.binding" %%% "dom" % "11.8.1",
+  "com.thoughtworks.binding" %%% "route" % "11.8.1",
   "org.scalatest" %%% "scalatest" % "3.0.7" % "test",
   "org.scalatest" %% "scalatest" % "3.0.7" % "test" // FIXME: https://github.com/scalatest/scalatest/issues/911
 )
