@@ -1,12 +1,14 @@
+dist: trusty
+
 language: scala
 
 scala:
-   - 2.12.7
+  - 2.12.7
 
 sudo: false
 
 jdk:
-   - oraclejdk8
+  - oraclejdk8
 
 branches:
   except:
@@ -22,14 +24,12 @@ scripts:
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
 
 deploy:
-  -
-    provider: script
+  - provider: script
     skip_cleanup: true
     script: ./scripts/deploy-to-gh-pages.sh
     on:
       tags: true
-  -
-    provider: releases
+  - provider: releases
     api_key: $GH_TOKEN
     file: ./target/playground-binding.scala.zip
     skip_cleanup: true
