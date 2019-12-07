@@ -23,7 +23,7 @@ startYear := Some(2017)
 scalaVersion := "2.12.7"
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "0.9.7",
+  "org.scala-js" %%% "scalajs-dom" % "0.9.8",
   "org.scala-lang.modules" % "scala-xml_2.12" % "1.2.0",
   "com.thoughtworks.binding" %%% "dom" % "11.9.0",
   "com.thoughtworks.binding" %%% "route" % "11.9.0",
