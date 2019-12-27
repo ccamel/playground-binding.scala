@@ -1,11 +1,13 @@
 import com.ccm.me.playground.bindingscala.calc._
-import org.scalatest.{FlatSpec, _}
+import org.scalatest._
 import org.scalatest.prop._
 
 import scala.collection.immutable._
 import scala.util.Success
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class CalcModelSpec extends FlatSpec with TableDrivenPropertyChecks with Matchers {
+class CalcModelSpec extends AnyFlatSpec with TableDrivenPropertyChecks with Matchers {
   val examples =
     Table(
       ("tokens", "result"),
