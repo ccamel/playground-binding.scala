@@ -4,7 +4,7 @@ playground-binding.scala
 [![Maintainability](https://api.codeclimate.com/v1/badges/2f7756339782c433b1d1/maintainability)](https://codeclimate.com/github/ccamel/playground-binding.scala/maintainability)
 [![Scala Steward badge](https://img.shields.io/badge/Scala_Steward-helping-brightgreen.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAMAAAARSr4IAAAAVFBMVEUAAACHjojlOy5NWlrKzcYRKjGFjIbp293YycuLa3pYY2LSqql4f3pCUFTgSjNodYRmcXUsPD/NTTbjRS+2jomhgnzNc223cGvZS0HaSD0XLjbaSjElhIr+AAAAAXRSTlMAQObYZgAAAHlJREFUCNdNyosOwyAIhWHAQS1Vt7a77/3fcxxdmv0xwmckutAR1nkm4ggbyEcg/wWmlGLDAA3oL50xi6fk5ffZ3E2E3QfZDCcCN2YtbEWZt+Drc6u6rlqv7Uk0LdKqqr5rk2UCRXOk0vmQKGfc94nOJyQjouF9H/wCc9gECEYfONoAAAAASUVORK5CYII=)](https://scala-steward.org)
 
-[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/ccamel/playground-binding-scala) [![Scala](https://img.shields.io/badge/scala-2.12.7-blue.svg?style=flat)](https://www.scala-lang.org/) [![Scala.js](https://img.shields.io/badge/scala.js-0.6.28-blue.svg?style=flat)](https://www.scala-js.org) [![Binding.scala](https://img.shields.io/badge/binding.scala-11.8.1-blue.svg?style=flat)](https://github.com/ThoughtWorksInc/Binding.scala)
+[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/ccamel/playground-binding-scala) [![Scala](https://img.shields.io/badge/scala-2.12.8-blue.svg?style=flat)](https://www.scala-lang.org/) [![Scala.js](https://img.shields.io/badge/scala.js-0.6.28-blue.svg?style=flat)](https://www.scala-js.org) [![Binding.scala](https://img.shields.io/badge/binding.scala-11.8.1-blue.svg?style=flat)](https://github.com/ThoughtWorksInc/Binding.scala)
 
 [![play](https://img.shields.io/badge/%F0%9F%8E%BE-Play%20with%20demo-7799cc.svg?style=flat)](https://ccamel.github.io/playground-binding.scala/index.html)
 
@@ -16,8 +16,8 @@ The purpose of this playground is to explore, study and assess in the first plac
 
 The showcases are intended to:
 
-- be fairly simple and understandable (static/serverless [SPA]); 
-- highlight some aspects of the [binding.scala] library, like binding forms, fine-grained bindings, performance, interoperability with other JS libraries... 
+- be fairly simple and understandable (static/serverless [SPA]);
+- highlight some aspects of the [binding.scala] library, like binding forms, fine-grained bindings, performance, interoperability with other JS libraries...
 - explore some architectural/design patterns around reactive GUIs
 - provide some functional content;
 - be deployable/playable into [scalafiddle].
@@ -50,11 +50,11 @@ Calc is a very simple and basic calculator.
 
 #### Implementation details
 
-The model is an immutable `case` class which holds the state of the calculator. The behaviour is implemented by this model 
-as a [partial function](https://www.scala-lang.org/api/current/scala/PartialFunction.html) which accepts tokens (digit, operators).    
+The model is an immutable `case` class which holds the state of the calculator. The behaviour is implemented by this model
+as a [partial function](https://www.scala-lang.org/api/current/scala/PartialFunction.html) which accepts tokens (digit, operators).
 
 The gui maintains the whole model in a single [bindable variable](https://static.javadoc.io/com.thoughtworks.binding/unidoc_2.11/11.0.0-M1/index.html#com.thoughtworks.binding.Binding$$Var),
-and every graphical element of the calculator (buttons, display) needing to be updated upon model change (reactive dom) is bound to that variable.  
+and every graphical element of the calculator (buttons, display) needing to be updated upon model change (reactive dom) is bound to that variable.
 
 ### Led Matrix
 
@@ -73,7 +73,7 @@ The idea under this showcase is to build a virtual matrix of cells, each cell ha
 #### Details
 
 The view consists in binding each cell to a dom element (actually a `span` or an `SVG rect`) in order to render the surface. As the matrix can have a significant number of cells (~2000),
-it allows to appreciate the performance of the [binding.scala] library to handle the situation.  
+it allows to appreciate the performance of the [binding.scala] library to handle the situation.
 
 Beside this, some (simple) demos have been implemented that play with the virtual screen. Each demo displays a form which allows to set some parameters whose values are taken in real time.
 
@@ -97,7 +97,7 @@ Simple loan calculator which determines the monthly payments on a loan.
 
 ### Tree View
 
-Example of a simple tree view implementation with dynamic loading of elements.  
+Example of a simple tree view implementation with dynamic loading of elements.
 
 <p align="center">
   <b>Links:</b><br>
@@ -114,7 +114,7 @@ The model is a simple recursive structure built with [Vars](https://static.javad
 The view is bound to the model and react by displaying parts of the tree that have changed.
 
 ### Drag-me
- 
+
 The Drag-me showcase is quite similar to [elm drag](http://elm-lang.org/examples/drag) but with more features.
 
 It allows the user to select, move and resize a simple rectangle form.
@@ -135,10 +135,10 @@ The model is a simple structure holding both the basic geometric properties of t
 The view is bound to that model and react to reflect the change (selection, coordinates change, width/height change, etc.).
 
 ### virtual-list
- 
+
 The virtual-list showcase is quite similar to [virtual rendering 1000000 items](http://www.lab4games.net/zz85/blog/2012/06/23/virtual-rendering-1000000-items-efficiently/).
 
-The idea is to use a list that represents a subset of a larger set of data. That list is automatically updated on events (mouse move, drag, key up/down...), and the dom 
+The idea is to use a list that represents a subset of a larger set of data. That list is automatically updated on events (mouse move, drag, key up/down...), and the dom
 elements bound to the list items are refreshed accordingly.
 
 <p align="center">
@@ -147,11 +147,11 @@ elements bound to the list items are refreshed accordingly.
   <a href="https://scalafiddle.io/sf/JuZsaoP/0">View Scalafiddle</a>
   <br><br>
   <kbd><img src="doc/assets/showcase-virtual-list.png"></kbd>
-</p> 
- 
+</p>
+
 ### SVG-editor
- 
-The SVG-editor showcase is an improvement of the *Drag-me* showcase using full SVG shapes for drawing.  
+
+The SVG-editor showcase is an improvement of the *Drag-me* showcase using full SVG shapes for drawing.
 
 It allows the user to select, move and resize a simple rectangle form (more to come).
 
@@ -161,8 +161,8 @@ It allows the user to select, move and resize a simple rectangle form (more to c
   <br><br>
   <kbd><img src="doc/assets/showcase-svg-editor.png"></kbd>
 </p>
- 
- 
+
+
 ## Building and Running
 
 The build can be launched with:
