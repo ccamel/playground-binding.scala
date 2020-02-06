@@ -20,7 +20,7 @@ developers := List(
 )
 startYear := Some(2017)
 
-scalaVersion := "2.12.7"
+scalaVersion := "2.12.8"
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.8",
