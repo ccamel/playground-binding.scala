@@ -151,7 +151,7 @@ elements bound to the list items are refreshed accordingly.
 
 ### SVG-editor
 
-The SVG-editor showcase is an improvement of the *Drag-me* showcase using full SVG shapes for drawing.
+The SVG-editor showcase is an improvement of the _Drag-me_ showcase using full SVG shapes for drawing.
 
 It allows the user to select, move and resize a simple rectangle form (more to come).
 
