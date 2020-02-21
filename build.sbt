@@ -27,8 +27,8 @@ libraryDependencies ++= Seq(
   "org.scala-lang.modules" % "scala-xml_2.12" % "1.2.0",
   "com.thoughtworks.binding" %%% "dom" % "11.9.0",
   "com.thoughtworks.binding" %%% "route" % "11.9.0",
-  "org.scalatest" %%% "scalatest" % "3.1.0" % "test",
-  "org.scalatest" %% "scalatest" % "3.1.0" % "test" // FIXME: https://github.com/scalatest/scalatest/issues/911
+  "org.scalatest" %%% "scalatest" % "3.1.1" % "test",
+  "org.scalatest" %% "scalatest" % "3.1.1" % "test" // FIXME: https://github.com/scalatest/scalatest/issues/911
 )
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
