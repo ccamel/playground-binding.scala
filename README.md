@@ -1,7 +1,10 @@
 playground-binding.scala
 ========================
 [![release](https://img.shields.io/github/release/ccamel/playground-binding.scala.svg?style=flat)](https://github.com/ccamel/playground-binding.scala/releases/latest) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fccamel%2Fplayground-binding.scala.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fccamel%2Fplayground-binding.scala?ref=badge_shield) [![build-status](https://travis-ci.org/ccamel/playground-binding.scala.svg?branch=master)](https://travis-ci.org/ccamel/playground-binding.scala)
+[![quality-gate-status](https://sonarcloud.io/api/project_badges/measure?project=ccamel_playground-binding.scala&metric=alert_status)](https://sonarcloud.io/dashboard?id=ccamel_playground-binding.scala)
+[![lines-of-code](https://sonarcloud.io/api/project_badges/measure?project=ccamel_playground-binding.scala&metric=ncloc)](https://sonarcloud.io/dashboard?id=ccamel_playground-binding.scala)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2f7756339782c433b1d1/maintainability)](https://codeclimate.com/github/ccamel/playground-binding.scala/maintainability)
+[![technical-debt](https://sonarcloud.io/api/project_badges/measure?project=ccamel_playground-binding.scala&metric=sqale_index)](https://sonarcloud.io/dashboard?id=ccamel_playground-binding.scala)
 [![Scala Steward badge](https://img.shields.io/badge/Scala_Steward-helping-brightgreen.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAMAAAARSr4IAAAAVFBMVEUAAACHjojlOy5NWlrKzcYRKjGFjIbp293YycuLa3pYY2LSqql4f3pCUFTgSjNodYRmcXUsPD/NTTbjRS+2jomhgnzNc223cGvZS0HaSD0XLjbaSjElhIr+AAAAAXRSTlMAQObYZgAAAHlJREFUCNdNyosOwyAIhWHAQS1Vt7a77/3fcxxdmv0xwmckutAR1nkm4ggbyEcg/wWmlGLDAA3oL50xi6fk5ffZ3E2E3QfZDCcCN2YtbEWZt+Drc6u6rlqv7Uk0LdKqqr5rk2UCRXOk0vmQKGfc94nOJyQjouF9H/wCc9gECEYfONoAAAAASUVORK5CYII=)](https://scala-steward.org)
 [![Analytics](https://ga-beacon.appspot.com/UA-99060629-2/welcome-page)](https://github.com/igrigorik/ga-beacon)
 
